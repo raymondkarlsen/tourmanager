@@ -1,4 +1,4 @@
-# Tourmanager
+# Tourmanager-nettside
 
 Nettsiden for Tourmanager-konkurransen vår — fire gutter/menn/gubber som har
 kjempet om heder og ære siden 2014.
