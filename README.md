@@ -1,6 +1,6 @@
 # Tourmanager
 
-Nettsiden for Tourmanager-konkurransen — fire gutter/menn/gubber som har
+Nettsiden for Tourmanager-konkurransen vår — fire gutter/menn/gubber som har
 kjempet om heder og ære siden 2014.
 
 Siden er bygget som rene HTML/CSS/JS-filer på GitHub Pages, og alle tall
