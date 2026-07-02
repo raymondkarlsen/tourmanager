@@ -1,0 +1,250 @@
+/* ==========================================================================
+   Tourmanager — felles stilark
+   Gjenskaper designet fra tdf.raymondkarlsen.no:
+   Albert Sans, TdF-gult, pastellkort, skråstilte stripeskiller, venstremeny.
+   ========================================================================== */
+
+/* ---- Designvariabler ----------------------------------------------------
+   Alle farger og størrelser bor her. Vil du justere noe på hele siden,
+   er dette stedet. */
+:root {
+  /* Grunnfarger */
+  --tekst: #1a1a1a;
+  --tekst-daus: #757575;        /* grå sekundærtekst, f.eks. "Tourmanager" */
+  --bakgrunn: #ffffff;
+  --flate-graa: #f0f0f0;        /* footer og grå bokser */
+
+  /* Signaturfargen */
+  --tdf-gul: #ffdf00;
+
+  /* Pastellkort (som de tre kortene på forsiden) */
+  --pastell-gul: #fdf8e1;
+  --pastell-blaa: #ddebf7;
+  --pastell-groenn: #e2f3e7;
+
+  /* Knappefarger */
+  --knapp-gull: #9a7d0a;
+  --knapp-blaa: #1f6fb2;
+  --knapp-groenn: #1e7a46;
+  --knapp-kant: #2d3a8c;        /* mørk blå kantlinje på outline-knapper */
+
+  /* Stripefarger for skillelinjer */
+  --stripe-graa: #d9d9d9;
+  --stripe-gul: #f5c400;
+  --stripe-groenn: #35b06f;
+  --stripe-blaa: #5560c8;
+
+  /* Layout */
+  --sidebredde: 1060px;
+  --meny-bredde: 230px;
+  --luft: 24px;
+}
+
+/* ---- Grunnoppsett -------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Albert Sans", -apple-system, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--tekst);
+  background: var(--bakgrunn);
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 0.5em;
+}
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.8rem; margin-top: 0; }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1em; }
+
+a { color: inherit; }
+
+img { max-width: 100%; height: auto; }
+
+/* ---- Sideskjelett: meny til venstre, innhold til høyre ------------------- */
+.side {
+  display: grid;
+  grid-template-columns: var(--meny-bredde) 1fr;
+  gap: 48px;
+  max-width: var(--sidebredde);
+  margin: 0 auto;
+  padding: 48px var(--luft) 0;
+}
+
+/* ---- Venstremenyen ------------------------------------------------------- */
+.meny .logo {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 12px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.meny .sidenavn {
+  color: var(--tekst-daus);
+  font-size: 1rem;
+  margin-bottom: 28px;
+}
+
+.meny nav { display: flex; flex-direction: column; gap: 6px; }
+
+.meny nav a {
+  color: var(--tekst);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  width: fit-content;
+}
+.meny nav a:hover { text-decoration-thickness: 2px; }
+
+/* Gruppene i menyen (tabellene / statistikk / sesonger) skilles med luft */
+.meny nav .gruppe { height: 18px; }
+
+/* ---- Skråstilte stripeskiller --------------------------------------------
+   Signaturen fra originalsiden. Farge styres med modifikatorklasse. */
+.skille {
+  height: 12px;
+  margin: 40px 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    var(--stripefarge, var(--stripe-graa)) 0 3px,
+    transparent 3px 8px
+  );
+}
+.skille--gul    { --stripefarge: var(--stripe-gul); }
+.skille--groenn { --stripefarge: var(--stripe-groenn); }
+.skille--blaa   { --stripefarge: var(--stripe-blaa); }
+
+/* ---- Bokser og kort ------------------------------------------------------ */
+
+/* Den gule signaturboksen ("Regjerende mester", sammenlagtlister) */
+.boks-gul {
+  background: var(--tdf-gul);
+  padding: 28px 32px;
+}
+
+/* Pastellbokser */
+.boks-pastellgul    { background: var(--pastell-gul);    padding: 28px 32px; }
+.boks-pastellblaa   { background: var(--pastell-blaa);   padding: 28px 32px; }
+.boks-pastellgroenn { background: var(--pastell-groenn); padding: 28px 32px; }
+.boks-graa          { background: var(--flate-graa);     padding: 28px 32px; border-radius: 8px; }
+
+/* Kortrekke, som de tre kortene på forsiden */
+.kortrekke {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+.kort { padding: 0 0 28px; }
+.kort .kort-bilde { display: block; width: 100%; }
+.kort .kort-innhold { padding: 20px 28px 0; }
+
+/* ---- Lister uten kuler (rangeringslister som "1. Tony – 360") ------------ */
+ol.rangering {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ol.rangering li { margin-bottom: 2px; }
+
+/* ---- Knapper ------------------------------------------------------------- */
+.knapp {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: var(--knapp-blaa);
+  border: none;
+  cursor: pointer;
+}
+.knapp--gull   { background: var(--knapp-gull); }
+.knapp--groenn { background: var(--knapp-groenn); }
+.knapp--omriss {
+  background: transparent;
+  color: var(--tekst);
+  border: 2px solid var(--knapp-kant);
+  border-radius: 8px;
+}
+.knapp:hover { filter: brightness(1.1); }
+.knapp--omriss:hover { filter: none; background: #f5f6fb; }
+
+/* ---- Tabeller (erstatter Datawrapper-tabellene) --------------------------- */
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin: 16px 0 8px;
+}
+table.data th {
+  text-align: right;
+  border-bottom: 2px solid var(--tekst);
+  padding: 6px 10px;
+  font-weight: 700;
+}
+table.data th:first-child,
+table.data td:first-child { text-align: left; }
+table.data td {
+  text-align: right;
+  padding: 6px 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+table.data tr:nth-child(even) td { background: #fafafa; }
+table.data tr.total td {
+  background: var(--tdf-gul);
+  font-weight: 700;
+  border-bottom: none;
+}
+table.data tr.vinner td { background: var(--pastell-gul); font-weight: 600; }
+
+/* ---- Footer --------------------------------------------------------------- */
+footer {
+  margin-top: 64px;
+  background: var(--flate-graa);
+}
+footer .inner {
+  max-width: var(--sidebredde);
+  margin: 0 auto;
+  padding: 28px var(--luft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+footer .inner strong { font-weight: 700; }
+
+/* ---- Laster-tilstand for datadrevne felter -------------------------------- */
+.laster {
+  color: var(--tekst-daus);
+  font-style: italic;
+}
+
+/* ---- Mobil ----------------------------------------------------------------
+   Under 760px legger menyen seg øverst og innholdet under. */
+@media (max-width: 760px) {
+  .side {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 24px;
+  }
+  .meny { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .meny .logo { max-width: 80px; margin: 0; }
+  .meny .sidenavn { margin: 0; width: 100%; order: -1; }
+  .meny nav { flex-direction: row; flex-wrap: wrap; gap: 8px 16px; }
+  .meny nav .gruppe { display: none; }
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.4rem; }
+}
+
+/* Respekter redusert bevegelse */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
