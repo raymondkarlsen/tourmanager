@@ -12,7 +12,7 @@ inn i regnearket, og hele siden oppdaterer seg selv.
 | Fil/mappe | Hva |
 |---|---|
 | `index.html` | Forsiden |
-| `gul-troye.html` m.fl. | Undersidene (én HTML-fil per side) |
+| `gul-troye.html`, 'maratontabellen.html', m.fl. | Undersidene (én HTML-fil per side) |
 | `css/style.css` | Alt design: farger, typografi, bokser, tabeller |
 | `js/config.js` | Lenkene til Google Sheets-dataene og faste innstillinger |
 | `assets/` | Logo, illustrasjoner og bilder |
