@@ -15,7 +15,7 @@ inn i regnearket, og hele siden oppdaterer seg selv.
 | `gul-troye.html` m.fl. | Undersidene (én HTML-fil per side) |
 | `css/style.css` | Alt design: farger, typografi, bokser, tabeller |
 | `js/config.js` | Lenkene til Google Sheets-dataene og faste innstillinger |
-| `assets/` | Logo og bilder |
+| `assets/` | Logo, illustrasjoner og bilder |
 
 ## Datakilden
 
