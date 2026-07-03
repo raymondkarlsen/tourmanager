@@ -22,15 +22,35 @@
       align-items: center;
     }
     @media (max-width: 760px) { .bilderad { grid-template-columns: 1fr; } }
-    .livebanner {
-      background: var(--tdf-gul);
-      padding: 16px 24px;
-      margin-bottom: 32px;
-      display: flex;
-      flex-wrap: wrap;
+    .livemerke {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .livemerke .prikk {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e33;
+      animation: pulz 1.6s ease-in-out infinite;
+    }
+    @keyframes pulz {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .dempet {
+      color: var(--tekst-daus);
+      font-size: 0.95rem;
+      margin-top: 18px;
     }
   </style>
 </head>
@@ -79,8 +99,6 @@
     </div>
 
     <div class="skille"></div>
-
-    <div id="live"></div>
 
     <div id="mester" class="duoboks">
       <p class="laster">Henter fasiten …</p>
@@ -133,36 +151,51 @@ hentTourdata().then(data => {
       .map(x => x.person).join(" og ");
   }
 
-  /* ---- Live-banner når touren pågår ---- */
-  if (data.paagaaende && data.paagaaende.antallEtapper > 0) {
-    const p = data.paagaaende;
-    document.getElementById("live").innerHTML = `
-      <div class="livebanner">
-        <span><strong>${p.aar}-touren pågår!</strong>
-        Etter ${p.antallEtapper} etappe${p.antallEtapper === 1 ? "" : "r"}
-        leder <strong>${p.leder}</strong> med ${f(p.resultater[0].poeng)} poeng.</span>
-        <a class="knapp knapp--omriss" href="sesongen.html?aar=${p.aar}">Se stillingen</a>
+  /* ---- Duoboksen: live-stilling under touren, ellers regjerende mester ---
+     Når touren pågår, eier den pågående sesongen den gule boksen (det er
+     jo den som handler om gul trøye nå), og fjorårets mester tones ned
+     til en linje. Utenom sesongen vises mesterboksen som vanlig. */
+  const siste = data.sesonger.at(-1);
+  const p = data.paagaaende;
+
+  if (p && p.antallEtapper > 0) {
+    document.getElementById("mester").innerHTML = `
+      <div class="del-gul">
+        <span class="livemerke"><span class="prikk"></span>Pågår</span>
+        <h2>${p.aar} — etter ${p.antallEtapper}
+          etappe${p.antallEtapper === 1 ? "" : "r"}</h2>
+        <ol class="rangering">` +
+      p.resultater.map(r =>
+        `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
+      `</ol>
+      </div>
+      <div class="del-krem">
+        <h3>Touren er i gang!</h3>
+        <p><strong>${p.leder}</strong> sitter i den gule trøya akkurat nå.
+        Stillingen oppdateres etter hver etappe.</p>
+        <a class="knapp knapp--omriss" href="sesongen.html?aar=${p.aar}">
+        Følg ${p.aar} etappe for etappe</a>
+        <p class="dempet">Regjerende mester: <strong>${data.regjerendeMester}</strong>
+        (${siste.aar}) — <a href="sesongen.html?aar=${siste.aar}">se forrige sesong</a></p>
+      </div>`;
+  } else {
+    document.getElementById("mester").innerHTML = `
+      <div class="del-gul">
+        <h2>Regjerende mester:<br>${data.regjerendeMester}</h2>
+        <p>${siste.aar}:</p>
+        <ol class="rangering">` +
+      siste.resultater.map(r =>
+        `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
+      `</ol>
+      </div>
+      <div class="del-krem">
+        <h3>Dette var ${siste.aar}-sesongen</h3>
+        <p>Tony tok tidlig ledelsen og så seg aldri tilbake — men det var
+        ordentlig spenning helt frem til nest siste etappe.</p>
+        <a class="knapp knapp--omriss" href="sesongen.html?aar=${siste.aar}">
+        Se detaljer fra sesongen</a>
       </div>`;
   }
-
-  /* ---- Mesterboksen: siste ferdige sesong ---- */
-  const siste = data.sesonger.at(-1);
-  document.getElementById("mester").innerHTML = `
-    <div class="del-gul">
-      <h2>Regjerende mester:<br>${data.regjerendeMester}</h2>
-      <p>${siste.aar}:</p>
-      <ol class="rangering">` +
-    siste.resultater.map(r =>
-      `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
-    `</ol>
-    </div>
-    <div class="del-krem">
-      <h3>Dette var ${siste.aar}-sesongen</h3>
-      <p>Tony tok tidlig ledelsen og så seg aldri tilbake — men det var
-      ordentlig spenning helt frem til nest siste etappe.</p>
-      <a class="knapp knapp--omriss" href="sesongen.html?aar=${siste.aar}">
-      Se detaljer fra sesongen</a>
-    </div>`;
 
   /* ---- De tre kortene ---- */
   document.getElementById("kortene").innerHTML = `
