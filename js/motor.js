@@ -344,15 +344,57 @@ async function hentTourdata() {
 }
 
 /* ==========================================================================
-   Mobilmeny
-   På små skjermer (styrt av style.css) skjules menylenkene bak en
-   hamburger-knapp. Knappen lages her, slik at alle sidene får den
-   automatisk uten egen kode i hver HTML-fil.
+   Ikoner
+   Felles ikonbibliotek for menyen og forsidekortene. Nøkkelen er sidens
+   filnavn; størrelsen kan velges (menyen bruker 18, kortene større).
+   ========================================================================== */
+function tourIkon(side, px = 18) {
+  const strek = `width="${px}" height="${px}" viewBox="0 0 24 24" fill="none" ` +
+    'stroke="currentColor" stroke-width="2" stroke-linecap="round" ' +
+    'stroke-linejoin="round" aria-hidden="true"';
+  const IKONER = {
+    "gul-troye.html":         // trøye
+      `<svg ${strek}><path d="M8.5 4 4 6.5l2 3.5 2-1V20h8v-11l2 1 2-3.5L15.5 4a5 5 0 0 1-7 0Z"/></svg>`,
+    "maratontabellen.html":   // seierspall
+      `<svg ${strek}><rect x="9" y="7" width="6" height="13"/><rect x="3" y="12" width="6" height="8"/><rect x="15" y="15" width="6" height="5"/></svg>`,
+    "poengtabellen.html":     // myntstabel
+      `<svg ${strek}><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>`,
+    "statistikk.html":        // søylediagram
+      `<svg ${strek}><path d="M5 20v-6M11 20V5M17 20v-9M3 20h18"/></svg>`,
+    "sesong-for-sesong.html": // kalender
+      `<svg ${strek}><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>`,
+  };
+  return IKONER[side] || "";
+}
+
+/* ==========================================================================
+   Meny-oppsett
+   Kjøres på alle sider (siden alle laster motor.js):
+   1. Legger et ikon foran hver menylenke
+   2. Markerer siden man står på
+   3. Lager hamburger-knappen for små skjermer (styrt av style.css)
    ========================================================================== */
 if (typeof document !== "undefined") {
   const meny = document.querySelector(".meny");
   const nav = meny ? meny.querySelector("nav") : null;
   if (meny && nav) {
+
+    /* ---- Hvilken side står vi på? ----
+       Detaljsiden (sesongen.html) hører hjemme under Sesong for sesong. */
+    let side = location.pathname.split("/").pop() || "index.html";
+    if (side === "sesongen.html") side = "sesong-for-sesong.html";
+
+    for (const lenke of nav.querySelectorAll("a")) {
+      const maal = lenke.getAttribute("href");
+      const ikon = tourIkon(maal);
+      if (ikon) lenke.innerHTML = ikon + "<span>" + lenke.textContent + "</span>";
+      if (maal === side) {
+        lenke.classList.add("aktiv");
+        lenke.setAttribute("aria-current", "page");
+      }
+    }
+
+    /* ---- Hamburger-knappen for mobil ---- */
     const knapp = document.createElement("button");
     knapp.className = "menyknapp";
     knapp.setAttribute("aria-label", "Meny");
