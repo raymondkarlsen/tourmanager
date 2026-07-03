@@ -8,12 +8,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tospalte {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 760px) { .tospalte { grid-template-columns: 1fr; gap: 0; } }
+    .bilderad {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 760px) { .bilderad { grid-template-columns: 1fr; } }
+    .livebanner {
+      background: var(--tdf-gul);
+      padding: 16px 24px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+  </style>
 </head>
 <body>
 
 <div class="side">
 
-  <!-- Venstremenyen — lik på alle sider -->
   <aside class="meny">
     <img class="logo" src="assets/logo.png" alt="Illustrasjon av syklist i gul trøye foran Eiffeltårnet">
     <div class="sidenavn">Tourmanager</div>
@@ -28,93 +52,62 @@
     </nav>
   </aside>
 
-  <!-- Hovedinnholdet -->
   <main>
 
-    <h1>Siden tidenes morgen har fire gutter/menn/gubber kjempet om heder og ære når Tour de France setter i gang. Her er fasiten.</h1>
+    <h1>Siden tidenes morgen har fire gutter/menn/gubber kjempet om heder
+    og ære når Tour de France setter i gang. Her er fasiten.</h1>
 
     <div class="skille"></div>
 
-    <p><strong>Dette er grunnmuren til den nye Tourmanager-siden.</strong>
-    Designet er på plass — innholdet kommer i neste fase, og hentes da
-    automatisk fra regnearket. Boksene under viser designelementene med
-    2025-tall som eksempel.</p>
-
-    <div class="skille"></div>
-
-    <!-- Eksempel: den gule signaturboksen -->
-    <div class="kortrekke">
-      <div class="boks-gul">
-        <h2>Regjerende mester:<br>Tony</h2>
-        <p>2025:</p>
-        <ol class="rangering">
-          <li>1. <strong>Tony</strong> 16 616</li>
-          <li>2. <strong>Jørgen</strong> 15 129</li>
-          <li>3. <strong>Raymond</strong> 14 466</li>
-          <li>4. <strong>Alex</strong> 13 306</li>
-        </ol>
-      </div>
-      <div class="boks-pastellgul">
-        <h3>Dette var 2025-sesongen</h3>
-        <p>Her kommer sesongoppsummeringen — den redaksjonelle teksten
-        flyttes over i fase 5.</p>
-        <a class="knapp knapp--omriss" href="sesongen-2025.html">Se detaljer fra sesongen</a>
+    <div class="tospalte">
+      <p>Den evige legenden <strong>Alaphilippe</strong>.
+      <strong>Froome</strong> som ventet på <strong>Wiggins</strong> og
+      senere løp oppover Mount Ventoux. <strong>Schleck</strong>-brødrene,
+      <strong>Contador</strong> og «chain-gate» — kjedet som falt av.
+      <strong>Sagan</strong> på ett hjul. <strong>Voekler</strong> med evig
+      krampe i ansiktet. <strong>Voigt</strong> og «shut up legs».
+      <strong>Pinot</strong> som alltid kom litt for sent.</p>
+      <div>
+        <p><strong>Cancellara</strong> på tempo. <strong>Cavendish</strong>
+        i spurten. <strong>Boonen</strong>, <strong>McEwen</strong> i full
+        fart. <strong>Bardet</strong>, <strong>Chavanel</strong> og
+        <strong>Valverde</strong> i brudd. <strong>Hushovd</strong>,
+        <strong>Kristoff</strong> og <strong>Boasson Hagen</strong> i
+        norske farger.</p>
+        <p><strong>Hver sommer er sin egen historie.</strong></p>
       </div>
     </div>
 
     <div class="skille"></div>
 
-    <!-- Eksempel: de tre pastellkortene -->
-    <div class="kortrekke">
-      <div class="kort boks-pastellgul">
-        <div class="kort-innhold">
-          <h3>Gul trøye<br>Raymond og Tony</h3>
-          <p>Antall gule trøyer:</p>
-          <ol class="rangering">
-            <li>1. <strong>Raymond</strong> — 4</li>
-            <li>1. <strong>Tony</strong> — 4</li>
-            <li>3. <strong>Alex</strong> — 3</li>
-            <li>4. <strong>Jørgen</strong> — 1</li>
-          </ol>
-          <a class="knapp knapp--gull" href="gul-troye.html">Se de gule trøyene</a>
-        </div>
-      </div>
-      <div class="kort boks-pastellblaa">
-        <div class="kort-innhold">
-          <h3>Maratontabellen<br>Tony</h3>
-          <p>Sammenlagtlista:</p>
-          <ol class="rangering">
-            <li>1. <strong>Tony</strong> 360</li>
-            <li>2. <strong>Alex</strong> 320</li>
-            <li>3. <strong>Raymond</strong> 300</li>
-            <li>4. <strong>Jørgen</strong> 220</li>
-          </ol>
-          <a class="knapp" href="maratontabellen.html">Maratontabellen</a>
-        </div>
-      </div>
-      <div class="kort boks-pastellgroenn">
-        <div class="kort-innhold">
-          <h3>Poengtabellen<br>Tony</h3>
-          <p>Antall poeng:</p>
-          <ol class="rangering">
-            <li>1. <strong>Tony</strong> — 163 761</li>
-            <li>2. <strong>Alex</strong> — 150 006</li>
-            <li>3. <strong>Raymond</strong> — 149 422</li>
-            <li>4. <strong>Jørgen</strong> — 142 501</li>
-          </ol>
-          <a class="knapp knapp--groenn" href="poengtabellen.html">Poengtabellen</a>
-        </div>
-      </div>
+    <div id="live"></div>
+
+    <div id="mester" class="kortrekke">
+      <p class="laster">Henter fasiten …</p>
     </div>
 
     <div class="skille"></div>
 
-    <!-- Eksempel: grå boks -->
+    <div id="kortene" class="kortrekke"></div>
+
+    <div class="skille"></div>
+
     <div class="boks-graa">
       <h3>Statistikk, tall og funfacts</h3>
-      <p>Ingenting er morsommere enn en artig funfact eller statistikk som
-      blåser deg i bakken.</p>
+      <p>Ingenting er morsommere enn en artig funfact eller statistikk
+      som blåser deg i bakken.</p>
       <a class="knapp knapp--omriss" href="statistikk.html">Se statistikk</a>
+    </div>
+
+    <div class="skille"></div>
+
+    <div class="bilderad">
+      <p>Et over 20 år gammelt bilde:<br>
+      Tony Mathiessen, Raymond Karlsen,<br>
+      Jørgen Sørlie, Alexander Mathiessen</p>
+      <img src="assets/gubber.jpg"
+           alt="De fire deltakerne i blå sykkeldrakter, for over 20 år siden"
+           onerror="this.closest('.bilderad').style.display='none'">
     </div>
 
   </main>
@@ -126,6 +119,97 @@
     <span>Bygget med GitHub Pages og Google Sheets</span>
   </div>
 </footer>
+
+<script src="js/config.js"></script>
+<script src="js/motor.js"></script>
+<script>
+hentTourdata().then(data => {
+  const f = formatTall;
+
+  /** Navnene på dem som deler ledelsen, bundet sammen med "og". */
+  function ledere(liste, verdiFelt) {
+    const topp = liste[0][verdiFelt];
+    return liste.filter(x => x[verdiFelt] === topp)
+      .map(x => x.person).join(" og ");
+  }
+
+  /* ---- Live-banner når touren pågår ---- */
+  if (data.paagaaende && data.paagaaende.antallEtapper > 0) {
+    const p = data.paagaaende;
+    document.getElementById("live").innerHTML = `
+      <div class="livebanner">
+        <span><strong>${p.aar}-touren pågår!</strong>
+        Etter ${p.antallEtapper} etappe${p.antallEtapper === 1 ? "" : "r"}
+        leder <strong>${p.leder}</strong> med ${f(p.resultater[0].poeng)} poeng.</span>
+        <a class="knapp knapp--omriss" href="sesongen.html?aar=${p.aar}">Se stillingen</a>
+      </div>`;
+  }
+
+  /* ---- Mesterboksen: siste ferdige sesong ---- */
+  const siste = data.sesonger.at(-1);
+  document.getElementById("mester").innerHTML = `
+    <div class="boks-gul">
+      <h2>Regjerende mester:<br>${data.regjerendeMester}</h2>
+      <p>${siste.aar}:</p>
+      <ol class="rangering">` +
+    siste.resultater.map(r =>
+      `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
+    `</ol>
+    </div>
+    <div class="boks-pastellgul">
+      <h3>Dette var ${siste.aar}-sesongen</h3>
+      <p>Tony tok tidlig ledelsen og så seg aldri tilbake — men det var
+      ordentlig spenning helt frem til nest siste etappe.</p>
+      <a class="knapp knapp--omriss" href="sesongen.html?aar=${siste.aar}">
+      Se detaljer fra sesongen</a>
+    </div>`;
+
+  /* ---- De tre kortene ---- */
+  document.getElementById("kortene").innerHTML = `
+    <div class="kort boks-pastellgul">
+      <div class="kort-innhold">
+        <h3>Gul trøye<br>${ledere(data.guleTroyer, "antall")}</h3>
+        <p>Antall gule trøyer:</p>
+        <ol class="rangering">` +
+    (() => {
+      let plass = 0, forrige = null;
+      return data.guleTroyer.map((r, i) => {
+        if (r.antall !== forrige) { plass = i + 1; forrige = r.antall; }
+        return `<li>${plass}. <strong>${r.person}</strong> — ${r.antall}</li>`;
+      }).join("");
+    })() +
+    `</ol>
+        <a class="knapp knapp--gull" href="gul-troye.html">Se de gule trøyene</a>
+      </div>
+    </div>
+    <div class="kort boks-pastellblaa">
+      <div class="kort-innhold">
+        <h3>Maratontabellen<br>${ledere(data.maratontabellen, "verdi")}</h3>
+        <p>Sammenlagtlista:</p>
+        <ol class="rangering">` +
+    data.maratontabellen.map((r, i) =>
+      `<li>${i + 1}. <strong>${r.person}</strong> ${r.verdi}</li>`).join("") +
+    `</ol>
+        <a class="knapp" href="maratontabellen.html">Maratontabellen</a>
+      </div>
+    </div>
+    <div class="kort boks-pastellgroenn">
+      <div class="kort-innhold">
+        <h3>Poengtabellen<br>${ledere(data.totalpoeng, "verdi")}</h3>
+        <p>Antall poeng:</p>
+        <ol class="rangering">` +
+    data.totalpoeng.map((r, i) =>
+      `<li>${i + 1}. <strong>${r.person}</strong> — ${f(r.verdi)}</li>`).join("") +
+    `</ol>
+        <a class="knapp knapp--groenn" href="poengtabellen.html">Poengtabellen</a>
+      </div>
+    </div>`;
+
+}).catch(feil => {
+  document.getElementById("mester").innerHTML =
+    "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
+});
+</script>
 
 </body>
 </html>

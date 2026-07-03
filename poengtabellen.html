@@ -8,9 +8,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Heatmap-tabellen: årskolonnen i grønt, celler skyggelagt etter verdi */
+    #aarForAar td.aar {
+      background: #35a05f;
+      color: #fff;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
+
 <div class="side">
+
   <aside class="meny">
     <a href="index.html"><img class="logo" src="assets/logo.png" alt="Illustrasjon av syklist i gul trøye foran Eiffeltårnet"></a>
     <div class="sidenavn"><a href="index.html" style="text-decoration:none;color:inherit;">Tourmanager</a></div>
@@ -24,17 +34,180 @@
       <a href="sesong-for-sesong.html">Sesong for sesong</a>
     </nav>
   </aside>
+
   <main>
     <h1>Poengtabellen</h1>
-    <div class="skille"></div>
-    <p class="laster">Denne siden bygges i fase 4 — innholdet hentes da automatisk fra regnearket.</p>
+    <p>Poengtabellen viser hvem sanket flest poeng totalt sett. Her lønner
+    det seg å henge godt med hver eneste sesong, for om man sakker akterut
+    et par sesonger mister man mye.</p>
+
+    <div class="skille skille--groenn"></div>
+
+    <h2>Sammenlagt</h2>
+    <div class="boks-pastellgroenn" style="max-width: 480px;">
+      <ol class="rangering" id="sammenlagt"><li class="laster">Henter …</li></ol>
+    </div>
+
+    <div class="skille skille--groenn"></div>
+
+    <h2>Detaljert oversikt — år for år</h2>
+    <div id="aarForAar"><p class="laster">Henter …</p></div>
+
+    <h2 style="margin-top: 48px;">Sesong for sesong</h2>
+    <div style="position: relative; height: 420px;">
+      <canvas id="sesonggraf"></canvas>
+    </div>
+
+    <h2 style="margin-top: 48px;">Poengspredning hver sesong</h2>
+    <p>Poeng for alle år. Viser spredningen i poeng.</p>
+    <div style="position: relative; height: 460px;">
+      <canvas id="spredning"></canvas>
+    </div>
   </main>
 </div>
+
 <footer>
   <div class="inner">
     <strong>Tourmanager</strong>
     <span>Bygget med GitHub Pages og Google Sheets</span>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/motor.js"></script>
+<script>
+hentTourdata().then(data => {
+
+  /* ---- Sammenlagtlista ---- */
+  document.getElementById("sammenlagt").innerHTML =
+    data.totalpoeng.map((r, i) =>
+      `<li>${i + 1}. <strong>${r.person}</strong> — ${formatTall(r.verdi)}</li>`).join("");
+
+  /* ---- Heatmap-tabellen: skygge etter poengsum ---- */
+  const alleVerdier = data.sesonger.flatMap(s => s.resultater.map(r => r.poeng));
+  const minV = Math.min(...alleVerdier), maxV = Math.max(...alleVerdier);
+
+  /** Grønnfarge som blir sterkere jo høyere poengsummen er. */
+  function cellefarge(verdi) {
+    const andel = (verdi - minV) / (maxV - minV);
+    return `rgba(53, 176, 111, ${(andel * 0.45).toFixed(3)})`;
+  }
+
+  let html = "<table class='data'><tr><th>År</th>" +
+    data.personer.map(p => `<th>${p}</th>`).join("") + "</tr>";
+  for (const s of data.sesonger) {
+    const perPerson = {};
+    for (const r of s.resultater) perPerson[r.person] = r.poeng;
+    html += `<tr><td class="aar">${s.aar}</td>` +
+      data.personer.map(p =>
+        `<td style="background:${cellefarge(perPerson[p])}">${formatTall(perPerson[p])}</td>`
+      ).join("") + "</tr>";
+  }
+  html += "</table>";
+  document.getElementById("aarForAar").innerHTML = html;
+
+  /* ---- Sesong for sesong: poengsum per år, linje per person ---- */
+  new Chart(document.getElementById("sesonggraf"), {
+    type: "line",
+    data: {
+      labels: data.sesonger.map(s => s.aar),
+      datasets: data.personer.map(person => ({
+        label: person,
+        data: data.sesonger.map(s =>
+          s.resultater.find(r => r.person === person)?.poeng ?? null),
+        borderColor: data.farger[person],
+        backgroundColor: data.farger[person],
+        pointRadius: 3,
+        tension: 0.35,
+      })),
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top", align: "start",
+          labels: { font: { family: "Albert Sans" }, boxWidth: 24, boxHeight: 3 } },
+        tooltip: { mode: "index", intersect: false },
+      },
+      scales: {
+        y: { beginAtZero: true,
+          ticks: { font: { family: "Albert Sans" },
+            callback: v => formatTall(v) } },
+        x: { grid: { display: false },
+          ticks: { font: { family: "Albert Sans" } } },
+      },
+    },
+  });
+
+  /* ---- Poengspredning: prikkeplott per år -------------------------------
+     Grå stolper viser avstanden fra lavest til høyest poengsum i året,
+     og hver deltaker legges oppå som farget prikk. */
+  const aarLabels = data.sesonger.map(s => String(s.aar));
+
+  const graastolper = {
+    type: "bar",
+    label: "Spredning",
+    data: data.sesonger.map(s => {
+      const poeng = s.resultater.map(r => r.poeng);
+      return [Math.min(...poeng), Math.max(...poeng)];
+    }),
+    backgroundColor: "#d9d9d9",
+    barThickness: 6,
+    borderRadius: 3,
+    borderSkipped: false,
+  };
+
+  const prikker = data.personer.map(person => ({
+    type: "line",
+    showLine: false,
+    label: person,
+    data: data.sesonger.map(s => ({
+      x: s.resultater.find(r => r.person === person)?.poeng ?? null,
+      y: String(s.aar),
+    })),
+    backgroundColor: data.farger[person],
+    borderColor: data.farger[person],
+    pointRadius: 6,
+    pointHoverRadius: 8,
+  }));
+
+  new Chart(document.getElementById("spredning"), {
+    data: { labels: aarLabels, datasets: [graastolper, ...prikker] },
+    options: {
+      indexAxis: "y",
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top", align: "start",
+          labels: {
+            font: { family: "Albert Sans" },
+            filter: item => item.text !== "Spredning",
+            boxWidth: 12, usePointStyle: true, pointStyle: "circle",
+          } },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.dataset.label === "Spredning"
+              ? "Fra " + formatTall(ctx.raw[0]) + " til " + formatTall(ctx.raw[1])
+              : ctx.dataset.label + ": " + formatTall(ctx.parsed.x),
+          },
+        },
+      },
+      scales: {
+        x: { position: "bottom",
+          ticks: { font: { family: "Albert Sans" },
+            callback: v => formatTall(v) } },
+        y: { grid: { display: false },
+          ticks: { font: { family: "Albert Sans" } } },
+      },
+    },
+  });
+
+}).catch(feil => {
+  document.getElementById("aarForAar").innerHTML =
+    "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
+});
+</script>
+
 </body>
 </html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sesongen — Tourmanager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="side">
+
+  <aside class="meny">
+    <a href="index.html"><img class="logo" src="assets/logo.png" alt="Illustrasjon av syklist i gul trøye foran Eiffeltårnet"></a>
+    <div class="sidenavn"><a href="index.html" style="text-decoration:none;color:inherit;">Tourmanager</a></div>
+    <nav>
+      <a href="gul-troye.html">Den gule trøya</a>
+      <a href="maratontabellen.html">Maratontabellen</a>
+      <a href="poengtabellen.html">Poengtabellen</a>
+      <span class="gruppe"></span>
+      <a href="statistikk.html">Statistikk og funfacts</a>
+      <span class="gruppe"></span>
+      <a href="sesong-for-sesong.html">Sesong for sesong</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1 id="tittel">Sesongen</h1>
+    <div id="innhold"><p class="laster">Henter sesongen …</p></div>
+  </main>
+</div>
+
+<footer>
+  <div class="inner">
+    <strong>Tourmanager</strong>
+    <span>Bygget med GitHub Pages og Google Sheets</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/motor.js"></script>
+<script>
+/* Redaksjonelle sesongoppsummeringer ("Kort om sesongen").
+   Legg til nye år her etter hvert. */
+const SESONGTEKSTER = {
+  2025: `Pogacar som aldri ble ordentlig utfordret av Vingegaard. UnoX med
+    Tobias Halland Johannessen på en fantastisk 6. plass sammenlagt og
+    Abrahamsen med etappeseier. Healy i gult, MVDP, Lenny Martinez som
+    jaktet alle sjanser på klatrepoeng, ungdomsrytterne Onley, Simmons og
+    Lipowitz. Groves som reservespurter med suksess og Arensman som kongen
+    i fjellene. Og en fascinerende regnværsavslutning der Wout van Aert
+    klatret fra Pogacar før han vant opp Champs-Élysées.`,
+};
+
+/* Hvilket år? Leses fra adressen (sesongen.html?aar=2025).
+   Uten parameter: pågående sesong, ellers nyeste ferdige. */
+const oensketAar = new URLSearchParams(location.search).get("aar");
+
+hentTourdata().then(data => {
+  const f = formatTall;
+
+  const aar = Number(oensketAar) ||
+    (data.paagaaende && data.paagaaende.antallEtapper > 0
+      ? data.paagaaende.aar
+      : data.sesonger.at(-1)?.aar);
+
+  document.getElementById("tittel").textContent = "Sesongen " + aar;
+  document.title = "Sesongen " + aar + " — Tourmanager";
+
+  const paagaar = data.paagaaende?.aar === aar;
+  const sesong = data.sesonger.find(s => s.aar === aar);
+  const etapper = data.etapper[aar] || [];
+
+  /* Resultater: fra ferdig sesong, eller løpende hvis touren pågår */
+  const resultater = sesong ? sesong.resultater
+    : (paagaar ? data.paagaaende.resultater : null);
+
+  if (!resultater) {
+    document.getElementById("innhold").innerHTML =
+      "<p>Fant ingen data for " + aar + ".</p>";
+    return;
+  }
+
+  let html = "<h2>Resultater</h2>";
+  if (paagaar) {
+    html += `<p>Touren pågår! Stillingen etter ${etapper.length}
+      etappe${etapper.length === 1 ? "" : "r"}:</p>`;
+  }
+  html += "<table class='data'><tr><th>#</th><th>Deltaker</th>" +
+    "<th>Lagnavn</th><th>Poeng</th>" +
+    (sesong ? "<th>% av vinner</th>" : "") + "</tr>" +
+    resultater.map(r =>
+      `<tr${r.plass === 1 ? " class='vinner'" : ""}>
+       <td>${r.plass}</td><td><strong>${r.person}</strong></td>
+       <td>${r.lagnavn}</td><td><strong>${f(r.poeng)}</strong></td>` +
+      (sesong ? `<td>${String(r.prosentAvVinner).replace(".", ",")}&nbsp;%</td>` : "") +
+      "</tr>").join("") + "</table>";
+
+  if (SESONGTEKSTER[aar]) {
+    html += `<h2 style="margin-top:40px;">Kort om ${aar}-sesongen</h2>
+      <p>${SESONGTEKSTER[aar]}</p>`;
+  }
+
+  if (etapper.length > 0) {
+    html += `
+    <div class="skille skille--gul"></div>
+    <h2>Etappepoeng</h2>
+    <h3>Poengoversikt — etappe for etappe</h3>
+    <div id="etappetabell"></div>
+
+    <h2 style="margin-top:48px;">Utvikling gjennom rittet</h2>
+    <h3>Stillingen — etappe for etappe</h3>
+    <div style="position:relative;height:420px;">
+      <canvas id="utvikling"></canvas>
+    </div>
+
+    <h2 style="margin-top:48px;">Poengforskjell på etapper</h2>
+    <h3>Totalpoeng per etappe</h3>
+    <p>Oversikten viser hvor mange poeng vi fikk tak i på hver etappe.</p>
+    <div style="position:relative;height:${140 + etapper.length * 26}px;">
+      <canvas id="perEtappe"></canvas>
+    </div>`;
+  }
+
+  document.getElementById("innhold").innerHTML = html;
+  if (etapper.length === 0) return;
+
+  /* ---- Etappetabellen: én rad per etappe, totalrad i gult ---- */
+  const totaler = {};
+  for (const p of data.personer) totaler[p] = 0;
+  let t = "<table class='data'><tr><th>Etappe</th>" +
+    data.personer.map(p => `<th>${p}</th>`).join("") + "</tr>";
+  for (const e of etapper) {
+    t += `<tr><td>${e.etappe}</td>` + data.personer.map(p => {
+      const poeng = e.poeng[p];
+      if (poeng !== undefined) totaler[p] += poeng;
+      return `<td>${poeng !== undefined ? f(poeng) : ""}</td>`;
+    }).join("") + "</tr>";
+  }
+  t += "<tr class='total'><td>Totalt</td>" +
+    data.personer.map(p => `<td>${f(totaler[p])}</td>`).join("") +
+    "</tr></table>";
+  document.getElementById("etappetabell").innerHTML = t;
+
+  /* ---- Utviklingsgrafen: akkumulert stilling etappe for etappe ---- */
+  const akkumulert = {};
+  for (const p of data.personer) akkumulert[p] = [];
+  const loepende = {};
+  for (const p of data.personer) loepende[p] = 0;
+  for (const e of etapper) {
+    for (const p of data.personer) {
+      loepende[p] += e.poeng[p] ?? 0;
+      akkumulert[p].push(loepende[p]);
+    }
+  }
+
+  new Chart(document.getElementById("utvikling"), {
+    type: "line",
+    data: {
+      labels: etapper.map(e => e.etappe),
+      datasets: data.personer.map(person => ({
+        label: person,
+        data: akkumulert[person],
+        borderColor: data.farger[person],
+        backgroundColor: data.farger[person],
+        pointRadius: 2,
+        tension: 0.2,
+      })),
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top", align: "start",
+          labels: { font: { family: "Albert Sans" }, boxWidth: 24, boxHeight: 3 } },
+        tooltip: { mode: "index", intersect: false,
+          callbacks: { title: items => "Etter etappe " + items[0].label } },
+      },
+      scales: {
+        y: { beginAtZero: true, ticks: { font: { family: "Albert Sans" },
+          callback: v => formatTall(v) } },
+        x: { grid: { display: false },
+          title: { display: true, text: "Etappe",
+            font: { family: "Albert Sans" } },
+          ticks: { font: { family: "Albert Sans" } } },
+      },
+    },
+  });
+
+  /* ---- Poeng per etappe: liggende stablede søyler ---- */
+  new Chart(document.getElementById("perEtappe"), {
+    type: "bar",
+    data: {
+      labels: etapper.map(e => e.etappe + ". etp"),
+      datasets: data.personer.map(person => ({
+        label: person,
+        data: etapper.map(e => e.poeng[person] ?? 0),
+        backgroundColor: data.farger[person],
+      })),
+    },
+    options: {
+      indexAxis: "y",
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top", align: "start",
+          labels: { font: { family: "Albert Sans" }, boxWidth: 14 } },
+        tooltip: { callbacks: {
+          label: ctx => ctx.dataset.label + ": " + formatTall(ctx.parsed.x) } },
+      },
+      scales: {
+        x: { stacked: true, ticks: { font: { family: "Albert Sans" },
+          callback: v => formatTall(v) } },
+        y: { stacked: true, grid: { display: false },
+          ticks: { font: { family: "Albert Sans" } } },
+      },
+    },
+  });
+
+}).catch(feil => {
+  document.getElementById("innhold").innerHTML =
+    "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
+});
+</script>
+
+</body>
+</html>

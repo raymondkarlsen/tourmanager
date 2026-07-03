@@ -8,9 +8,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .prosentbar {
+      display: block;
+      height: 4px;
+      background: #1f6fb2;
+      border-radius: 2px;
+      margin-top: 3px;
+    }
+    .aarseksjon { margin-bottom: 8px; }
+  </style>
 </head>
 <body>
+
 <div class="side">
+
   <aside class="meny">
     <a href="index.html"><img class="logo" src="assets/logo.png" alt="Illustrasjon av syklist i gul trøye foran Eiffeltårnet"></a>
     <div class="sidenavn"><a href="index.html" style="text-decoration:none;color:inherit;">Tourmanager</a></div>
@@ -24,17 +36,109 @@
       <a href="sesong-for-sesong.html">Sesong for sesong</a>
     </nav>
   </aside>
+
   <main>
     <h1>Sesong for sesong</h1>
+    <p>År etter år etter år. Mil etter mil etter mil. Her er en oversikt
+    over resultatene for alle sesongene vi har klart å høste opp
+    resultater fra.</p>
+
     <div class="skille"></div>
-    <p class="laster">Denne siden bygges i fase 4 — innholdet hentes da automatisk fra regnearket.</p>
+
+    <div id="innhold"><p class="laster">Henter sesongene …</p></div>
+
+    <h2>2013 og eldre</h2>
+    <p>Vi har dessverre ikke klart å nøste opp resultatene fra 2013 og
+    tidligere. Kanskje en dag …</p>
   </main>
 </div>
+
 <footer>
   <div class="inner">
     <strong>Tourmanager</strong>
     <span>Bygget med GitHub Pages og Google Sheets</span>
   </div>
 </footer>
+
+<script src="js/config.js"></script>
+<script src="js/motor.js"></script>
+<script>
+/* Redaksjonelle årstekster. Legg til nye år her — bare år som
+   står i listen får en ingress, resten viser kun tabellen. */
+const AARSTEKSTER = {
+  2025: `Tony tok tidlig ledelsen og så seg aldri tilbake. Tross iherdige
+    forsøk gjennom hele touren, var det aldri noen som kom helt innpå Tony.
+    Til slutt ble det relativt store avstander, men til tross for dette var
+    det ordentlig spenning helt frem til nest siste etappe.`,
+  2024: `Den jevneste av alle sesongene. Fattige 30 poeng skilte 1. og 3.
+    plass. Og bare ett eneste poeng mellom 2. og 3. plass.`,
+};
+
+hentTourdata().then(data => {
+  const f = formatTall;
+  let html = "";
+
+  /** Resultattabell for én sesong, med vinnerrad og prosent-bar. */
+  function resultatTabell(resultater, medProsent) {
+    let t = "<table class='data'><tr><th>#</th><th>Deltaker</th>" +
+      "<th>Lagnavn</th><th>Poeng</th>" +
+      (medProsent ? "<th>% av vinner</th>" : "") + "</tr>";
+    for (const r of resultater) {
+      const prosent = r.prosentAvVinner;
+      t += `<tr${r.plass === 1 ? " class='vinner'" : ""}>
+        <td>${r.plass}</td>
+        <td><strong>${r.person}</strong></td>
+        <td>${r.lagnavn}</td>
+        <td><strong>${f(r.poeng)}</strong></td>` +
+        (medProsent ? `<td>${String(prosent).replace(".", ",")}&nbsp;%
+          <span class="prosentbar" style="width:${prosent}%"></span></td>` : "") +
+        "</tr>";
+    }
+    return t + "</table>";
+  }
+
+  /* ---- Pågående sesong øverst, hvis touren er i gang ---- */
+  if (data.paagaaende && data.paagaaende.antallEtapper > 0) {
+    const p = data.paagaaende;
+    html += `<div class="aarseksjon">
+      <h2>${p.aar} — pågår!</h2>
+      <p>Etter ${p.antallEtapper} etappe${p.antallEtapper === 1 ? "" : "r"}
+      leder <strong>${p.leder}</strong>.</p>`;
+    html += "<table class='data'><tr><th>#</th><th>Deltaker</th><th>Lagnavn</th><th>Poeng</th></tr>" +
+      p.resultater.map(r =>
+        `<tr${r.plass === 1 ? " class='vinner'" : ""}><td>${r.plass}</td>
+         <td><strong>${r.person}</strong></td><td>${r.lagnavn}</td>
+         <td><strong>${f(r.poeng)}</strong></td></tr>`).join("") + "</table>";
+    html += `<p><a class="knapp" href="sesongen.html?aar=${p.aar}">
+      Følg ${p.aar}-sesongen etappe for etappe</a></p>
+      </div><div class="skille"></div>`;
+  }
+
+  /* ---- Alle ferdige sesonger, nyeste først ---- */
+  const nyesteFoerst = [...data.sesonger].reverse();
+  nyesteFoerst.forEach((s, i) => {
+    html += `<div class="aarseksjon"><h2>${s.aar}</h2>`;
+    if (AARSTEKSTER[s.aar]) html += `<p>${AARSTEKSTER[s.aar]}</p>`;
+    html += resultatTabell(s.resultater, true);
+
+    /* Detaljside-knapp bare for år som har etappedata i regnearket */
+    if (data.etapper[s.aar] && data.etapper[s.aar].length > 0) {
+      html += `<p>Hvem sanket poengene? Hva var de mest spennende,
+        avgjørende og minneverdige øyeblikkene? Se alt om ${s.aar}:</p>
+        <p><a class="knapp" href="sesongen.html?aar=${s.aar}">
+        Se alle detaljer om ${s.aar}-sesongen</a></p>`;
+    }
+    html += "</div>";
+    if (i < nyesteFoerst.length - 1) html += "<div class='skille'></div>";
+  });
+
+  html += "<div class='skille'></div>";
+  document.getElementById("innhold").innerHTML = html;
+}).catch(feil => {
+  document.getElementById("innhold").innerHTML =
+    "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
+});
+</script>
+
 </body>
 </html>

@@ -8,9 +8,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    h3.fakta { color: #4353c6; margin-top: 36px; }
+    .liste { background: var(--flate-graa); padding: 20px 28px; }
+  </style>
 </head>
 <body>
+
 <div class="side">
+
   <aside class="meny">
     <a href="index.html"><img class="logo" src="assets/logo.png" alt="Illustrasjon av syklist i gul trøye foran Eiffeltårnet"></a>
     <div class="sidenavn"><a href="index.html" style="text-decoration:none;color:inherit;">Tourmanager</a></div>
@@ -24,17 +30,242 @@
       <a href="sesong-for-sesong.html">Sesong for sesong</a>
     </nav>
   </aside>
+
   <main>
     <h1>Tall, statistikk og funfacts</h1>
-    <div class="skille"></div>
-    <p class="laster">Denne siden bygges i fase 4 — innholdet hentes da automatisk fra regnearket.</p>
+    <p>Det viktigste i livet handler om tall og funfacts. Her samler vi
+    en del tall og supernyttig statistikk.</p>
+    <p><a href="gul-troye.html">Den gule trøya</a>,
+    <a href="maratontabellen.html">maratontabellen</a> og
+    <a href="poengtabellen.html">poengtabellen</a> viser hvordan det går
+    med de viktigste konkurransene. Men det finnes mer moro å se på.</p>
+
+    <div class="skille skille--blaa"></div>
+
+    <div id="innhold"><p class="laster">Regner ut alt …</p></div>
   </main>
 </div>
+
 <footer>
   <div class="inner">
     <strong>Tourmanager</strong>
     <span>Bygget med GitHub Pages og Google Sheets</span>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/motor.js"></script>
+<script>
+hentTourdata().then(data => {
+  const ff = data.funfacts;
+  const f = formatTall;
+
+  /* Hjelper: nummerert liste med delt plassering ved likt antall,
+     i grå boks — som på originalsiden. */
+  function liste(rader) {
+    let plass = 0, forrigeVerdi = null;
+    const linjer = rader.map((rad, i) => {
+      if (rad.verdi !== forrigeVerdi) { plass = i + 1; forrigeVerdi = rad.verdi; }
+      return `<li>${plass}. ${rad.tekst}</li>`;
+    });
+    return `<div class="liste"><ol class="rangering">${linjer.join("")}</ol></div>`;
+  }
+
+  let html = "";
+
+  /* ================= PLASSERINGER ================= */
+  html += "<h2>Plasseringer</h2>";
+
+  html += "<h3 class='fakta'>Flest topp 2-plasseringer</h3>";
+  html += liste(ff.topp2.map(x => ({
+    verdi: x.verdi,
+    tekst: `<strong>${x.person}</strong> — ${x.verdi} ganger`,
+  })));
+
+  html += "<h3 class='fakta'>Flest topp 3-plasseringer</h3>";
+  html += liste(ff.topp3.map(x => ({
+    verdi: x.verdi,
+    tekst: `<strong>${x.person}</strong> — ${x.verdi} ganger`,
+  })));
+
+  html += "<h3 class='fakta'>Flest seire på rad</h3>";
+  html += liste(ff.seierrekker.map(x => ({
+    verdi: x.verdi,
+    tekst: `<strong>${x.person}</strong> — ${x.verdi}` +
+      (x.verdi > 1 ? " på rad" : ""),
+  })));
+
+  /* Setning om tittelforsvar — regnes ut fra hvem som vant år etter år */
+  const forsvarte = [];
+  for (let i = 1; i < data.sesonger.length; i++) {
+    if (data.sesonger[i].vinner === data.sesonger[i - 1].vinner) {
+      if (!forsvarte.includes(data.sesonger[i - 1].aar))
+        forsvarte.push(data.sesonger[i - 1].aar);
+      forsvarte.push(data.sesonger[i].aar);
+    }
+  }
+  if (forsvarte.length) {
+    const aarTekst = forsvarte.slice(0, -1).join(", ") + " og " + forsvarte.at(-1);
+    html += `<p>Utover sesongene ${aarTekst} er det ingen som har forsvart tittelen.</p>`;
+  } else {
+    html += "<p>Ingen har noen gang forsvart tittelen.</p>";
+  }
+
+  html += "<div class='skille skille--blaa'></div>";
+
+  /* ================= AVSTANDER OG DIFFERANSER ================= */
+  html += "<h2>Avstander og differanser</h2>";
+  html += `<p>Hver sesong lever sitt eget liv. Noen ganger stikker én av
+    og ser seg aldri tilbake, mens andre ganger er det neglebiting og
+    telling av småpoeng på Champs-Élysées.</p>`;
+
+  html += `<h3>Poengspredning</h3>
+    <p>Poeng for alle år. Viser spredningen i poeng.</p>
+    <div style="position: relative; height: 440px; margin-bottom: 24px;">
+      <canvas id="spredning"></canvas>
+    </div>`;
+
+  const suveren = ff.suverenesteSeire[0];
+  html += "<h3 class='fakta'>Mest suverene seier</h3>";
+  html += `<p>I ${suveren.aar} vant ${suveren.vinner} suverent. Hele
+    ${f(suveren.diff)} poeng skilte ned til ${suveren.nummerTo} på 2. plass.</p>`;
+  html += liste(ff.suverenesteSeire.slice(0, 5).map(x => ({
+    verdi: x.diff,
+    tekst: `<strong>${x.vinner}</strong> (${x.aar}) — <strong>${f(x.diff)}</strong> poeng foran ${x.nummerTo}`,
+  })));
+
+  const knepen = ff.knepnesteSeire[0];
+  html += "<h3 class='fakta'>Mest knepne seier</h3>";
+  html += `<p>Ai ai, ${knepen.aar} var litt av et år. ${knepen.vinner} vant
+    ${f(knepen.diff)} poeng foran ${knepen.nummerTo}.</p>`;
+  html += liste(ff.knepnesteSeire.slice(0, 5).map(x => ({
+    verdi: x.diff,
+    tekst: `<strong>${x.vinner}</strong> (${x.aar}) — <strong>${f(x.diff)}</strong> poeng foran ${x.nummerTo}`,
+  })));
+
+  const jevn = ff.jevnesteTopp3[0];
+  html += "<h3 class='fakta'>Jevneste topp 3</h3>";
+  html += `<p>Med ${f(jevn.diff)} poeng mellom 1. og 3. plass i ${jevn.aar}
+    er det vanskelig å se for seg at dette noen gang kan bli slått.</p>`;
+  html += liste(ff.jevnesteTopp3.slice(0, 5).map(x => ({
+    verdi: x.diff,
+    tekst: `<strong>${x.vinner}</strong> (${x.aar}) — <strong>${f(x.diff)}</strong> poeng foran ${x.treer}`,
+  })));
+
+  const minst = ff.minsteDifferanser[0];
+  html += "<h3 class='fakta'>Laveste differanse mellom to plasseringer</h3>";
+  html += `<p>I ${minst.aar} skilte det bare ${minst.diff === 1 ? "ett fattig poeng" :
+    f(minst.diff) + " poeng"} mellom ${minst.personA} og ${minst.personB}
+    (${minst.plasser}). Det er bare en tilfeldig rytter som triller inn til
+    en håpløs 18. plass på en hvilken som helst etappe.</p>`;
+  html += liste(ff.minsteDifferanser.slice(0, 7).map(x => ({
+    verdi: x.diff,
+    tekst: `<strong>${x.aar}</strong>: ${x.personA} vs ${x.personB} —
+      <strong>${f(x.diff)}</strong> poeng (${x.plasser})`,
+  })));
+
+  const kort = ff.kortestSpredning[0];
+  html += "<h3 class='fakta'>Kortest avstand fra 1. til 4. plass</h3>";
+  html += `<p>I ${kort.aar} skilte det bare ${f(kort.diff)} poeng fra 1. til
+    4. plass. Det betyr at sisteplassen oppnådde ${String(kort.prosent).replace(".", ",")}&nbsp;%
+    av førsteplassen — et rekordjevnt heat.</p>`;
+  html += liste(ff.kortestSpredning.slice(0, 5).map(x => ({
+    verdi: x.diff,
+    tekst: `<strong>${x.aar}</strong>: ${f(x.diff)} poeng —
+      ${x.foerst} først, ${x.sist} sist`,
+  })));
+
+  html += "<h3 class='fakta'>Størst avstand fra 1. til 4. plass</h3>";
+  html += liste(ff.stoerstSpredning.slice(0, 5).map(x => ({
+    verdi: x.diff,
+    tekst: `<strong>${x.aar}</strong>: ${f(x.diff)} poeng —
+      ${x.foerst} først, ${x.sist} sist`,
+  })));
+
+  html += "<div class='skille skille--blaa'></div>";
+
+  /* ================= POENGFANGST ================= */
+  html += "<h2>Poengfangst</h2>";
+
+  html += "<h3 class='fakta'>Flest poeng i én sesong</h3>";
+  html += liste(ff.flestPoengISesong.map(x => ({
+    verdi: x.poeng,
+    tekst: `<strong>${x.person}</strong> (${x.aar}) — ${f(x.poeng)} poeng`,
+  })));
+
+  html += "<h3 class='fakta'>Flest poeng i én sesong uten å vinne</h3>";
+  html += liste(ff.flestPoengUtenSeier.map(x => ({
+    verdi: x.poeng,
+    tekst: `<strong>${x.person}</strong> (${x.aar}) — ${f(x.poeng)} poeng`,
+  })));
+
+  document.getElementById("innhold").innerHTML = html;
+
+  /* ---- Spredningsplottet (samme som på Poengtabellen) ---- */
+  const graastolper = {
+    type: "bar",
+    label: "Spredning",
+    data: data.sesonger.map(s => {
+      const poeng = s.resultater.map(r => r.poeng);
+      return [Math.min(...poeng), Math.max(...poeng)];
+    }),
+    backgroundColor: "#d9d9d9",
+    barThickness: 6,
+    borderRadius: 3,
+    borderSkipped: false,
+  };
+  const prikker = data.personer.map(person => ({
+    type: "line",
+    showLine: false,
+    label: person,
+    data: data.sesonger.map(s => ({
+      x: s.resultater.find(r => r.person === person)?.poeng ?? null,
+      y: String(s.aar),
+    })),
+    backgroundColor: data.farger[person],
+    borderColor: data.farger[person],
+    pointRadius: 6,
+    pointHoverRadius: 8,
+  }));
+  new Chart(document.getElementById("spredning"), {
+    data: {
+      labels: data.sesonger.map(s => String(s.aar)),
+      datasets: [graastolper, ...prikker],
+    },
+    options: {
+      indexAxis: "y",
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top", align: "start",
+          labels: {
+            font: { family: "Albert Sans" },
+            filter: item => item.text !== "Spredning",
+            boxWidth: 12, usePointStyle: true, pointStyle: "circle",
+          } },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.dataset.label === "Spredning"
+              ? "Fra " + formatTall(ctx.raw[0]) + " til " + formatTall(ctx.raw[1])
+              : ctx.dataset.label + ": " + formatTall(ctx.parsed.x),
+          },
+        },
+      },
+      scales: {
+        x: { ticks: { font: { family: "Albert Sans" },
+          callback: v => formatTall(v) } },
+        y: { grid: { display: false },
+          ticks: { font: { family: "Albert Sans" } } },
+      },
+    },
+  });
+
+}).catch(feil => {
+  document.getElementById("innhold").innerHTML =
+    "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
+});
+</script>
+
 </body>
 </html>
