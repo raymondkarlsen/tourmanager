@@ -11,7 +11,7 @@
   /* Grunnfarger */
   --tekst: #1a1a1a;
   --tekst-daus: #757575;        /* grå sekundærtekst, f.eks. "Tourmanager" */
-  --bakgrunn: #ffffff;
+  --bakgrunn: #fffef7;          /* svært lys gul — nesten hvit */
   --flate-graa: #f0f0f0;        /* footer og grå bokser */
 
   /* Signaturfargen */
@@ -92,15 +92,24 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 28px;
 }
 
-.meny nav { display: flex; flex-direction: column; gap: 6px; }
+.meny nav { display: flex; flex-direction: column; gap: 4px; }
 
 .meny nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  margin-left: -12px;          /* ikonene flukter med logoen over */
+  border-radius: 10px;
   color: var(--tekst);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  width: fit-content;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1.2;
 }
-.meny nav a:hover { text-decoration-thickness: 2px; }
+.meny nav a svg { flex: none; opacity: 0.75; }
+.meny nav a:hover { background: var(--flate-graa); }
+.meny nav a.aktiv { background: var(--tdf-gul); }
+.meny nav a.aktiv svg { opacity: 1; }
 
 /* Gruppene i menyen (tabellene / statistikk / sesonger) skilles med luft */
 .meny nav .gruppe { height: 18px; }
@@ -133,6 +142,11 @@ img { max-width: 100%; height: auto; }
 .boks-pastellblaa   { background: var(--pastell-blaa);   padding: 28px 32px; }
 .boks-pastellgroenn { background: var(--pastell-groenn); padding: 28px 32px; }
 .boks-graa          { background: var(--flate-graa);     padding: 28px 32px; border-radius: 8px; }
+.boks-hvit {
+  background: #ffffff;
+  border: 1px solid #ece7d2;
+  padding: 28px 32px;
+}
 
 /* Kortrekke, som de tre kortene på forsiden */
 .kortrekke {
@@ -141,9 +155,18 @@ img { max-width: 100%; height: auto; }
   gap: 24px;
   margin: 32px 0;
 }
-.kort { padding: 0 0 28px; }
+.kort { padding: 0 0 28px; position: relative; }
 .kort .kort-bilde { display: block; width: 100%; }
 .kort .kort-innhold { padding: 20px 28px 0; }
+.kort .kort-innhold h3 { padding-right: 44px; }
+
+/* Ikonet øverst til høyre i forsidekortene */
+.kortikon {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  opacity: 0.85;
+}
 
 /* ---- Lister uten kuler (rangeringslister som "1. Tony – 360") ------------ */
 ol.rangering {
@@ -197,7 +220,7 @@ table.data td {
   padding: 6px 10px;
   border-bottom: 1px solid #e5e5e5;
 }
-table.data tr:nth-child(even) td { background: #fafafa; }
+table.data tr:nth-child(even) td { background: rgba(0, 0, 0, 0.025); }
 table.data tr.total td {
   background: var(--tdf-gul);
   font-weight: 700;
@@ -287,10 +310,15 @@ footer .inner strong { font-weight: 700; }
     display: none;
     width: 100%;
     flex-direction: column;
-    gap: 12px;
+    gap: 4px;
     padding: 8px 0 4px;
   }
   .meny.aapen nav { display: flex; }
+  .meny nav a {
+    padding: 13px 14px;        /* romsligere trykkflate (over 44 px høy) */
+    margin-left: 0;
+    font-size: 1.05rem;
+  }
   .meny nav .gruppe { display: none; }
 
   h1 { font-size: 1.7rem; }
