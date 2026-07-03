@@ -100,7 +100,7 @@ hentTourdata().then(data => {
 
   for (const gruppe of grupper) {
     const tittel = gruppe.antall === 1 ? "1 trøye" : gruppe.antall + " trøyer";
-    html += `<div class="boks-pastellgul gruppetittel"><h2 style="margin:0;">${tittel}</h2></div>`;
+    html += `<h2 class="gruppetittel">${tittel}</h2>`;
     for (const person of gruppe.personer) {
       html += `<h3>${person.person}</h3><div class="troyerekke">` +
         person.aarene.map(aar => `<div class="troye">${troyeSvg(aar)}</div>`).join("") +
