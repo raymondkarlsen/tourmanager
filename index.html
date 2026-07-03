@@ -23,40 +23,59 @@
     }
     @media (max-width: 760px) { .bilderad { grid-template-columns: 1fr; } }
     .ticker {
+      display: block;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      text-decoration: none;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .ticker:hover { background: #333; }
+    .ticker .topp {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px 18px;
-      background: #1a1a1a;
-      color: #fff;
-      padding: 14px 22px;
-      margin-bottom: 32px;
-      text-decoration: none;
-      line-height: 1.4;
+      gap: 10px 14px;
+      margin-bottom: 12px;
     }
-    .ticker:hover { background: #333; }
     .ticker .livemerke {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      background: #d92b2b;
+      color: #fff;
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
     }
     .ticker .prikk {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #e33;
+      background: #fff;
       animation: pulz 1.6s ease-in-out infinite;
     }
     @keyframes pulz {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
     }
+    .ticker ol {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+    }
+    .ticker li { padding: 2px 0; }
     .ticker .leder { color: var(--tdf-gul); font-weight: 700; }
-    .ticker .pil { margin-left: auto; font-weight: 700; }
+    .ticker .pil {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   </style>
 </head>
 <body>
@@ -165,14 +184,16 @@ hentTourdata().then(data => {
   const p = data.paagaaende;
   if (p && p.antallEtapper > 0) {
     const stilling = p.resultater.map((r, i) =>
-      `<span${i === 0 ? ' class="leder"' : ''}>${r.plass}. ${r.person} ${f(r.poeng)}</span>`
-    ).join(" · ");
+      `<li${i === 0 ? ' class="leder"' : ''}>${r.plass}. ${r.person} — ${f(r.poeng)}</li>`
+    ).join("");
     document.getElementById("ticker").innerHTML = `
       <a class="ticker" href="sesongen.html?aar=${p.aar}">
-        <span class="livemerke"><span class="prikk"></span>Pågår</span>
-        <span>${p.aar}, etter ${p.antallEtapper}
-          etappe${p.antallEtapper === 1 ? "" : "r"}:</span>
-        <span>${stilling}</span>
+        <span class="topp">
+          <span class="livemerke"><span class="prikk"></span>Pågår</span>
+          <span>${p.aar}, etter ${p.antallEtapper}
+            etappe${p.antallEtapper === 1 ? "" : "r"}:</span>
+        </span>
+        <ol>${stilling}</ol>
         <span class="pil">Følg touren →</span>
       </a>`;
   }
