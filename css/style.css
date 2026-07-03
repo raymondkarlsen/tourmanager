@@ -118,11 +118,11 @@ img { max-width: 100%; height: auto; }
    Signaturen fra originalsiden. Farge styres med modifikatorklasse. */
 .skille {
   height: 12px;
-  margin: 40px 0;
+  margin: 44px 0;
   background: repeating-linear-gradient(
     -55deg,
-    var(--stripefarge, var(--stripe-graa)) 0 3px,
-    transparent 3px 8px
+    var(--stripefarge, var(--stripe-graa)) 0 4px,
+    transparent 4px 9px
   );
 }
 .skille--gul    { --stripefarge: var(--stripe-gul); }
