@@ -76,6 +76,11 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    .sistevinnere {
+      background: var(--pastell-gul);
+      padding: 16px 24px;
+      margin-bottom: 32px;
+    }
   </style>
 </head>
 <body>
@@ -198,32 +203,43 @@ hentTourdata().then(data => {
       </a>`;
   }
 
-  /* ---- Mesterboksen: alltid siste ferdigspilte sesong ----
-     Tekstene er nøklet per år — legg til en linje for hvert nytt år.
-     År uten egen tekst får den nøytrale reserveteksten. */
+  /* ---- Mesterseksjonen ----
+     Under touren: kun en enkel linje med de tre siste vinnerne.
+     Ellers: full mesterboks for siste ferdigspilte sesong.
+     Tekstene er nøklet per år — legg til en linje for hvert nytt år. */
   const FORSIDETEKSTER = {
     2025: `Tony tok tidlig ledelsen og så seg aldri tilbake — men det var
       ordentlig spenning helt frem til nest siste etappe.`,
   };
   const siste = data.sesonger.at(-1);
-  const sesongtekst = FORSIDETEKSTER[siste.aar] ||
-    `Alle tall, etapper og detaljer fra ${siste.aar}-sesongen er samlet
-     på sesongsiden.`;
-  document.getElementById("mester").innerHTML = `
-    <div class="del-gul">
-      <h2>Regjerende mester:<br>${data.regjerendeMester}</h2>
-      <p>${siste.aar}:</p>
-      <ol class="rangering">` +
-    siste.resultater.map(r =>
-      `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
-    `</ol>
-    </div>
-    <div class="del-krem">
-      <h3>Dette var ${siste.aar}-sesongen</h3>
-      <p>${sesongtekst}</p>
-      <a class="knapp knapp--omriss" href="sesongen.html?aar=${siste.aar}">
-      Se detaljer fra sesongen</a>
-    </div>`;
+  const mesterEl = document.getElementById("mester");
+
+  if (p && p.antallEtapper > 0) {
+    const treSiste = data.sesonger.slice(-3).reverse()
+      .map(s => `<strong>${s.vinner}</strong> (${s.aar})`).join(", ");
+    mesterEl.className = "sistevinnere";
+    mesterEl.innerHTML = `<p style="margin:0;">Siste tre vinnere: ${treSiste}.</p>`;
+  } else {
+    const sesongtekst = FORSIDETEKSTER[siste.aar] ||
+      `Alle tall, etapper og detaljer fra ${siste.aar}-sesongen er samlet
+       på sesongsiden.`;
+    mesterEl.className = "duoboks";
+    mesterEl.innerHTML = `
+      <div class="del-gul">
+        <h2>Regjerende mester:<br>${data.regjerendeMester}</h2>
+        <p>${siste.aar}:</p>
+        <ol class="rangering">` +
+      siste.resultater.map(r =>
+        `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
+      `</ol>
+      </div>
+      <div class="del-krem">
+        <h3>Dette var ${siste.aar}-sesongen</h3>
+        <p>${sesongtekst}</p>
+        <a class="knapp knapp--omriss" href="sesongen.html?aar=${siste.aar}">
+        Se detaljer fra sesongen</a>
+      </div>`;
+  }
 
   /* ---- De tre kortene ---- */
   document.getElementById("kortene").innerHTML = `
