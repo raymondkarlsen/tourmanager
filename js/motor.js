@@ -70,8 +70,11 @@ async function hentTourdata() {
 
   /* ---- 2. Organiser etappedataene per år -------------------------------- */
 
-  // etappedata: { 2026: [ {etappe: 1, poeng: {Tony: 442, ...}}, ... ] }
+  // etappedata: { 2026: [ {etappe: 1, type: "Fjell", poeng: {Tony: 442, ...}}, ... ] }
+  // Kolonnen "type" (Flat, Kupert, Fjell, Tempo, Lagtempo) er valgfri —
+  // det holder at den er fylt ut på én av radene for hver etappe.
   const etappedata = {};
+  const etappetyper = {};
   for (const rad of etappeRader) {
     const aar = tilTall(rad.aar);
     const etappe = tilTall(rad.etappe);
@@ -80,11 +83,19 @@ async function hentTourdata() {
     etappedata[aar] = etappedata[aar] || {};
     etappedata[aar][etappe] = etappedata[aar][etappe] || {};
     etappedata[aar][etappe][rad.person] = poeng;
+    if (rad.type) {
+      etappetyper[aar] = etappetyper[aar] || {};
+      etappetyper[aar][etappe] = rad.type;
+    }
   }
   // Gjør om til sortert liste per år
   for (const aar of Object.keys(etappedata)) {
     etappedata[aar] = Object.keys(etappedata[aar])
-      .map(nr => ({ etappe: Number(nr), poeng: etappedata[aar][nr] }))
+      .map(nr => ({
+        etappe: Number(nr),
+        type: etappetyper[aar]?.[nr] || null,
+        poeng: etappedata[aar][nr],
+      }))
       .sort((a, b) => a.etappe - b.etappe);
   }
 
