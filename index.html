@@ -22,7 +22,20 @@
       align-items: center;
     }
     @media (max-width: 760px) { .bilderad { grid-template-columns: 1fr; } }
-    .livemerke {
+    .ticker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 18px;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 14px 22px;
+      margin-bottom: 32px;
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .ticker:hover { background: #333; }
+    .ticker .livemerke {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -30,13 +43,8 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: #1a1a1a;
-      color: #fff;
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 14px;
     }
-    .livemerke .prikk {
+    .ticker .prikk {
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -47,11 +55,8 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
     }
-    .dempet {
-      color: var(--tekst-daus);
-      font-size: 0.95rem;
-      margin-top: 18px;
-    }
+    .ticker .leder { color: var(--tdf-gul); font-weight: 700; }
+    .ticker .pil { margin-left: auto; font-weight: 700; }
   </style>
 </head>
 <body>
@@ -99,6 +104,8 @@
     </div>
 
     <div class="skille"></div>
+
+    <div id="ticker"></div>
 
     <div id="mester" class="duoboks">
       <p class="laster">Henter fasiten …</p>
@@ -151,51 +158,51 @@ hentTourdata().then(data => {
       .map(x => x.person).join(" og ");
   }
 
-  /* ---- Duoboksen: live-stilling under touren, ellers regjerende mester ---
-     Når touren pågår, eier den pågående sesongen den gule boksen (det er
-     jo den som handler om gul trøye nå), og fjorårets mester tones ned
-     til en linje. Utenom sesongen vises mesterboksen som vanlig. */
-  const siste = data.sesonger.at(-1);
+  /* ---- Live-ticker når touren pågår ----
+     En kompakt svart stripe med stillingen, som i sin helhet lenker til
+     den levende sesongsiden. Vises bare når etappedata finnes for en
+     sesong som ikke er ferdigspilt i sesonger-fanen. */
   const p = data.paagaaende;
-
   if (p && p.antallEtapper > 0) {
-    document.getElementById("mester").innerHTML = `
-      <div class="del-gul">
+    const stilling = p.resultater.map((r, i) =>
+      `<span${i === 0 ? ' class="leder"' : ''}>${r.plass}. ${r.person} ${f(r.poeng)}</span>`
+    ).join(" · ");
+    document.getElementById("ticker").innerHTML = `
+      <a class="ticker" href="sesongen.html?aar=${p.aar}">
         <span class="livemerke"><span class="prikk"></span>Pågår</span>
-        <h2>${p.aar} — etter ${p.antallEtapper}
-          etappe${p.antallEtapper === 1 ? "" : "r"}</h2>
-        <ol class="rangering">` +
-      p.resultater.map(r =>
-        `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
-      `</ol>
-      </div>
-      <div class="del-krem">
-        <h3>Touren er i gang!</h3>
-        <p><strong>${p.leder}</strong> sitter i den gule trøya akkurat nå.
-        Stillingen oppdateres etter hver etappe.</p>
-        <a class="knapp knapp--omriss" href="sesongen.html?aar=${p.aar}">
-        Følg ${p.aar} etappe for etappe</a>
-        <p class="dempet">Regjerende mester: <strong>${data.regjerendeMester}</strong>
-        (${siste.aar}) — <a href="sesongen.html?aar=${siste.aar}">se forrige sesong</a></p>
-      </div>`;
-  } else {
-    document.getElementById("mester").innerHTML = `
-      <div class="del-gul">
-        <h2>Regjerende mester:<br>${data.regjerendeMester}</h2>
-        <p>${siste.aar}:</p>
-        <ol class="rangering">` +
-      siste.resultater.map(r =>
-        `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
-      `</ol>
-      </div>
-      <div class="del-krem">
-        <h3>Dette var ${siste.aar}-sesongen</h3>
-        <p>Tony tok tidlig ledelsen og så seg aldri tilbake — men det var
-        ordentlig spenning helt frem til nest siste etappe.</p>
-        <a class="knapp knapp--omriss" href="sesongen.html?aar=${siste.aar}">
-        Se detaljer fra sesongen</a>
-      </div>`;
+        <span>${p.aar}, etter ${p.antallEtapper}
+          etappe${p.antallEtapper === 1 ? "" : "r"}:</span>
+        <span>${stilling}</span>
+        <span class="pil">Følg touren →</span>
+      </a>`;
   }
+
+  /* ---- Mesterboksen: alltid siste ferdigspilte sesong ----
+     Tekstene er nøklet per år — legg til en linje for hvert nytt år.
+     År uten egen tekst får den nøytrale reserveteksten. */
+  const FORSIDETEKSTER = {
+    2025: `Tony tok tidlig ledelsen og så seg aldri tilbake — men det var
+      ordentlig spenning helt frem til nest siste etappe.`,
+  };
+  const siste = data.sesonger.at(-1);
+  const sesongtekst = FORSIDETEKSTER[siste.aar] ||
+    `Alle tall, etapper og detaljer fra ${siste.aar}-sesongen er samlet
+     på sesongsiden.`;
+  document.getElementById("mester").innerHTML = `
+    <div class="del-gul">
+      <h2>Regjerende mester:<br>${data.regjerendeMester}</h2>
+      <p>${siste.aar}:</p>
+      <ol class="rangering">` +
+    siste.resultater.map(r =>
+      `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
+    `</ol>
+    </div>
+    <div class="del-krem">
+      <h3>Dette var ${siste.aar}-sesongen</h3>
+      <p>${sesongtekst}</p>
+      <a class="knapp knapp--omriss" href="sesongen.html?aar=${siste.aar}">
+      Se detaljer fra sesongen</a>
+    </div>`;
 
   /* ---- De tre kortene ---- */
   document.getElementById("kortene").innerHTML = `
