@@ -13,7 +13,8 @@ const KONFIG = {
 
   // Publiseringslenke til ryttere-fanen (aar + kolonnene fra spill-
   // leverandøren). Valgfri — tom streng betyr at den hoppes over.
-  ryttereCsv: "",
+  ryttereCsv:
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTgDssd8EOFK4qai4Isl6FjeGk_Oebq1puvBfi_aUaaA99K0XOsAI30KAPgLzF55gjvcOy5bmcKzTRY/pub?gid=1050775377&single=true&output=csv",
 
   // Poeng for plassering i en sesong: 1., 2., 3., 4. plass
   maratonPoeng: [40, 30, 20, 10],
