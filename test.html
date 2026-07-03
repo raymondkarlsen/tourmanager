@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test av datamotoren — Tourmanager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ok { color: #1e7a46; font-weight: 700; }
+    .feil { color: #c0392b; font-weight: 700; }
+    .testblokk { margin-bottom: 40px; }
+    code { background: #f0f0f0; padding: 1px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+<div class="side" style="grid-template-columns: 1fr;">
+<main>
+  <h1>Test av datamotoren</h1>
+  <p>Denne siden henter dataene fra regnearket og viser alt motoren regner
+  ut. Der fasiten er kjent fra den gamle siden, sammenlignes tallene
+  automatisk. Siden er kun til testing og lenkes ikke fra menyen.</p>
+
+  <div class="skille"></div>
+
+  <div id="status"><p class="laster">Henter data fra regnearket …</p></div>
+  <div id="resultat"></div>
+</main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/motor.js"></script>
+<script>
+/* Fasit fra den gamle siden — de tallene som er hundre prosent sikre. */
+const FASIT = {
+  totalpoeng:      { Tony: 163761, Alex: 150006, Raymond: 149422, "Jørgen": 142501 },
+  maratontabellen: { Tony: 360, Alex: 320, Raymond: 300, "Jørgen": 220 },
+  guleTroyer:      { Raymond: 4, Tony: 4, Alex: 3, "Jørgen": 1 },
+  regjerendeMester: "Tony",
+};
+
+const el = id => document.getElementById(id);
+const f = formatTall;
+
+function tabell(rader, kolonner) {
+  let html = "<table class='data'><tr>" +
+    kolonner.map(k => `<th>${k}</th>`).join("") + "</tr>";
+  for (const rad of rader) html += "<tr>" +
+    rad.map(c => `<td>${c}</td>`).join("") + "</tr>";
+  return html + "</table>";
+}
+
+hentTourdata().then(data => {
+  el("status").innerHTML = "";
+  let html = "";
+
+  /* ---- Verifisering mot fasit ---- */
+  html += "<div class='testblokk'><h2>Verifisering mot kjent fasit</h2>";
+  const sjekker = [];
+
+  for (const rad of data.totalpoeng)
+    sjekker.push(["Totalpoeng " + rad.person, FASIT.totalpoeng[rad.person], rad.verdi]);
+  for (const rad of data.maratontabellen)
+    sjekker.push(["Maratonpoeng " + rad.person, FASIT.maratontabellen[rad.person], rad.verdi]);
+  for (const rad of data.guleTroyer)
+    sjekker.push(["Gule trøyer " + rad.person, FASIT.guleTroyer[rad.person], rad.antall]);
+  sjekker.push(["Regjerende mester", FASIT.regjerendeMester, data.regjerendeMester]);
+
+  html += tabell(sjekker.map(([navn, ventet, fikk]) => [
+    navn, ventet, fikk,
+    ventet === fikk ? "<span class='ok'>OK</span>"
+                    : "<span class='feil'>AVVIK</span>",
+  ]), ["Sjekk", "Forventet", "Motoren sier", "Status"]);
+  html += "</div>";
+
+  /* ---- Pågående sesong ---- */
+  html += "<div class='testblokk'><h2>Pågående sesong</h2>";
+  if (data.paagaaende) {
+    const p = data.paagaaende;
+    html += `<p>Motoren ser at <strong>${p.aar}</strong> er i gang:
+      ${p.antallEtapper} etappe(r) registrert.
+      ${p.leder ? "Ledelse: <strong>" + p.leder + "</strong>." :
+      "Ingen poeng registrert ennå."}</p>`;
+    html += tabell(p.resultater.map(r =>
+      [r.plass, r.person, r.lagnavn, f(r.poeng)]),
+      ["#", "Deltaker", "Lagnavn", "Poeng"]);
+  } else {
+    html += "<p>Ingen pågående sesong funnet.</p>";
+  }
+  html += "</div>";
+
+  /* ---- Sesongene ---- */
+  html += "<div class='testblokk'><h2>Ferdige sesonger (" +
+    data.sesonger.length + ")</h2>";
+  html += tabell(data.sesonger.map(s => [
+    s.aar,
+    s.resultater.map(r => `${r.plass}. ${r.person} (${f(r.poeng)})`).join(" — "),
+  ]), ["År", "Resultat"]);
+  html += "</div>";
+
+  /* ---- Funfacts ---- */
+  const ff = data.funfacts;
+  html += "<div class='testblokk'><h2>Funfacts — alle utregnet</h2>";
+
+  html += "<h3>Flest topp 2-plasseringer</h3>" + tabell(
+    ff.topp2.map(x => [x.person, x.verdi]), ["Person", "Antall"]);
+  html += "<h3>Flest topp 3-plasseringer</h3>" + tabell(
+    ff.topp3.map(x => [x.person, x.verdi]), ["Person", "Antall"]);
+  html += "<h3>Flest seire på rad</h3>" + tabell(
+    ff.seierrekker.map(x => [x.person, x.verdi]), ["Person", "På rad"]);
+
+  html += "<h3>Mest suverene seire (topp 5)</h3>" + tabell(
+    ff.suverenesteSeire.slice(0, 5).map(x =>
+      [x.vinner + " (" + x.aar + ")", f(x.diff) + " poeng foran " + x.nummerTo]),
+    ["Vinner", "Margin"]);
+  html += "<h3>Mest knepne seire (topp 5)</h3>" + tabell(
+    ff.knepnesteSeire.slice(0, 5).map(x =>
+      [x.vinner + " (" + x.aar + ")", f(x.diff) + " poeng foran " + x.nummerTo]),
+    ["Vinner", "Margin"]);
+  html += "<h3>Jevneste topp 3 (topp 5)</h3>" + tabell(
+    ff.jevnesteTopp3.slice(0, 5).map(x =>
+      [x.vinner + " (" + x.aar + ")", f(x.diff) + " poeng foran " + x.treer]),
+    ["Vinner", "1. til 3. plass"]);
+  html += "<h3>Laveste differanse mellom to plasseringer (topp 7)</h3>" + tabell(
+    ff.minsteDifferanser.slice(0, 7).map(x =>
+      [x.aar, x.personA + " vs " + x.personB, f(x.diff) + " poeng (" + x.plasser + ")"]),
+    ["År", "Hvem", "Differanse"]);
+  html += "<h3>Kortest avstand fra 1. til 4. plass (topp 5)</h3>" + tabell(
+    ff.kortestSpredning.slice(0, 5).map(x =>
+      [x.aar, f(x.diff) + " poeng", x.foerst + " først, " + x.sist + " sist",
+       x.prosent + "% av førsteplassen"]),
+    ["År", "Avstand", "Hvem", "Sisteplassen"]);
+  html += "<h3>Størst avstand fra 1. til 4. plass (topp 5)</h3>" + tabell(
+    ff.stoerstSpredning.slice(0, 5).map(x =>
+      [x.aar, f(x.diff) + " poeng", x.foerst + " først, " + x.sist + " sist"]),
+    ["År", "Avstand", "Hvem"]);
+  html += "<h3>Flest poeng i én sesong (topp 10)</h3>" + tabell(
+    ff.flestPoengISesong.map(x =>
+      [x.person + " (" + x.aar + ")", f(x.poeng)]), ["Hvem", "Poeng"]);
+  html += "<h3>Flest poeng i én sesong uten å vinne (topp 10)</h3>" + tabell(
+    ff.flestPoengUtenSeier.map(x =>
+      [x.person + " (" + x.aar + ")", f(x.poeng)]), ["Hvem", "Poeng"]);
+  html += "</div>";
+
+  el("resultat").innerHTML = html;
+}).catch(feil => {
+  el("status").innerHTML =
+    "<p class='feil'>Noe gikk galt under hentingen: " + feil.message +
+    "</p><p>Sjekk at regnearklenkene i js/config.js fortsatt fungerer.</p>";
+});
+</script>
+
+</body>
+</html>
