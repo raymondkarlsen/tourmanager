@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <div class="side">
+
   <aside class="meny">
     <a href="index.html"><img class="logo" src="assets/logo.png" alt="Illustrasjon av syklist i gul trøye foran Eiffeltårnet"></a>
     <div class="sidenavn"><a href="index.html" style="text-decoration:none;color:inherit;">Tourmanager</a></div>
@@ -24,17 +26,115 @@
       <a href="sesong-for-sesong.html">Sesong for sesong</a>
     </nav>
   </aside>
+
   <main>
     <h1>Maratontabellen</h1>
-    <div class="skille"></div>
-    <p class="laster">Denne siden bygges i fase 4 — innholdet hentes da automatisk fra regnearket.</p>
+    <p>Det er sammendraget det handler om. Hvem gjør det best over tid?
+    Maratontabellen gir oss svaret.</p>
+
+    <h2>Slik fordeles poeng</h2>
+    <p id="poengregel" class="laster">…</p>
+
+    <div class="skille skille--gul"></div>
+
+    <h2>Sammenlagt</h2>
+    <div class="boks-gul" style="max-width: 420px;">
+      <ol class="rangering" id="sammenlagt"><li class="laster">Henter …</li></ol>
+    </div>
+
+    <div class="skille skille--gul"></div>
+
+    <h2>År for år</h2>
+    <div id="aarForAar"><p class="laster">Henter …</p></div>
+
+    <h2 style="margin-top: 48px;">Utvikling over tid</h2>
+    <h3>Poengsanking over tid</h3>
+    <div style="position: relative; height: 420px;">
+      <canvas id="utvikling"></canvas>
+    </div>
   </main>
 </div>
+
 <footer>
   <div class="inner">
     <strong>Tourmanager</strong>
     <span>Bygget med GitHub Pages og Google Sheets</span>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/motor.js"></script>
+<script>
+hentTourdata().then(data => {
+
+  /* ---- Poengregelen, skrevet ut fra config (endres reglene, endres teksten) */
+  const [p1, p2, p3, p4] = KONFIG.maratonPoeng;
+  document.getElementById("poengregel").className = "";
+  document.getElementById("poengregel").textContent =
+    `I kampen om den gule trøya får man ${p1} poeng for å vinne en sesong. ` +
+    `${p2} poeng til nummer 2, ${p3} poeng til nummer 3 og ${p4} poeng ` +
+    `til den tapre fjerdeplassen.`;
+
+  /* ---- Sammenlagtlista ---- */
+  document.getElementById("sammenlagt").innerHTML =
+    data.maratontabellen.map((r, i) =>
+      `<li>${i + 1}. ${r.person} — ${r.verdi}</li>`).join("");
+
+  /* ---- År for år-tabellen ---- */
+  let html = "<table class='data'><tr><th>År</th>" +
+    data.personer.map(p => `<th>${p}</th>`).join("") + "</tr>";
+
+  for (const s of data.sesonger) {
+    const perPerson = {};
+    for (const r of s.resultater) perPerson[r.person] = r.maratonpoeng;
+    html += `<tr><td>${s.aar}</td>` +
+      data.personer.map(p => `<td>${perPerson[p] ?? ""}</td>`).join("") + "</tr>";
+  }
+
+  const totaler = {};
+  for (const r of data.maratontabellen) totaler[r.person] = r.verdi;
+  html += "<tr class='total'><td>Totalt</td>" +
+    data.personer.map(p => `<td>${totaler[p]}</td>`).join("") + "</tr></table>";
+
+  document.getElementById("aarForAar").innerHTML = html;
+
+  /* ---- Utviklingsgrafen: akkumulerte maratonpoeng ---- */
+  new Chart(document.getElementById("utvikling"), {
+    type: "line",
+    data: {
+      labels: data.akkumulertMaraton.map(rad => rad.aar),
+      datasets: data.personer.map(person => ({
+        label: person,
+        data: data.akkumulertMaraton.map(rad => rad[person]),
+        borderColor: data.farger[person],
+        backgroundColor: data.farger[person],
+        pointRadius: 3,
+        tension: 0.25,
+      })),
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top", align: "start",
+          labels: { font: { family: "Albert Sans" }, boxWidth: 24, boxHeight: 3 } },
+        tooltip: { mode: "index", intersect: false },
+      },
+      scales: {
+        y: { beginAtZero: true,
+          ticks: { font: { family: "Albert Sans" } } },
+        x: { grid: { display: false },
+          ticks: { font: { family: "Albert Sans" } } },
+      },
+    },
+  });
+
+}).catch(feil => {
+  document.getElementById("aarForAar").innerHTML =
+    "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
+});
+</script>
+
 </body>
 </html>
