@@ -227,19 +227,72 @@ footer .inner strong { font-weight: 700; }
   font-style: italic;
 }
 
+/* ---- Mobilmeny-knappen (hamburgeren) ---------------------------------------
+   Lages av js/motor.js på alle sider. Skjult på store skjermer. */
+.menyknapp { display: none; }
+
 /* ---- Mobil ----------------------------------------------------------------
-   Under 760px legger menyen seg øverst og innholdet under. */
+   Under 760px blir menyen en kompakt topplinje: liten logo, sidenavn og
+   hamburger-knapp. Lenkene vises først når knappen åpnes. */
 @media (max-width: 760px) {
   .side {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding-top: 24px;
+    gap: 20px;
+    padding-top: 16px;
   }
-  .meny { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-  .meny .logo { max-width: 80px; margin: 0; }
-  .meny .sidenavn { margin: 0; width: 100%; order: -1; }
-  .meny nav { flex-direction: row; flex-wrap: wrap; gap: 8px 16px; }
+
+  .meny {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .meny .logo {
+    max-width: 48px;
+    margin: 0;
+    border-radius: 8px;
+  }
+  .meny .sidenavn {
+    margin: 0;
+    flex: 1;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--tekst);
+  }
+
+  .menyknapp {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .menyknapp span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: var(--tekst);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  /* Knappen blir en X når menyen er åpen */
+  .meny.aapen .menyknapp span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .meny.aapen .menyknapp span:nth-child(2) { opacity: 0; }
+  .meny.aapen .menyknapp span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .meny nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+    padding: 8px 0 4px;
+  }
+  .meny.aapen nav { display: flex; }
   .meny nav .gruppe { display: none; }
+
   h1 { font-size: 1.7rem; }
   h2 { font-size: 1.4rem; }
 }
