@@ -344,6 +344,29 @@ async function hentTourdata() {
 }
 
 /* ==========================================================================
+   Mobilmeny
+   På små skjermer (styrt av style.css) skjules menylenkene bak en
+   hamburger-knapp. Knappen lages her, slik at alle sidene får den
+   automatisk uten egen kode i hver HTML-fil.
+   ========================================================================== */
+if (typeof document !== "undefined") {
+  const meny = document.querySelector(".meny");
+  const nav = meny ? meny.querySelector("nav") : null;
+  if (meny && nav) {
+    const knapp = document.createElement("button");
+    knapp.className = "menyknapp";
+    knapp.setAttribute("aria-label", "Meny");
+    knapp.setAttribute("aria-expanded", "false");
+    knapp.innerHTML = "<span></span><span></span><span></span>";
+    knapp.addEventListener("click", () => {
+      const aapen = meny.classList.toggle("aapen");
+      knapp.setAttribute("aria-expanded", String(aapen));
+    });
+    meny.insertBefore(knapp, nav);
+  }
+}
+
+/* ==========================================================================
    Datastrukturen som hentTourdata() leverer:
 
    {
