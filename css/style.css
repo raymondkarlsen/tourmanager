@@ -148,6 +148,20 @@ img { max-width: 100%; height: auto; }
   padding: 28px 32px;
 }
 
+/* Duoboksen: to halvdeler med ulik farge som leses som én boks
+   (mesterboksen på forsiden). Stables på mobil. */
+.duoboks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 32px 0;
+}
+.duoboks > div { padding: 28px 32px; }
+.duoboks .del-gul  { background: var(--tdf-gul); }
+.duoboks .del-krem { background: var(--pastell-gul); }
+@media (max-width: 760px) {
+  .duoboks { grid-template-columns: 1fr; }
+}
+
 /* Kortrekke, som de tre kortene på forsiden */
 .kortrekke {
   display: grid;
