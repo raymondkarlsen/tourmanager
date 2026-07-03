@@ -156,7 +156,7 @@ hentTourdata().then(data => {
       `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
     `</ol>
     </div>
-    <div class="boks-pastellgul">
+    <div class="boks-hvit">
       <h3>Dette var ${siste.aar}-sesongen</h3>
       <p>Tony tok tidlig ledelsen og så seg aldri tilbake — men det var
       ordentlig spenning helt frem til nest siste etappe.</p>
@@ -167,6 +167,7 @@ hentTourdata().then(data => {
   /* ---- De tre kortene ---- */
   document.getElementById("kortene").innerHTML = `
     <div class="kort boks-pastellgul">
+      <span class="kortikon" style="color:#9a7d0a;">${tourIkon("gul-troye.html", 30)}</span>
       <div class="kort-innhold">
         <h3>Gul trøye<br>${ledere(data.guleTroyer, "antall")}</h3>
         <p>Antall gule trøyer:</p>
@@ -183,6 +184,7 @@ hentTourdata().then(data => {
       </div>
     </div>
     <div class="kort boks-pastellblaa">
+      <span class="kortikon" style="color:#1f6fb2;">${tourIkon("maratontabellen.html", 30)}</span>
       <div class="kort-innhold">
         <h3>Maratontabellen<br>${ledere(data.maratontabellen, "verdi")}</h3>
         <p>Sammenlagtlista:</p>
@@ -194,6 +196,7 @@ hentTourdata().then(data => {
       </div>
     </div>
     <div class="kort boks-pastellgroenn">
+      <span class="kortikon" style="color:#1e7a46;">${tourIkon("poengtabellen.html", 30)}</span>
       <div class="kort-innhold">
         <h3>Poengtabellen<br>${ledere(data.totalpoeng, "verdi")}</h3>
         <p>Antall poeng:</p>
