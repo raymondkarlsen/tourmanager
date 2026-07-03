@@ -56,6 +56,24 @@ const SESONGTEKSTER = {
     klatret fra Pogacar før han vant opp Champs-Élysées.`,
 };
 
+/* Små ikoner for etappetypene. Tegnes som SVG i teksten,
+   med etappetypen som forklaring når man holder over. */
+function typeikon(type) {
+  if (!type) return "";
+  const s = 'width="17" height="17" viewBox="0 0 24 24" fill="none" ' +
+    'stroke="#555" stroke-width="2" stroke-linecap="round" ' +
+    'stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;"';
+  const ikoner = {
+    flat:     `<svg ${s}><path d="M3 15h5l3-2 3 2h7"/></svg>`,
+    kupert:   `<svg ${s}><path d="M2 17q3-7 6-7t4 4 4-6 6 2"/></svg>`,
+    fjell:    `<svg ${s}><path d="M3 19L9 7l3 5 3-8 6 15Z"/></svg>`,
+    tempo:    `<svg ${s}><circle cx="12" cy="13" r="7"/><path d="M12 13V9M10 3h4"/></svg>`,
+    lagtempo: `<svg ${s}><circle cx="9" cy="13" r="6"/><path d="M9 13v-3M7.5 4.5h3"/><path d="M17 7a6 6 0 0 1 0 12"/></svg>`,
+  };
+  const ikon = ikoner[type.toLowerCase()] || "";
+  return ikon ? `<span title="${type}">${ikon}</span>` : "";
+}
+
 /* Hvilket år? Leses fra adressen (sesongen.html?aar=2025).
    Uten parameter: pågående sesong, ellers nyeste ferdige. */
 const oensketAar = new URLSearchParams(location.search).get("aar");
@@ -135,7 +153,7 @@ hentTourdata().then(data => {
   let t = "<table class='data'><tr><th>Etappe</th>" +
     data.personer.map(p => `<th>${p}</th>`).join("") + "</tr>";
   for (const e of etapper) {
-    t += `<tr><td>${e.etappe}</td>` + data.personer.map(p => {
+    t += `<tr><td>${typeikon(e.type)}${e.etappe}</td>` + data.personer.map(p => {
       const poeng = e.poeng[p];
       if (poeng !== undefined) totaler[p] += poeng;
       return `<td>${poeng !== undefined ? f(poeng) : ""}</td>`;
