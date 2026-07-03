@@ -144,6 +144,30 @@ hentTourdata().then(data => {
     </div>`;
   }
 
+  /* ---- Rytterstatistikk fra spilleverandøren, hvis den finnes for året --- */
+  const ryttere = data.ryttere?.[aar] || [];
+  if (ryttere.length > 0) {
+    const kolonner = Object.keys(ryttere[0]).filter(k => k !== "aar");
+    html += `
+    <div class="skille skille--gul"></div>
+    <h2>Statistikk om rytterne</h2>
+    <p>Denne oversikten viser alle rytterne som deltok i ${aar}-utgaven
+    av Tourmanager. Her ser du prisen, hvor mange poeng de tok og hvilken
+    rolle de spilte for lagene våre. Tallene kommer fra spilleverandøren.</p>
+    <details>
+      <summary style="cursor:pointer;font-weight:600;margin-bottom:12px;">
+        Vis tabellen (${ryttere.length} ryttere)</summary>
+      <div style="overflow-x:auto;">
+      <table class="data">
+        <tr><th>#</th>${kolonner.map(k =>
+          `<th>${k.charAt(0).toUpperCase() + k.slice(1)}</th>`).join("")}</tr>
+        ${ryttere.map((rad, i) => `<tr><td>${i + 1}</td>${kolonner.map(k =>
+          `<td>${rad[k]}</td>`).join("")}</tr>`).join("")}
+      </table>
+      </div>
+    </details>`;
+  }
+
   document.getElementById("innhold").innerHTML = html;
   if (etapper.length === 0) return;
 
