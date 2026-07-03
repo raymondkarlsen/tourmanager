@@ -261,6 +261,7 @@ async function hentTourdata() {
     farger: KONFIG.farger,
     sesonger,                 // ferdige sesonger, eldste først
     paagaaende,               // årets sesong (eller null utenom tour-tid)
+    etapper: etappedata,      // etappedata per år, for alle år som har det
 
     // Sammenlagt
     totalpoeng: somListe(totalpoeng),
