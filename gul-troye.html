@@ -8,9 +8,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Trøyerekkene: en rad med trøyer per person */
+    .troyerekke {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 12px 0 40px;
+    }
+    .troye { width: 140px; }
+    .gruppetittel { margin-top: 40px; }
+    @media (max-width: 760px) { .troye { width: 96px; } }
+  </style>
 </head>
 <body>
+
 <div class="side">
+
   <aside class="meny">
     <a href="index.html"><img class="logo" src="assets/logo.png" alt="Illustrasjon av syklist i gul trøye foran Eiffeltårnet"></a>
     <div class="sidenavn"><a href="index.html" style="text-decoration:none;color:inherit;">Tourmanager</a></div>
@@ -24,17 +38,89 @@
       <a href="sesong-for-sesong.html">Sesong for sesong</a>
     </nav>
   </aside>
+
   <main>
     <h1>Gul trøye</h1>
+    <p>Det er den gule trøya det handler om. Vinneren hver sesong mottar
+    en gul trøye.</p>
+
     <div class="skille"></div>
-    <p class="laster">Denne siden bygges i fase 4 — innholdet hentes da automatisk fra regnearket.</p>
+
+    <div id="innhold"><p class="laster">Henter trøyene …</p></div>
   </main>
 </div>
+
 <footer>
   <div class="inner">
     <strong>Tourmanager</strong>
     <span>Bygget med GitHub Pages og Google Sheets</span>
   </div>
 </footer>
+
+<script src="js/config.js"></script>
+<script src="js/motor.js"></script>
+<script>
+/* Tegner en gul trøye med årstall på brystet, som SVG.
+   Én mal — årstallet legges på som tekst, så nye trøyer
+   lager seg selv når noen vinner en sesong. */
+function troyeSvg(aar) {
+  return `
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img"
+       aria-label="Gul trøye ${aar}">
+    <!-- ermer -->
+    <path d="M28 22 L6 34 L14 52 L30 44 Z" fill="#f2c800" stroke="#8a7000" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M72 22 L94 34 L86 52 L70 44 Z" fill="#f2c800" stroke="#8a7000" stroke-width="2" stroke-linejoin="round"/>
+    <!-- kropp -->
+    <path d="M28 22 Q50 14 72 22 L74 90 Q50 96 26 90 Z" fill="#ffdf00" stroke="#8a7000" stroke-width="2" stroke-linejoin="round"/>
+    <!-- krage -->
+    <path d="M40 19 Q50 26 60 19 Q50 23 40 19" fill="#8a7000"/>
+    <path d="M40 19 Q50 26 60 19" fill="none" stroke="#8a7000" stroke-width="2"/>
+    <!-- glidelås -->
+    <line x1="50" y1="25" x2="50" y2="52" stroke="#c9a800" stroke-width="1.5"/>
+    <!-- årstallslapp -->
+    <rect x="27" y="56" width="46" height="20" rx="4" fill="#fffdf2" stroke="#8a7000" stroke-width="1.5"/>
+    <text x="50" y="71" text-anchor="middle"
+          font-family="Albert Sans, sans-serif" font-size="14"
+          font-weight="700" fill="#1a1a1a">${aar}</text>
+  </svg>`;
+}
+
+hentTourdata().then(data => {
+  let html = "";
+
+  /* Grupper vinnerne etter antall trøyer, flest først.
+     De med likt antall står under samme overskrift. */
+  const grupper = [];
+  for (const person of data.guleTroyer) {
+    if (person.antall === 0) continue;
+    const gruppe = grupper.find(g => g.antall === person.antall);
+    if (gruppe) gruppe.personer.push(person);
+    else grupper.push({ antall: person.antall, personer: [person] });
+  }
+
+  for (const gruppe of grupper) {
+    const tittel = gruppe.antall === 1 ? "1 trøye" : gruppe.antall + " trøyer";
+    html += `<div class="boks-pastellgul gruppetittel"><h2 style="margin:0;">${tittel}</h2></div>`;
+    for (const person of gruppe.personer) {
+      html += `<h3>${person.person}</h3><div class="troyerekke">` +
+        person.aarene.map(aar => `<div class="troye">${troyeSvg(aar)}</div>`).join("") +
+        "</div>";
+    }
+  }
+
+  /* Hvis en sesong pågår: en liten hilsen om hvem som ligger an til neste trøye */
+  if (data.paagaaende && data.paagaaende.leder) {
+    html += `<div class="skille"></div>
+      <p>Neste trøye? Etter ${data.paagaaende.antallEtapper} etapper av
+      ${data.paagaaende.aar}-sesongen leder <strong>${data.paagaaende.leder}</strong>.</p>`;
+  }
+
+  document.getElementById("innhold").innerHTML = html;
+}).catch(feil => {
+  document.getElementById("innhold").innerHTML =
+    "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
+});
+</script>
+
 </body>
 </html>
