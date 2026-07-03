@@ -77,7 +77,7 @@
       text-underline-offset: 3px;
     }
     .sistevinnere {
-      background: var(--pastell-gul);
+      background: var(--flate-graa);
       padding: 16px 24px;
       margin-bottom: 32px;
     }
@@ -216,7 +216,8 @@ hentTourdata().then(data => {
 
   if (p && p.antallEtapper > 0) {
     const treSiste = data.sesonger.slice(-3).reverse()
-      .map(s => `<strong>${s.vinner}</strong> (${s.aar})`).join(", ");
+      .map(s => `${s.vinner} (<a href="sesongen.html?aar=${s.aar}">${s.aar}</a>)`)
+      .join(", ");
     mesterEl.className = "sistevinnere";
     mesterEl.innerHTML = `<p style="margin:0;">Siste tre vinnere: ${treSiste}.</p>`;
   } else {
