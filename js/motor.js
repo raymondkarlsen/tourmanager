@@ -13,6 +13,28 @@
 
 /* ---- CSV-lesing ---------------------------------------------------------- */
 
+/** Deler opp én CSV-linje, med støtte for felter i anførselstegn
+    (som kan inneholde komma — f.eks. lagnavn fra spilleverandøren). */
+function parseCsvLinje(linje) {
+  const felter = [];
+  let felt = "", iAnfoersel = false;
+  for (let i = 0; i < linje.length; i++) {
+    const tegn = linje[i];
+    if (iAnfoersel) {
+      if (tegn === '"') {
+        if (linje[i + 1] === '"') { felt += '"'; i++; }
+        else iAnfoersel = false;
+      } else felt += tegn;
+    } else if (tegn === '"') {
+      iAnfoersel = true;
+    } else if (tegn === ",") {
+      felter.push(felt); felt = "";
+    } else felt += tegn;
+  }
+  felter.push(felt);
+  return felter.map(f => f.trim());
+}
+
 /** Henter en CSV-fil og gjør den om til en liste med objekter,
     der kolonnenavnene i første rad blir nøkler. */
 async function hentCsv(url) {
@@ -21,12 +43,12 @@ async function hentCsv(url) {
   const tekst = await svar.text();
 
   const linjer = tekst.trim().split(/\r?\n/);
-  const kolonner = linjer[0].split(",").map(k => k.trim());
+  const kolonner = parseCsvLinje(linjer[0]);
 
   return linjer.slice(1)
     .filter(linje => linje.trim() !== "")
     .map(linje => {
-      const felter = linje.split(",").map(f => f.trim());
+      const felter = parseCsvLinje(linje);
       const rad = {};
       kolonner.forEach((navn, i) => { rad[navn] = felter[i] ?? ""; });
       return rad;
@@ -49,10 +71,25 @@ function formatTall(n) {
 /* ---- Hovedfunksjonen ------------------------------------------------------ */
 
 async function hentTourdata() {
-  const [sesongRader, etappeRader] = await Promise.all([
+  const hentinger = [
     hentCsv(KONFIG.sesongerCsv),
     hentCsv(KONFIG.etapperCsv),
-  ]);
+  ];
+  // Rytterstatistikken er valgfri — hentes bare hvis lenken er satt
+  if (KONFIG.ryttereCsv) hentinger.push(hentCsv(KONFIG.ryttereCsv));
+
+  const [sesongRader, etappeRader, rytterRader] = await Promise.all(hentinger);
+
+  /* ---- 0. Rytterstatistikk fra spilleverandøren, gruppert per år -------
+     Kolonnene bestemmes av det som står i regnearket — siden viser dem
+     som de er, så formatet kan variere fritt fra år til år. */
+  const ryttere = {};
+  for (const rad of (rytterRader || [])) {
+    const aar = tilTall(rad.aar);
+    if (!aar) continue;
+    ryttere[aar] = ryttere[aar] || [];
+    ryttere[aar].push(rad);
+  }
 
   /* ---- 1. Organiser sesongdataene per år -------------------------------- */
 
@@ -273,6 +310,7 @@ async function hentTourdata() {
     sesonger,                 // ferdige sesonger, eldste først
     paagaaende,               // årets sesong (eller null utenom tour-tid)
     etapper: etappedata,      // etappedata per år, for alle år som har det
+    ryttere,                  // rytterstatistikk fra spilleverandøren, per år
 
     // Sammenlagt
     totalpoeng: somListe(totalpoeng),

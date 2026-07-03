@@ -7,9 +7,13 @@ const KONFIG = {
   sesongerCsv:
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTgDssd8EOFK4qai4Isl6FjeGk_Oebq1puvBfi_aUaaA99K0XOsAI30KAPgLzF55gjvcOy5bmcKzTRY/pub?output=csv",
 
-  // Publiseringslenke til etapper-fanen (aar, etappe, person, poeng)
+  // Publiseringslenke til etapper-fanen (aar, etappe, person, poeng, type)
   etapperCsv:
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTgDssd8EOFK4qai4Isl6FjeGk_Oebq1puvBfi_aUaaA99K0XOsAI30KAPgLzF55gjvcOy5bmcKzTRY/pub?gid=148988752&single=true&output=csv",
+
+  // Publiseringslenke til ryttere-fanen (aar + kolonnene fra spill-
+  // leverandøren). Valgfri — tom streng betyr at den hoppes over.
+  ryttereCsv: "",
 
   // Poeng for plassering i en sesong: 1., 2., 3., 4. plass
   maratonPoeng: [40, 30, 20, 10],
