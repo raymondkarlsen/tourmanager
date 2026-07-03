@@ -82,7 +82,7 @@
 
     <div id="live"></div>
 
-    <div id="mester" class="kortrekke">
+    <div id="mester" class="duoboks">
       <p class="laster">Henter fasiten …</p>
     </div>
 
@@ -148,7 +148,7 @@ hentTourdata().then(data => {
   /* ---- Mesterboksen: siste ferdige sesong ---- */
   const siste = data.sesonger.at(-1);
   document.getElementById("mester").innerHTML = `
-    <div class="boks-gul">
+    <div class="del-gul">
       <h2>Regjerende mester:<br>${data.regjerendeMester}</h2>
       <p>${siste.aar}:</p>
       <ol class="rangering">` +
@@ -156,7 +156,7 @@ hentTourdata().then(data => {
       `<li>${r.plass}. <strong>${r.person}</strong> ${f(r.poeng)}</li>`).join("") +
     `</ol>
     </div>
-    <div class="boks-hvit">
+    <div class="del-krem">
       <h3>Dette var ${siste.aar}-sesongen</h3>
       <p>Tony tok tidlig ledelsen og så seg aldri tilbake — men det var
       ordentlig spenning helt frem til nest siste etappe.</p>
