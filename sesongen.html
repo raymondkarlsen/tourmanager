@@ -23,8 +23,23 @@
       flex-wrap: wrap;
       gap: 4px 10px;
       align-items: baseline;
+      list-style: none;
     }
-    .tm-etappe summary::-webkit-details-marker { color: var(--tekst-daus); }
+    .tm-etappe summary::-webkit-details-marker { display: none; }
+    .tm-pil {
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid var(--tekst-daus);
+      border-bottom: 2px solid var(--tekst-daus);
+      transform: rotate(45deg);
+      transition: transform 0.15s ease;
+      flex: none;
+      align-self: center;
+      margin-right: 4px;
+    }
+    .tm-etappe[open] .tm-pil { transform: rotate(225deg); }
+    .tm-etappe[open] summary { border-bottom: 1px solid #ece7d2; }
+    .tm-etappe summary:hover { background: #faf8ef; }
     .tm-teaser {
       margin-left: auto;
       font-weight: 600;
@@ -354,11 +369,11 @@ async function visTourmanagerStatistikk(aar) {
   [...data.etapper].reverse().forEach((e, i) => {
     const d = document.createElement("details");
     d.className = "tm-etappe";
-    if (i === 0) d.open = true;        // nyeste åpen som standard
 
     const topp = e.toppscorere[0];
     d.innerHTML = `
       <summary>
+        <span class="tm-pil" aria-hidden="true"></span>
         <strong>Etappe ${e.nummer}</strong> — ${e.terreng}
         <span style="color:var(--tekst-daus)">${e.fra} → ${e.til}</span>
         <span class="tm-teaser">${topp.navn}: ${topp.poeng} p</span>
@@ -378,7 +393,7 @@ async function visTourmanagerStatistikk(aar) {
         </div>
         <div class="tm-kolonner">
           <div>
-            <h4>Benkesorgen <span class="tm-hint">(få eide dem)</span></h4>
+            <h4>Mest poeng, lavt eierskap <span class="tm-hint">(få hadde dem på laget)</span></h4>
             <ol class="rangering">${e.benkesorg.map(r =>
               rad(r, `${r.poeng} p · eid av ${r.eid} %`)).join("")}</ol>
           </div>
@@ -396,11 +411,8 @@ async function visTourmanagerStatistikk(aar) {
             ).join("")}</ol>
           </div>
           <div>
-            <h4>Folkets kaptein</h4>
-            <ol class="rangering">${e.folkets_kaptein.map(r =>
-              rad(r, `${r.kaptein} %`)).join("")}</ol>
-            <h4 style="margin-top:16px;">Mest eide</h4>
-            <ol class="rangering">${e.mest_eide.slice(0,3).map(r =>
+            <h4>Mest eide</h4>
+            <ol class="rangering">${e.mest_eide.map(r =>
               rad(r, `${r.eid} %`)).join("")}</ol>
           </div>
         </div>
