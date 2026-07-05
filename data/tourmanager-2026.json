@@ -1,0 +1,320 @@
+{
+  "oppdatert": "2026-07-05 16:56 UTC",
+  "kilde": "tourmanager.no",
+  "antallEtapper": 1,
+  "etapper": [
+    {
+      "nummer": 1,
+      "terreng": "Lagtempo",
+      "fra": "Barcelone",
+      "til": "Barcelone",
+      "distanse": 19,
+      "toppscorere": [
+        {
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 240,
+          "pris": 11.1,
+          "eid": 30.7,
+          "kaptein": 7.2
+        },
+        {
+          "navn": "Victor Campenaerts",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.0,
+          "eid": 5.8,
+          "kaptein": 0
+        },
+        {
+          "navn": "Edoardo Affini",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.1,
+          "eid": 2.5,
+          "kaptein": 0
+        },
+        {
+          "navn": "Bruno Armirail",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.3,
+          "eid": 4.6,
+          "kaptein": 0
+        },
+        {
+          "navn": "Sepp Kuss",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.9,
+          "eid": 4.5,
+          "kaptein": 0
+        }
+      ],
+      "beste_kjop": [
+        {
+          "navn": "Per Strand Hagenes",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 5.3,
+          "eid": 17.1,
+          "kaptein": 0,
+          "perMill": 37.7
+        },
+        {
+          "navn": "Victor Campenaerts",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.0,
+          "eid": 5.8,
+          "kaptein": 0,
+          "perMill": 33.3
+        },
+        {
+          "navn": "Edoardo Affini",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.1,
+          "eid": 2.5,
+          "kaptein": 0,
+          "perMill": 32.8
+        },
+        {
+          "navn": "Bruno Armirail",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.3,
+          "eid": 4.6,
+          "kaptein": 0,
+          "perMill": 31.7
+        },
+        {
+          "navn": "Michał Kwiatkowski",
+          "lag": "INS",
+          "poeng": 160,
+          "pris": 5.5,
+          "eid": 5.3,
+          "kaptein": 0,
+          "perMill": 29.1
+        }
+      ],
+      "luksusfeller": [
+        {
+          "navn": "Arnaud De Lie",
+          "lag": "LIM",
+          "poeng": 6,
+          "pris": 9.0,
+          "eid": 4.5,
+          "kaptein": 0
+        },
+        {
+          "navn": "Cian Uijtdebroeks",
+          "lag": "MOV",
+          "poeng": 6,
+          "pris": 8.3,
+          "eid": 0.5,
+          "kaptein": 0.1
+        },
+        {
+          "navn": "Pavel Bittner",
+          "lag": "PIC",
+          "poeng": 6,
+          "pris": 9.5,
+          "eid": 0.4,
+          "kaptein": 0
+        },
+        {
+          "navn": "Max Kanter",
+          "lag": "AST",
+          "poeng": 6,
+          "pris": 9.0,
+          "eid": 0.5,
+          "kaptein": 0
+        },
+        {
+          "navn": "Biniam Girmay",
+          "lag": "NSN",
+          "poeng": 10,
+          "pris": 11.0,
+          "eid": 4.9,
+          "kaptein": 0
+        }
+      ],
+      "benkesorg": [
+        {
+          "navn": "Victor Campenaerts",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.0,
+          "eid": 5.8,
+          "kaptein": 0
+        },
+        {
+          "navn": "Edoardo Affini",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.1,
+          "eid": 2.5,
+          "kaptein": 0
+        },
+        {
+          "navn": "Bruno Armirail",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.3,
+          "eid": 4.6,
+          "kaptein": 0
+        },
+        {
+          "navn": "Sepp Kuss",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.9,
+          "eid": 4.5,
+          "kaptein": 0
+        },
+        {
+          "navn": "Davide Piganzoli",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 7.3,
+          "eid": 2.3,
+          "kaptein": 0
+        }
+      ],
+      "kategorikonger": [
+        {
+          "kategori": "Klatrer",
+          "navn": "Sepp Kuss",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.9,
+          "eid": 4.5,
+          "kaptein": 0
+        },
+        {
+          "kategori": "Sprinter",
+          "navn": "Dorian Godon",
+          "lag": "INS",
+          "poeng": 160,
+          "pris": 8.9,
+          "eid": 20.9,
+          "kaptein": 0
+        },
+        {
+          "kategori": "Ungrytter",
+          "navn": "Per Strand Hagenes",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 5.3,
+          "eid": 17.1,
+          "kaptein": 0
+        },
+        {
+          "kategori": "Tempospesialist",
+          "navn": "Edoardo Affini",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.1,
+          "eid": 2.5,
+          "kaptein": 0
+        },
+        {
+          "kategori": "Domestik",
+          "navn": "Victor Campenaerts",
+          "lag": "TVL",
+          "poeng": 200,
+          "pris": 6.0,
+          "eid": 5.8,
+          "kaptein": 0
+        },
+        {
+          "kategori": "Kaptein",
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 240,
+          "pris": 11.1,
+          "eid": 30.7,
+          "kaptein": 7.2
+        },
+        {
+          "kategori": "Sportsdirektør",
+          "navn": "Team Visma | Lease a Bike",
+          "lag": "TVL",
+          "poeng": 160,
+          "pris": 9.8,
+          "eid": 4.1,
+          "kaptein": 0
+        }
+      ],
+      "folkets_kaptein": [
+        {
+          "navn": "Tadej Pogačar",
+          "lag": "UAE",
+          "poeng": 160,
+          "pris": 11.8,
+          "eid": 93.6,
+          "kaptein": 78
+        },
+        {
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 240,
+          "pris": 11.1,
+          "eid": 30.7,
+          "kaptein": 7.2
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 80,
+          "pris": 10.3,
+          "eid": 21.3,
+          "kaptein": 4.6
+        }
+      ],
+      "mest_eide": [
+        {
+          "navn": "Tadej Pogačar",
+          "lag": "UAE",
+          "poeng": 160,
+          "pris": 11.8,
+          "eid": 93.6,
+          "kaptein": 78
+        },
+        {
+          "navn": "Mathieu van der Poel",
+          "lag": "APT",
+          "poeng": 64,
+          "pris": 8.0,
+          "eid": 67.3,
+          "kaptein": 0
+        },
+        {
+          "navn": "Isaac del Toro",
+          "lag": "UAE",
+          "poeng": 120,
+          "pris": 8.0,
+          "eid": 61.9,
+          "kaptein": 0
+        },
+        {
+          "navn": "Anthony Turgis",
+          "lag": "TEN",
+          "poeng": 16,
+          "pris": 6.5,
+          "eid": 57.1,
+          "kaptein": 0
+        },
+        {
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 80,
+          "pris": 8.0,
+          "eid": 44.6,
+          "kaptein": 0
+        }
+      ]
+    }
+  ]
+}
