@@ -8,6 +8,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tm-etappe {
+      border: 1px solid #ece7d2;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    .tm-etappe summary {
+      cursor: pointer;
+      padding: 14px 18px;
+      font-size: 1.05rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      align-items: baseline;
+    }
+    .tm-etappe summary::-webkit-details-marker { color: var(--tekst-daus); }
+    .tm-teaser {
+      margin-left: auto;
+      font-weight: 600;
+      color: #9a7d0a;
+      white-space: nowrap;
+    }
+    .tm-innhold { padding: 4px 18px 18px; }
+    .tm-kolonner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 32px;
+      margin-bottom: 8px;
+    }
+    .tm-kolonner h4 { margin: 16px 0 6px; font-size: 1rem; }
+    .tm-kolonner ol.rangering li { margin-bottom: 3px; font-size: 0.95rem; }
+    .tm-hint, .tm-kilde {
+      color: var(--tekst-daus);
+      font-weight: 400;
+      font-size: 0.85rem;
+    }
+    .tm-kilde { margin-top: 20px; }
+    @media (max-width: 640px) {
+      .tm-kolonner { grid-template-columns: 1fr; }
+      .tm-teaser { margin-left: 0; width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
@@ -169,6 +212,12 @@ hentTourdata().then(data => {
   }
 
   document.getElementById("innhold").innerHTML = html;
+
+  /* ---- Tourmanager.no-statistikk (kun for inneværende/pågående år) -------
+     Hentes fra en ferdig-beregnet fil som oppdateres daglig av en
+     GitHub Action. Vises under resten av innholdet. */
+  visTourmanagerStatistikk(aar);
+
   if (etapper.length === 0) return;
 
   /* ---- Etappetabellen: én rad per etappe, totalrad i gult ---- */
@@ -265,6 +314,108 @@ hentTourdata().then(data => {
   document.getElementById("innhold").innerHTML =
     "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
 });
+
+/* ==========================================================================
+   Tourmanager.no-statistikk
+   Rytterstatistikk fra hele tourmanager.no-verdenen — en hyllest til og
+   et supplement ved siden av den interne firekampen. Dataene er ferdig
+   beregnet og lagret av en GitHub Action; her vises de bare.
+   ========================================================================== */
+async function visTourmanagerStatistikk(aar) {
+  let data;
+  try {
+    const svar = await fetch("data/tourmanager-" + aar + ".json");
+    if (!svar.ok) return;              // ingen fil for dette året → hopp over
+    data = await svar.json();
+  } catch (e) {
+    return;                            // filen finnes ikke → vis ingenting
+  }
+  if (!data.etapper || data.etapper.length === 0) return;
+
+  const f = formatTall;
+  const container = document.createElement("div");
+
+  const seksjon = document.createElement("div");
+  seksjon.innerHTML = `
+    <div class="skille skille--gul"></div>
+    <h2>Rytterstatistikk fra touren</h2>
+    <p>Tall og kuriosa om enkeltrytterne — hentet fra
+    <a href="https://www.tourmanager.no" target="_blank" rel="noopener">tourmanager.no</a>,
+    spillet som hele denne konkurransen er en hyllest til. Dette er tall for
+    <em>alle</em> ryttere og spillere i tourmanager.no, ikke våre fire lag.</p>`;
+  container.appendChild(seksjon);
+
+  /* En liten liste-hjelper: navn, lag og en verdi */
+  const rad = (r, verdi) =>
+    `<li><strong>${r.navn}</strong> <span style="color:var(--tekst-daus)">
+     (${r.lag})</span> — ${verdi}</li>`;
+
+  /* Etappene, nyeste først, hver i en sammenleggbar seksjon */
+  [...data.etapper].reverse().forEach((e, i) => {
+    const d = document.createElement("details");
+    d.className = "tm-etappe";
+    if (i === 0) d.open = true;        // nyeste åpen som standard
+
+    const topp = e.toppscorere[0];
+    d.innerHTML = `
+      <summary>
+        <strong>Etappe ${e.nummer}</strong> — ${e.terreng}
+        <span style="color:var(--tekst-daus)">${e.fra} → ${e.til}</span>
+        <span class="tm-teaser">${topp.navn}: ${topp.poeng} p</span>
+      </summary>
+      <div class="tm-innhold">
+        <div class="tm-kolonner">
+          <div>
+            <h4>Etappens toppscorere</h4>
+            <ol class="rangering">${e.toppscorere.map(r =>
+              rad(r, `${r.poeng} p`)).join("")}</ol>
+          </div>
+          <div>
+            <h4>Beste kjøp <span class="tm-hint">(poeng per million)</span></h4>
+            <ol class="rangering">${e.beste_kjop.map(r =>
+              rad(r, `${r.perMill} p/M · ${r.pris} M`)).join("")}</ol>
+          </div>
+        </div>
+        <div class="tm-kolonner">
+          <div>
+            <h4>Benkesorgen <span class="tm-hint">(få eide dem)</span></h4>
+            <ol class="rangering">${e.benkesorg.map(r =>
+              rad(r, `${r.poeng} p · eid av ${r.eid} %`)).join("")}</ol>
+          </div>
+          <div>
+            <h4>Luksusfellene <span class="tm-hint">(dyre, skuffet)</span></h4>
+            <ol class="rangering">${e.luksusfeller.map(r =>
+              rad(r, `${r.poeng} p · ${r.pris} M`)).join("")}</ol>
+          </div>
+        </div>
+        <div class="tm-kolonner">
+          <div>
+            <h4>Kategorikonger</h4>
+            <ol class="rangering">${e.kategorikonger.map(k =>
+              `<li>${k.kategori}: <strong>${k.navn}</strong> — ${k.poeng} p</li>`
+            ).join("")}</ol>
+          </div>
+          <div>
+            <h4>Folkets kaptein</h4>
+            <ol class="rangering">${e.folkets_kaptein.map(r =>
+              rad(r, `${r.kaptein} %`)).join("")}</ol>
+            <h4 style="margin-top:16px;">Mest eide</h4>
+            <ol class="rangering">${e.mest_eide.slice(0,3).map(r =>
+              rad(r, `${r.eid} %`)).join("")}</ol>
+          </div>
+        </div>
+      </div>`;
+    container.appendChild(d);
+  });
+
+  const kilde = document.createElement("p");
+  kilde.className = "tm-kilde";
+  kilde.innerHTML = `Statistikken oppdateres daglig fra tourmanager.no.
+    Sist oppdatert: ${data.oppdatert}.`;
+  container.appendChild(kilde);
+
+  document.querySelector("main").appendChild(container);
+}
 </script>
 
 </body>
