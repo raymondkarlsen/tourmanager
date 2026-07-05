@@ -384,8 +384,8 @@ async function visTourmanagerStatistikk(aar) {
           </div>
           <div>
             <h4>Best verdi <span class="tm-hint">(poeng per million)</span></h4>
-            <ol class="rangering">${e.beste_kjop.map(r =>
-              rad(r, `${r.perMill} p/M · ${r.pris} M`)).join("")}</ol>
+              <ol class="rangering">${e.beste_kjop.map(r =>
+                rad(r, `${r.perMill} p/m (${r.pris})`)).join("")}</ol>
           </div>
         </div>
         <div class="tm-kolonner">
