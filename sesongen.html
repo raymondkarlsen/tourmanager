@@ -354,10 +354,7 @@ async function visTourmanagerStatistikk(aar) {
   seksjon.innerHTML = `
     <div class="skille skille--gul"></div>
     <h2>Rytterstatistikk fra touren</h2>
-    <p>Tall og kuriosa om enkeltrytterne — hentet fra
-    <a href="https://www.tourmanager.no" target="_blank" rel="noopener">tourmanager.no</a>,
-    spillet som hele denne konkurransen er en hyllest til. Dette er tall for
-    <em>alle</em> ryttere og spillere i tourmanager.no, ikke våre fire lag.</p>`;
+    <p>Tall og kuriosa om enkeltrytterne for hver etappe.</p>`;
   container.appendChild(seksjon);
 
   /* En liten liste-hjelper: navn, lag og en verdi */
@@ -381,24 +378,24 @@ async function visTourmanagerStatistikk(aar) {
       <div class="tm-innhold">
         <div class="tm-kolonner">
           <div>
-            <h4>Etappens toppscorere</h4>
+            <h4>Flest poeng</h4>
             <ol class="rangering">${e.toppscorere.map(r =>
               rad(r, `${r.poeng} p`)).join("")}</ol>
           </div>
           <div>
-            <h4>Beste kjøp <span class="tm-hint">(poeng per million)</span></h4>
+            <h4>Best verdi <span class="tm-hint">(poeng per million)</span></h4>
             <ol class="rangering">${e.beste_kjop.map(r =>
               rad(r, `${r.perMill} p/M · ${r.pris} M`)).join("")}</ol>
           </div>
         </div>
         <div class="tm-kolonner">
           <div>
-            <h4>Mest poeng, lavt eierskap <span class="tm-hint">(få hadde dem på laget)</span></h4>
+            <h4>Undervurderte <span class="tm-hint">(mest poeng, få hadde de på laget)</span></h4>
             <ol class="rangering">${e.benkesorg.map(r =>
               rad(r, `${r.poeng} p · eid av ${r.eid} %`)).join("")}</ol>
           </div>
           <div>
-            <h4>Luksusfellene <span class="tm-hint">(dyre, skuffet)</span></h4>
+            <h4>Luksusfellene <span class="tm-hint">(dyre, men lite poeng)</span></h4>
             <ol class="rangering">${e.luksusfeller.map(r =>
               rad(r, `${r.poeng} p · ${r.pris} M`)).join("")}</ol>
           </div>
@@ -422,7 +419,7 @@ async function visTourmanagerStatistikk(aar) {
 
   const kilde = document.createElement("p");
   kilde.className = "tm-kilde";
-  kilde.innerHTML = `Statistikken oppdateres daglig fra tourmanager.no.
+  kilde.innerHTML = `Statistikken oppdateres daglig.
     Sist oppdatert: ${data.oppdatert}.`;
   container.appendChild(kilde);
 
