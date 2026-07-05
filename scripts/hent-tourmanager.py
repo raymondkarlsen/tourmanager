@@ -29,12 +29,12 @@ TERRENG = {
 
 KATEGORIER = {
     "CLIMBER": "Klatrer",
-    "SPRINTER": "Sprinter",
-    "YOUNG_RIDER": "Ungrytter",
-    "TIME_TRIALIST": "Tempospesialist",
-    "DOMESTIQUE": "Domestik",
+    "SPRINTER": "Spurter",
+    "YOUNG_RIDER": "Ungdom",
+    "TIME_TRIALIST": "Tempo",
+    "DOMESTIQUE": "Hjelper",
     "CAPTAIN": "Kaptein",
-    "SPORT_DIRECTOR": "Sportsdirektør",
+    "SPORT_DIRECTOR": "Direktør",
 }
 
 
@@ -62,7 +62,6 @@ def kort(r):
         "poeng": r["roundPoints"],
         "pris": mill(r["priceCents"]),
         "eid": round(r["squadOwnershipPct"], 1),
-        "kaptein": round(r["captainPct"], 1),
     }
 
 
@@ -105,10 +104,6 @@ def beregn_etappe(runde, ryttere):
                           lambda r: r["squadOwnershipPct"] < 15)
         ],
         "kategorikonger": kategorikonger,
-        "folkets_kaptein": [
-            kort(r) for r in topp(ryttere, lambda r: r["captainPct"], 3,
-                                  lambda r: r["captainPct"] > 0)
-        ],
         "mest_eide": [kort(r) for r in topp(ryttere, lambda r: r["squadOwnershipPct"], 5)],
     }
 
