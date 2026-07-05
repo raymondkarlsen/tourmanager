@@ -1,0 +1,39 @@
+name: Hent statistikk fra tourmanager.no
+
+# Kjører én gang i døgnet kl. 06 norsk tid (04 UTC om sommeren),
+# og kan også startes manuelt fra Actions-fanen.
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+# Gir jobben lov til å skrive tilbake til repoet
+permissions:
+  contents: write
+
+jobs:
+  hent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hent ut repoet
+        uses: actions/checkout@v4
+
+      - name: Sett opp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Kjør henteskript
+        run: python scripts/hent-tourmanager.py
+
+      - name: Commit oppdaterte data
+        run: |
+          git config user.name "Statistikk-bot"
+          git config user.email "actions@github.com"
+          git add data/tourmanager-2026.json
+          if git diff --staged --quiet; then
+            echo "Ingen endringer å committe."
+          else
+            git commit -m "Oppdater tourmanager-statistikk $(date -u +%Y-%m-%d)"
+            git push
+          fi
