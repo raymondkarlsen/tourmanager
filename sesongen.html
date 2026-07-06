@@ -297,8 +297,29 @@ hentTourdata().then(data => {
   });
 
   /* ---- Poeng per etappe: liggende stablede søyler ---- */
+  /* Liten plugin: skriver totalsummen ytterst på hver stolpe */
+  const totalEtikett = {
+    id: "totalEtikett",
+    afterDatasetsDraw(chart) {
+      const { ctx } = chart;
+      const meta = chart.getDatasetMeta(chart.data.datasets.length - 1);
+      ctx.save();
+      ctx.font = "600 13px Albert Sans";
+      ctx.fillStyle = "#1a1a1a";
+      ctx.textBaseline = "middle";
+      meta.data.forEach((stolpe, i) => {
+        const total = etapper[i]
+          ? data.personer.reduce((s, p) => s + (etapper[i].poeng[p] ?? 0), 0)
+          : 0;
+        ctx.fillText("  " + formatTall(total), stolpe.x, stolpe.y);
+      });
+      ctx.restore();
+    },
+  };
+
   new Chart(document.getElementById("perEtappe"), {
     type: "bar",
+    plugins: [totalEtikett],
     data: {
       labels: etapper.map(e => e.etappe + ". etp"),
       datasets: data.personer.map(person => ({
@@ -310,6 +331,7 @@ hentTourdata().then(data => {
     options: {
       indexAxis: "y",
       responsive: true, maintainAspectRatio: false,
+      layout: { padding: { right: 48 } },
       plugins: {
         legend: { position: "top", align: "start",
           labels: { font: { family: "Albert Sans" }, boxWidth: 14 } },
@@ -354,7 +376,10 @@ async function visTourmanagerStatistikk(aar) {
   seksjon.innerHTML = `
     <div class="skille skille--gul"></div>
     <h2>Rytterstatistikk fra touren</h2>
-    <p>Tall og kuriosa om enkeltrytterne for hver etappe.</p>`;
+    <p>Tall og kuriosa om enkeltrytterne — hentet fra
+    <a href="https://www.tourmanager.no" target="_blank" rel="noopener">tourmanager.no</a>,
+    spillet som hele denne konkurransen er en hyllest til. Dette er tall for
+    <em>alle</em> ryttere og spillere i tourmanager.no, ikke våre fire lag.</p>`;
   container.appendChild(seksjon);
 
   /* En liten liste-hjelper: navn, lag og en verdi */
@@ -378,24 +403,24 @@ async function visTourmanagerStatistikk(aar) {
       <div class="tm-innhold">
         <div class="tm-kolonner">
           <div>
-            <h4>Flest poeng</h4>
+            <h4>Etappens toppscorere</h4>
             <ol class="rangering">${e.toppscorere.map(r =>
               rad(r, `${r.poeng} p`)).join("")}</ol>
           </div>
           <div>
-            <h4>Best verdi <span class="tm-hint">(poeng per million)</span></h4>
-              <ol class="rangering">${e.beste_kjop.map(r =>
-                rad(r, `${r.perMill} p/m (${r.pris})`)).join("")}</ol>
+            <h4>Beste kjøp <span class="tm-hint">(poeng per million)</span></h4>
+            <ol class="rangering">${e.beste_kjop.map(r =>
+              rad(r, `${r.perMill} p/M · ${r.pris} M`)).join("")}</ol>
           </div>
         </div>
         <div class="tm-kolonner">
           <div>
-            <h4>Undervurderte <span class="tm-hint">(mest poeng, få hadde de på laget)</span></h4>
+            <h4>Mest poeng, lavt eierskap <span class="tm-hint">(få hadde dem på laget)</span></h4>
             <ol class="rangering">${e.benkesorg.map(r =>
               rad(r, `${r.poeng} p · eid av ${r.eid} %`)).join("")}</ol>
           </div>
           <div>
-            <h4>Luksusfellene <span class="tm-hint">(dyre, men lite poeng)</span></h4>
+            <h4>Luksusfellene <span class="tm-hint">(dyre, skuffet)</span></h4>
             <ol class="rangering">${e.luksusfeller.map(r =>
               rad(r, `${r.poeng} p · ${r.pris} M`)).join("")}</ol>
           </div>
@@ -419,7 +444,7 @@ async function visTourmanagerStatistikk(aar) {
 
   const kilde = document.createElement("p");
   kilde.className = "tm-kilde";
-  kilde.innerHTML = `Statistikken oppdateres daglig.
+  kilde.innerHTML = `Statistikken oppdateres daglig fra tourmanager.no.
     Sist oppdatert: ${data.oppdatert}.`;
   container.appendChild(kilde);
 
