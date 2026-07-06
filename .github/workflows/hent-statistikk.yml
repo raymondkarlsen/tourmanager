@@ -4,7 +4,7 @@ name: Hent statistikk fra tourmanager.no
 # og kan også startes manuelt fra Actions-fanen.
 on:
   schedule:
-    - cron: "0 4 * * *"
+    - cron: "0 18 * * *"
   workflow_dispatch:
 
 # Gir jobben lov til å skrive tilbake til repoet
