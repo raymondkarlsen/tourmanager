@@ -132,6 +132,34 @@ function typeikon(type) {
   return ikon ? `<span title="${type}">${ikon}</span>` : "";
 }
 
+/* Samme etappeikoner tegnet rett på canvas (til bruk i grafene, der
+   HTML/SVG ikke kan legges inn). Formene følger de samme koordinatene
+   som SVG-ene over (viewBox 0 0 24 24). */
+function tegnEtappeikon(ctx, type, senterX, senterY, storrelse) {
+  if (!type) return;
+  const sirkel = (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.stroke(); };
+  const strek = (d) => ctx.stroke(new Path2D(d));
+  const ikoner = {
+    flat:     () => strek("M3 15h5l3-2 3 2h7"),
+    kupert:   () => strek("M2 17q3-7 6-7t4 4 4-6 6 2"),
+    fjell:    () => strek("M3 19L9 7l3 5 3-8 6 15Z"),
+    tempo:    () => { sirkel(12, 13, 7); strek("M12 13V9M10 3h4"); },
+    lagtempo: () => { sirkel(9, 13, 6); strek("M9 13v-3M7.5 4.5h3"); strek("M17 7a6 6 0 0 1 0 12"); },
+  };
+  const tegn = ikoner[type.toLowerCase()];
+  if (!tegn) return;
+  const skala = storrelse / 24;
+  ctx.save();
+  ctx.translate(senterX - storrelse / 2, senterY - storrelse / 2);
+  ctx.scale(skala, skala);
+  ctx.strokeStyle = "#555";
+  ctx.lineWidth = 2;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  tegn();
+  ctx.restore();
+}
+
 /* Hvilket år? Leses fra adressen (sesongen.html?aar=2025).
    Uten parameter: pågående sesong, ellers nyeste ferdige. */
 const oensketAar = new URLSearchParams(location.search).get("aar");
@@ -197,7 +225,7 @@ hentTourdata().then(data => {
     <h2 style="margin-top:48px;">Poengforskjell på etapper</h2>
     <h3>Totalpoeng per etappe</h3>
     <p>Oversikten viser hvor mange poeng vi fikk tak i på hver etappe.</p>
-    <div style="position:relative;height:${140 + etapper.length * 26}px;">
+    <div style="position:relative;height:${140 + etapper.length * 34}px;">
       <canvas id="perEtappe"></canvas>
     </div>`;
   }
@@ -317,11 +345,36 @@ hentTourdata().then(data => {
     },
   };
 
+  /* Liten plugin: tegner y-akse-etikettene selv, slik at hver etappe får
+     terrengikonet først og etappenummeret etter — likt etappetabellen.
+     Standard-etikettene er skrudd av (ticks.display = false) og vi
+     reserverer plass til venstre via layout-padding. */
+  const etappeIkonEtikett = {
+    id: "etappeIkonEtikett",
+    afterDraw(chart) {
+      const yAkse = chart.scales.y;
+      const { ctx, chartArea } = chart;
+      ctx.save();
+      ctx.font = "13px Albert Sans";
+      ctx.fillStyle = "#444";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+      const ikonSenterX = chartArea.left - 40;
+      const nummerX = chartArea.left - 26;
+      etapper.forEach((e, i) => {
+        const y = yAkse.getPixelForTick(i);
+        tegnEtappeikon(ctx, e.type, ikonSenterX, y, 17);
+        ctx.fillText(String(e.etappe), nummerX, y);
+      });
+      ctx.restore();
+    },
+  };
+
   new Chart(document.getElementById("perEtappe"), {
     type: "bar",
-    plugins: [totalEtikett],
+    plugins: [totalEtikett, etappeIkonEtikett],
     data: {
-      labels: etapper.map(e => e.etappe + ". etp"),
+      labels: etapper.map(e => String(e.etappe)),
       datasets: data.personer.map(person => ({
         label: person,
         data: etapper.map(e => e.poeng[person] ?? 0),
@@ -331,18 +384,19 @@ hentTourdata().then(data => {
     options: {
       indexAxis: "y",
       responsive: true, maintainAspectRatio: false,
-      layout: { padding: { right: 48 } },
+      layout: { padding: { left: 56, right: 48 } },
       plugins: {
         legend: { position: "top", align: "start",
           labels: { font: { family: "Albert Sans" }, boxWidth: 14 } },
         tooltip: { callbacks: {
+          title: items => "Etappe " + (etapper[items[0].dataIndex]?.etappe ?? ""),
           label: ctx => ctx.dataset.label + ": " + formatTall(ctx.parsed.x) } },
       },
       scales: {
         x: { stacked: true, ticks: { font: { family: "Albert Sans" },
           callback: v => formatTall(v) } },
         y: { stacked: true, grid: { display: false },
-          ticks: { font: { family: "Albert Sans" } } },
+          ticks: { display: false } },
       },
     },
   });
