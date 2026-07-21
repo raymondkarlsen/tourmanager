@@ -227,7 +227,12 @@ hentTourdata().then(data => {
     <p>Oversikten viser hvor mange poeng vi fikk tak i på hver etappe.</p>
     <div style="position:relative;height:${140 + etapper.length * 34}px;">
       <canvas id="perEtappe"></canvas>
-    </div>`;
+    </div>
+
+    <h2 style="margin-top:48px;">Etappeanalyse</h2>
+    <p>Hvor jevnt sto det egentlig mellom oss fire på hver enkelt etappe —
+    og hvilken etappe var det som virkelig skilte klinten fra hveten?</p>
+    <div id="etappeanalyse"></div>`;
   }
 
   /* ---- Rytterstatistikk fra spilleverandøren, hvis den finnes for året --- */
@@ -400,6 +405,52 @@ hentTourdata().then(data => {
       },
     },
   });
+
+  /* ---- Etappeanalyse: jevneste/minst jevne og mest avgjørende etapper ----
+     Jevnhet: avstand 1.-4. plass på den ENKELTE etappen (ikke sammenlagt).
+     Avgjørende: størst luke mellom nummer 1 og nummer 2 på etappen. */
+  const etappeStatistikk = etapper.map(e => {
+    const poengliste = data.personer
+      .map(p => ({ person: p, poeng: e.poeng[p] ?? 0 }))
+      .sort((a, b) => b.poeng - a.poeng);
+    return {
+      etappe: e.etappe,
+      spredning: poengliste[0].poeng - poengliste[3].poeng,
+      luke: poengliste[0].poeng - poengliste[1].poeng,
+      forst: poengliste[0].person,
+      forstPoeng: poengliste[0].poeng,
+      nrTo: poengliste[1].person,
+      sist: poengliste[3].person,
+      sistPoeng: poengliste[3].poeng,
+    };
+  });
+
+  const jevnest = [...etappeStatistikk].sort((a, b) => a.spredning - b.spredning).slice(0, 5);
+  const minstJevn = [...etappeStatistikk].sort((a, b) => b.spredning - a.spredning).slice(0, 5);
+  const avgjorende = [...etappeStatistikk].sort((a, b) => b.luke - a.luke).slice(0, 5);
+
+  /* Kompakt liste-hjelper, samme stil som funfacts-listene */
+  const analyseListe = rader => "<ol class='rangering'>" + rader.map(r =>
+    `<li><strong>Etappe ${r.etappe}</strong>: ${formatTall(r.forstPoeng - r.sistPoeng)}
+     poeng — ${r.forst} først, ${r.sist} sist</li>`
+  ).join("") + "</ol>";
+
+  document.getElementById("etappeanalyse").innerHTML = `
+    <div class="tm-kolonner" style="margin-bottom:8px;">
+      <div>
+        <h4>Jevneste etapper</h4>
+        ${analyseListe(jevnest)}
+      </div>
+      <div>
+        <h4>Minst jevne etapper</h4>
+        ${analyseListe(minstJevn)}
+      </div>
+    </div>
+    <h4 style="margin-top:24px;">Mest avgjørende etapper
+      <span class="tm-hint">(størst luke mellom 1. og 2. plass)</span></h4>
+    <ol class="rangering">${avgjorende.map(r =>
+      `<li><strong>Etappe ${r.etappe}</strong>: <strong>${r.forst}</strong>
+       ${formatTall(r.luke)} poeng foran ${r.nrTo}</li>`).join("")}</ol>`;
 
 }).catch(feil => {
   document.getElementById("innhold").innerHTML =
