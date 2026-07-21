@@ -1,7 +1,7 @@
 {
-  "oppdatert": "2026-07-20 19:46 UTC",
+  "oppdatert": "2026-07-21 19:27 UTC",
   "kilde": "tourmanager.no",
-  "antallEtapper": 15,
+  "antallEtapper": 16,
   "etapper": [
     {
       "nummer": 1,
@@ -15,35 +15,35 @@
           "lag": "TVL",
           "poeng": 240,
           "pris": 11.1,
-          "eid": 18.4
+          "eid": 6.8
         },
         {
           "navn": "Sepp Kuss",
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.9,
-          "eid": 4.3
+          "eid": 6.6
         },
         {
           "navn": "Matteo Jorgenson",
           "lag": "TVL",
           "poeng": 200,
           "pris": 7.2,
-          "eid": 5.9
+          "eid": 7.2
         },
         {
           "navn": "Victor Campenaerts",
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.0,
-          "eid": 8.2
+          "eid": 11.3
         },
         {
           "navn": "Bruno Armirail",
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.3,
-          "eid": 2.6
+          "eid": 3.1
         }
       ],
       "beste_kjop": [
@@ -60,7 +60,7 @@
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.0,
-          "eid": 8.2,
+          "eid": 11.3,
           "perMill": 33.3
         },
         {
@@ -76,7 +76,7 @@
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.3,
-          "eid": 2.6,
+          "eid": 3.1,
           "perMill": 31.7
         },
         {
@@ -84,7 +84,7 @@
           "lag": "INS",
           "poeng": 160,
           "pris": 5.5,
-          "eid": 3.6,
+          "eid": 3.5,
           "perMill": 29.1
         }
       ],
@@ -115,51 +115,51 @@
           "lag": "AST",
           "poeng": 6,
           "pris": 9.0,
-          "eid": 8.4
+          "eid": 8.6
         },
         {
           "navn": "Biniam Girmay",
           "lag": "NSN",
           "poeng": 10,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         }
       ],
       "benkesorg": [
+        {
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 240,
+          "pris": 11.1,
+          "eid": 6.8
+        },
         {
           "navn": "Sepp Kuss",
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.9,
-          "eid": 4.3
+          "eid": 6.6
         },
         {
           "navn": "Matteo Jorgenson",
           "lag": "TVL",
           "poeng": 200,
           "pris": 7.2,
-          "eid": 5.9
+          "eid": 7.2
         },
         {
           "navn": "Victor Campenaerts",
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.0,
-          "eid": 8.2
+          "eid": 11.3
         },
         {
           "navn": "Bruno Armirail",
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.3,
-          "eid": 2.6
-        },
-        {
-          "navn": "Edoardo Affini",
-          "lag": "TVL",
-          "poeng": 200,
-          "pris": 6.1,
-          "eid": 1.1
+          "eid": 3.1
         }
       ],
       "kategorikonger": [
@@ -169,7 +169,7 @@
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.9,
-          "eid": 4.3
+          "eid": 6.6
         },
         {
           "kategori": "Spurter",
@@ -177,7 +177,7 @@
           "lag": "INS",
           "poeng": 160,
           "pris": 8.9,
-          "eid": 3.2
+          "eid": 3.1
         },
         {
           "kategori": "Ungdom",
@@ -185,7 +185,7 @@
           "lag": "TVL",
           "poeng": 200,
           "pris": 7.3,
-          "eid": 1.1
+          "eid": 1.2
         },
         {
           "kategori": "Tempo",
@@ -193,7 +193,7 @@
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.3,
-          "eid": 2.6
+          "eid": 3.1
         },
         {
           "kategori": "Hjelper",
@@ -201,7 +201,7 @@
           "lag": "TVL",
           "poeng": 200,
           "pris": 6.0,
-          "eid": 8.2
+          "eid": 11.3
         },
         {
           "kategori": "Kaptein",
@@ -209,7 +209,7 @@
           "lag": "TVL",
           "poeng": 240,
           "pris": 11.1,
-          "eid": 18.4
+          "eid": 6.8
         },
         {
           "kategori": "Direktør",
@@ -217,7 +217,7 @@
           "lag": "TVL",
           "poeng": 160,
           "pris": 9.8,
-          "eid": 2.6
+          "eid": 2.2
         }
       ],
       "mest_eide": [
@@ -226,35 +226,35 @@
           "lag": "UAE",
           "poeng": 160,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 120,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 80,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 16,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 100,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 80,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 80,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -270,35 +270,35 @@
           "lag": "UAE",
           "poeng": 480,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "navn": "Alex Molenaar",
           "lag": "CJR",
           "poeng": 244,
           "pris": 4.9,
-          "eid": 0.3
+          "eid": 0.2
         },
         {
           "navn": "Felix Engelhardt",
           "lag": "JAY",
           "poeng": 220,
           "pris": 4.4,
-          "eid": 5.4
+          "eid": 5.3
         },
         {
           "navn": "Tadej Pogačar",
           "lag": "UAE",
           "poeng": 186,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "UAE Team Emirates - XRG",
           "lag": "UAE",
           "poeng": 160,
           "pris": 10.4,
-          "eid": 46.0
+          "eid": 46.3
         }
       ],
       "beste_kjop": [
@@ -307,7 +307,7 @@
           "lag": "UAE",
           "poeng": 480,
           "pris": 8.0,
-          "eid": 83.4,
+          "eid": 84.4,
           "perMill": 60.0
         },
         {
@@ -315,7 +315,7 @@
           "lag": "JAY",
           "poeng": 220,
           "pris": 4.4,
-          "eid": 5.4,
+          "eid": 5.3,
           "perMill": 50.0
         },
         {
@@ -323,7 +323,7 @@
           "lag": "CJR",
           "poeng": 244,
           "pris": 4.9,
-          "eid": 0.3,
+          "eid": 0.2,
           "perMill": 49.8
         },
         {
@@ -331,7 +331,7 @@
           "lag": "PIC",
           "poeng": 92,
           "pris": 4.9,
-          "eid": 1.0,
+          "eid": 0.9,
           "perMill": 18.8
         },
         {
@@ -339,7 +339,7 @@
           "lag": "FDJ",
           "poeng": 128,
           "pris": 7.3,
-          "eid": 2.3,
+          "eid": 2.0,
           "perMill": 17.5
         }
       ],
@@ -349,7 +349,7 @@
           "lag": "INS",
           "poeng": 2,
           "pris": 8.9,
-          "eid": 3.2
+          "eid": 3.1
         },
         {
           "navn": "Pascal Ackermann",
@@ -370,7 +370,7 @@
           "lag": "DEC",
           "poeng": 2,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         },
         {
           "navn": "Arnaud De Lie",
@@ -386,35 +386,35 @@
           "lag": "CJR",
           "poeng": 244,
           "pris": 4.9,
-          "eid": 0.3
+          "eid": 0.2
         },
         {
           "navn": "Felix Engelhardt",
           "lag": "JAY",
           "poeng": 220,
           "pris": 4.4,
-          "eid": 5.4
+          "eid": 5.3
         },
         {
           "navn": "Romain Gregoire",
           "lag": "FDJ",
           "poeng": 128,
           "pris": 7.3,
-          "eid": 2.3
+          "eid": 2.0
+        },
+        {
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 100,
+          "pris": 11.1,
+          "eid": 6.8
         },
         {
           "navn": "Red Bull - BORA - hansgrohe",
           "lag": "RBH",
           "poeng": 100,
           "pris": 9.4,
-          "eid": 2.8
-        },
-        {
-          "navn": "Frank van den Broek",
-          "lag": "PIC",
-          "poeng": 92,
-          "pris": 4.9,
-          "eid": 1.0
+          "eid": 4.2
         }
       ],
       "kategorikonger": [
@@ -424,7 +424,7 @@
           "lag": "LTK",
           "poeng": 120,
           "pris": 7.1,
-          "eid": 41.0
+          "eid": 44.3
         },
         {
           "kategori": "Spurter",
@@ -432,7 +432,7 @@
           "lag": "NSN",
           "poeng": 30,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         },
         {
           "kategori": "Ungdom",
@@ -440,7 +440,7 @@
           "lag": "UAE",
           "poeng": 480,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "kategori": "Tempo",
@@ -448,7 +448,7 @@
           "lag": "UAE",
           "poeng": 75,
           "pris": 7.1,
-          "eid": 4.0
+          "eid": 3.8
         },
         {
           "kategori": "Hjelper",
@@ -456,7 +456,7 @@
           "lag": "CJR",
           "poeng": 244,
           "pris": 4.9,
-          "eid": 0.3
+          "eid": 0.2
         },
         {
           "kategori": "Kaptein",
@@ -464,7 +464,7 @@
           "lag": "UAE",
           "poeng": 186,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "kategori": "Direktør",
@@ -472,7 +472,7 @@
           "lag": "UAE",
           "poeng": 160,
           "pris": 10.4,
-          "eid": 46.0
+          "eid": 46.3
         }
       ],
       "mest_eide": [
@@ -481,35 +481,35 @@
           "lag": "UAE",
           "poeng": 186,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 480,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 21,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 20,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 26,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 21,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 120,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -525,35 +525,35 @@
           "lag": "EFE",
           "poeng": 400,
           "pris": 6.9,
-          "eid": 8.6
+          "eid": 7.2
         },
         {
           "navn": "Tadej Pogačar",
           "lag": "UAE",
           "poeng": 252,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Jonas Vingegaard",
           "lag": "TVL",
           "poeng": 166,
           "pris": 11.1,
-          "eid": 18.4
+          "eid": 6.8
         },
         {
           "navn": "UAE Team Emirates - XRG",
           "lag": "UAE",
           "poeng": 160,
           "pris": 10.4,
-          "eid": 46.0
+          "eid": 46.3
         },
         {
           "navn": "Lennert Van Eetvelt",
           "lag": "LIM",
           "poeng": 144,
           "pris": 6.8,
-          "eid": 1.5
+          "eid": 1.3
         }
       ],
       "beste_kjop": [
@@ -562,7 +562,7 @@
           "lag": "EFE",
           "poeng": 400,
           "pris": 6.9,
-          "eid": 8.6,
+          "eid": 7.2,
           "perMill": 58.0
         },
         {
@@ -570,7 +570,7 @@
           "lag": "TEN",
           "poeng": 88,
           "pris": 3.8,
-          "eid": 1.1,
+          "eid": 1.0,
           "perMill": 23.2
         },
         {
@@ -578,7 +578,7 @@
           "lag": "UAE",
           "poeng": 252,
           "pris": 11.8,
-          "eid": 96.5,
+          "eid": 96.8,
           "perMill": 21.4
         },
         {
@@ -586,7 +586,7 @@
           "lag": "LIM",
           "poeng": 144,
           "pris": 6.8,
-          "eid": 1.5,
+          "eid": 1.3,
           "perMill": 21.2
         },
         {
@@ -594,7 +594,7 @@
           "lag": "DEC",
           "poeng": 96,
           "pris": 5.1,
-          "eid": 8.7,
+          "eid": 8.6,
           "perMill": 18.8
         }
       ],
@@ -604,14 +604,14 @@
           "lag": "NSN",
           "poeng": 2,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         },
         {
           "navn": "Dorian Godon",
           "lag": "INS",
           "poeng": 2,
           "pris": 8.9,
-          "eid": 3.2
+          "eid": 3.1
         },
         {
           "navn": "Pascal Ackermann",
@@ -625,14 +625,14 @@
           "lag": "SOQ",
           "poeng": 2,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 2,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         }
       ],
       "benkesorg": [
@@ -641,35 +641,35 @@
           "lag": "EFE",
           "poeng": 400,
           "pris": 6.9,
-          "eid": 8.6
+          "eid": 7.2
+        },
+        {
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 166,
+          "pris": 11.1,
+          "eid": 6.8
         },
         {
           "navn": "Lennert Van Eetvelt",
           "lag": "LIM",
           "poeng": 144,
           "pris": 6.8,
-          "eid": 1.5
+          "eid": 1.3
+        },
+        {
+          "navn": "Richard Carapaz",
+          "lag": "EFE",
+          "poeng": 120,
+          "pris": 9.8,
+          "eid": 8.9
         },
         {
           "navn": "Team Visma | Lease a Bike",
           "lag": "TVL",
           "poeng": 100,
           "pris": 9.8,
-          "eid": 2.6
-        },
-        {
-          "navn": "Paul Seixas",
-          "lag": "DEC",
-          "poeng": 100,
-          "pris": 10.8,
-          "eid": 8.9
-        },
-        {
-          "navn": "Nicolas Prodhomme",
-          "lag": "DEC",
-          "poeng": 96,
-          "pris": 5.1,
-          "eid": 8.7
+          "eid": 2.2
         }
       ],
       "kategorikonger": [
@@ -679,7 +679,7 @@
           "lag": "RBH",
           "poeng": 96,
           "pris": 8.0,
-          "eid": 68.5
+          "eid": 60.5
         },
         {
           "kategori": "Spurter",
@@ -687,7 +687,7 @@
           "lag": "LTK",
           "poeng": 52,
           "pris": 10.6,
-          "eid": 59.8
+          "eid": 60.1
         },
         {
           "kategori": "Ungdom",
@@ -695,7 +695,7 @@
           "lag": "EFE",
           "poeng": 400,
           "pris": 6.9,
-          "eid": 8.6
+          "eid": 7.2
         },
         {
           "kategori": "Tempo",
@@ -703,7 +703,7 @@
           "lag": "UAE",
           "poeng": 39,
           "pris": 7.1,
-          "eid": 4.0
+          "eid": 3.8
         },
         {
           "kategori": "Hjelper",
@@ -711,7 +711,7 @@
           "lag": "TEN",
           "poeng": 88,
           "pris": 3.8,
-          "eid": 1.1
+          "eid": 1.0
         },
         {
           "kategori": "Kaptein",
@@ -719,7 +719,7 @@
           "lag": "UAE",
           "poeng": 252,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "kategori": "Direktør",
@@ -727,7 +727,7 @@
           "lag": "UAE",
           "poeng": 160,
           "pris": 10.4,
-          "eid": 46.0
+          "eid": 46.3
         }
       ],
       "mest_eide": [
@@ -736,35 +736,35 @@
           "lag": "UAE",
           "poeng": 252,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 136,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 96,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 2,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 52,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 96,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 56,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -780,7 +780,7 @@
           "lag": "LTK",
           "poeng": 408,
           "pris": 6.5,
-          "eid": 25.9
+          "eid": 27.0
         },
         {
           "navn": "Mathias Vacek",
@@ -794,21 +794,21 @@
           "lag": "LTK",
           "poeng": 272,
           "pris": 10.6,
-          "eid": 59.8
+          "eid": 60.1
         },
         {
           "navn": "Pablo Castrillo",
           "lag": "MOV",
           "poeng": 272,
           "pris": 5.8,
-          "eid": 0.9
+          "eid": 0.8
         },
         {
           "navn": "Marco Frigo",
           "lag": "NSN",
           "poeng": 260,
           "pris": 4.6,
-          "eid": 14.8
+          "eid": 14.7
         }
       ],
       "beste_kjop": [
@@ -817,7 +817,7 @@
           "lag": "LTK",
           "poeng": 408,
           "pris": 6.5,
-          "eid": 25.9,
+          "eid": 27.0,
           "perMill": 62.8
         },
         {
@@ -825,7 +825,7 @@
           "lag": "NSN",
           "poeng": 260,
           "pris": 4.6,
-          "eid": 14.8,
+          "eid": 14.7,
           "perMill": 56.5
         },
         {
@@ -833,7 +833,7 @@
           "lag": "MOV",
           "poeng": 272,
           "pris": 5.8,
-          "eid": 0.9,
+          "eid": 0.8,
           "perMill": 46.9
         },
         {
@@ -841,7 +841,7 @@
           "lag": "MOV",
           "poeng": 252,
           "pris": 5.7,
-          "eid": 1.3,
+          "eid": 1.2,
           "perMill": 44.2
         },
         {
@@ -859,7 +859,7 @@
           "lag": "INS",
           "poeng": 2,
           "pris": 8.9,
-          "eid": 3.2
+          "eid": 3.1
         },
         {
           "navn": "Pascal Ackermann",
@@ -873,14 +873,14 @@
           "lag": "SOQ",
           "poeng": 2,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 2,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Pavel Bittner",
@@ -903,28 +903,28 @@
           "lag": "MOV",
           "poeng": 272,
           "pris": 5.8,
-          "eid": 0.9
+          "eid": 0.8
         },
         {
           "navn": "Marco Frigo",
           "lag": "NSN",
           "poeng": 260,
           "pris": 4.6,
-          "eid": 14.8
+          "eid": 14.7
         },
         {
           "navn": "Raul Garcia Pierna",
           "lag": "MOV",
           "poeng": 252,
           "pris": 5.7,
-          "eid": 1.3
+          "eid": 1.2
         },
         {
           "navn": "Ramses Debruyne",
           "lag": "APT",
           "poeng": 184,
           "pris": 5.1,
-          "eid": 0.6
+          "eid": 0.4
         }
       ],
       "kategorikonger": [
@@ -942,7 +942,7 @@
           "lag": "LTK",
           "poeng": 272,
           "pris": 10.6,
-          "eid": 59.8
+          "eid": 60.1
         },
         {
           "kategori": "Ungdom",
@@ -950,7 +950,7 @@
           "lag": "LTK",
           "poeng": 408,
           "pris": 6.5,
-          "eid": 25.9
+          "eid": 27.0
         },
         {
           "kategori": "Tempo",
@@ -958,7 +958,7 @@
           "lag": "RBH",
           "poeng": 63,
           "pris": 5.5,
-          "eid": 1.7
+          "eid": 1.3
         },
         {
           "kategori": "Hjelper",
@@ -966,7 +966,7 @@
           "lag": "NSN",
           "poeng": 260,
           "pris": 4.6,
-          "eid": 14.8
+          "eid": 14.7
         },
         {
           "kategori": "Kaptein",
@@ -974,7 +974,7 @@
           "lag": "LTK",
           "poeng": 26,
           "pris": 9.6,
-          "eid": 2.0
+          "eid": 1.7
         },
         {
           "kategori": "Direktør",
@@ -982,7 +982,7 @@
           "lag": "LTK",
           "poeng": 160,
           "pris": 9.9,
-          "eid": 1.4
+          "eid": 1.3
         }
       ],
       "mest_eide": [
@@ -991,35 +991,35 @@
           "lag": "UAE",
           "poeng": 6,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 12,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 6,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 2,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 272,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 6,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 4,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -1035,21 +1035,21 @@
           "lag": "LIM",
           "poeng": 228,
           "pris": 4.0,
-          "eid": 43.0
+          "eid": 45.0
         },
         {
           "navn": "Olav Kooij",
           "lag": "DEC",
           "poeng": 200,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         },
         {
           "navn": "Max Kanter",
           "lag": "AST",
           "poeng": 200,
           "pris": 9.0,
-          "eid": 8.4
+          "eid": 8.6
         },
         {
           "navn": "Decathlon CMA CGM Team",
@@ -1063,7 +1063,7 @@
           "lag": "LIM",
           "poeng": 150,
           "pris": 5.2,
-          "eid": 19.1
+          "eid": 18.3
         }
       ],
       "beste_kjop": [
@@ -1072,7 +1072,7 @@
           "lag": "LIM",
           "poeng": 228,
           "pris": 4.0,
-          "eid": 43.0,
+          "eid": 45.0,
           "perMill": 57.0
         },
         {
@@ -1080,7 +1080,7 @@
           "lag": "LIM",
           "poeng": 150,
           "pris": 5.2,
-          "eid": 19.1,
+          "eid": 18.3,
           "perMill": 28.8
         },
         {
@@ -1088,7 +1088,7 @@
           "lag": "AST",
           "poeng": 200,
           "pris": 9.0,
-          "eid": 8.4,
+          "eid": 8.6,
           "perMill": 22.2
         },
         {
@@ -1096,7 +1096,7 @@
           "lag": "DEC",
           "poeng": 200,
           "pris": 11.2,
-          "eid": 2.9,
+          "eid": 3.0,
           "perMill": 17.9
         },
         {
@@ -1114,7 +1114,7 @@
           "lag": "TVL",
           "poeng": 4,
           "pris": 11.1,
-          "eid": 18.4
+          "eid": 6.8
         },
         {
           "navn": "Cian Uijtdebroeks",
@@ -1128,21 +1128,21 @@
           "lag": "TBV",
           "poeng": 6,
           "pris": 8.6,
-          "eid": 0.1
+          "eid": 0.0
         },
         {
           "navn": "Juan Ayuso",
           "lag": "LTK",
           "poeng": 6,
           "pris": 9.6,
-          "eid": 2.0
+          "eid": 1.7
         },
         {
           "navn": "Tom Pidcock",
           "lag": "Q36",
           "poeng": 6,
           "pris": 9.1,
-          "eid": 3.6
+          "eid": 3.0
         }
       ],
       "benkesorg": [
@@ -1151,14 +1151,14 @@
           "lag": "DEC",
           "poeng": 200,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         },
         {
           "navn": "Max Kanter",
           "lag": "AST",
           "poeng": 200,
           "pris": 9.0,
-          "eid": 8.4
+          "eid": 8.6
         },
         {
           "navn": "Decathlon CMA CGM Team",
@@ -1172,14 +1172,14 @@
           "lag": "SOQ",
           "poeng": 134,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Biniam Girmay",
           "lag": "NSN",
           "poeng": 100,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         }
       ],
       "kategorikonger": [
@@ -1189,7 +1189,7 @@
           "lag": "DEC",
           "poeng": 36,
           "pris": 5.1,
-          "eid": 8.7
+          "eid": 8.6
         },
         {
           "kategori": "Spurter",
@@ -1197,7 +1197,7 @@
           "lag": "DEC",
           "poeng": 200,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         },
         {
           "kategori": "Ungdom",
@@ -1213,7 +1213,7 @@
           "lag": "LIM",
           "poeng": 150,
           "pris": 5.2,
-          "eid": 19.1
+          "eid": 18.3
         },
         {
           "kategori": "Hjelper",
@@ -1221,7 +1221,7 @@
           "lag": "LIM",
           "poeng": 228,
           "pris": 4.0,
-          "eid": 43.0
+          "eid": 45.0
         },
         {
           "kategori": "Kaptein",
@@ -1229,7 +1229,7 @@
           "lag": "DEC",
           "poeng": 26,
           "pris": 10.8,
-          "eid": 8.9
+          "eid": 7.8
         },
         {
           "kategori": "Direktør",
@@ -1246,35 +1246,35 @@
           "lag": "UAE",
           "poeng": 6,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 12,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 9,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 68,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 96,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 9,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 6,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -1290,35 +1290,35 @@
           "lag": "UAE",
           "poeng": 440,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 432,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "navn": "Jonas Vingegaard",
           "lag": "TVL",
           "poeng": 274,
           "pris": 11.1,
-          "eid": 18.4
+          "eid": 6.8
         },
         {
           "navn": "Lenny Martínez",
           "lag": "TBV",
           "poeng": 240,
           "pris": 7.5,
-          "eid": 16.6
+          "eid": 15.1
         },
         {
           "navn": "Florian Lipowitz",
           "lag": "RBH",
           "poeng": 180,
           "pris": 8.0,
-          "eid": 68.5
+          "eid": 60.5
         }
       ],
       "beste_kjop": [
@@ -1327,7 +1327,7 @@
           "lag": "UAE",
           "poeng": 432,
           "pris": 8.0,
-          "eid": 83.4,
+          "eid": 84.4,
           "perMill": 54.0
         },
         {
@@ -1335,7 +1335,7 @@
           "lag": "UAE",
           "poeng": 440,
           "pris": 11.8,
-          "eid": 96.5,
+          "eid": 96.8,
           "perMill": 37.3
         },
         {
@@ -1343,7 +1343,7 @@
           "lag": "TBV",
           "poeng": 240,
           "pris": 7.5,
-          "eid": 16.6,
+          "eid": 15.1,
           "perMill": 32.0
         },
         {
@@ -1351,7 +1351,7 @@
           "lag": "TVL",
           "poeng": 274,
           "pris": 11.1,
-          "eid": 18.4,
+          "eid": 6.8,
           "perMill": 24.7
         },
         {
@@ -1359,7 +1359,7 @@
           "lag": "RBH",
           "poeng": 180,
           "pris": 8.0,
-          "eid": 68.5,
+          "eid": 60.5,
           "perMill": 22.5
         }
       ],
@@ -1376,14 +1376,14 @@
           "lag": "SOQ",
           "poeng": 2,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 2,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Pavel Bittner",
@@ -1397,44 +1397,44 @@
           "lag": "DEC",
           "poeng": 2,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         }
       ],
       "benkesorg": [
+        {
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 274,
+          "pris": 11.1,
+          "eid": 6.8
+        },
         {
           "navn": "Paul Seixas",
           "lag": "DEC",
           "poeng": 152,
           "pris": 10.8,
-          "eid": 8.9
+          "eid": 7.8
         },
         {
           "navn": "Tim Wellens",
           "lag": "UAE",
           "poeng": 132,
           "pris": 6.8,
-          "eid": 6.1
+          "eid": 5.6
         },
         {
           "navn": "Felix Grosschartner",
           "lag": "UAE",
           "poeng": 100,
           "pris": 5.2,
-          "eid": 4.1
+          "eid": 4.3
         },
         {
           "navn": "Team Visma | Lease a Bike",
           "lag": "TVL",
           "poeng": 100,
           "pris": 9.8,
-          "eid": 2.6
-        },
-        {
-          "navn": "Victor Campenaerts",
-          "lag": "TVL",
-          "poeng": 88,
-          "pris": 6.0,
-          "eid": 8.2
+          "eid": 2.2
         }
       ],
       "kategorikonger": [
@@ -1444,7 +1444,7 @@
           "lag": "RBH",
           "poeng": 180,
           "pris": 8.0,
-          "eid": 68.5
+          "eid": 60.5
         },
         {
           "kategori": "Spurter",
@@ -1452,7 +1452,7 @@
           "lag": "LTK",
           "poeng": 58,
           "pris": 10.6,
-          "eid": 59.8
+          "eid": 60.1
         },
         {
           "kategori": "Ungdom",
@@ -1460,7 +1460,7 @@
           "lag": "UAE",
           "poeng": 432,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "kategori": "Tempo",
@@ -1468,7 +1468,7 @@
           "lag": "UAE",
           "poeng": 57,
           "pris": 7.1,
-          "eid": 4.0
+          "eid": 3.8
         },
         {
           "kategori": "Hjelper",
@@ -1476,7 +1476,7 @@
           "lag": "UAE",
           "poeng": 132,
           "pris": 6.8,
-          "eid": 6.1
+          "eid": 5.6
         },
         {
           "kategori": "Kaptein",
@@ -1484,7 +1484,7 @@
           "lag": "UAE",
           "poeng": 440,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "kategori": "Direktør",
@@ -1492,7 +1492,7 @@
           "lag": "UAE",
           "poeng": 160,
           "pris": 10.4,
-          "eid": 46.0
+          "eid": 46.3
         }
       ],
       "mest_eide": [
@@ -1501,35 +1501,35 @@
           "lag": "UAE",
           "poeng": 440,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 432,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 180,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 20,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 58,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 180,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 106,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -1545,35 +1545,35 @@
           "lag": "SOQ",
           "poeng": 218,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Baptiste Veistroffer",
           "lag": "LIM",
           "poeng": 216,
           "pris": 4.0,
-          "eid": 43.0
+          "eid": 45.0
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 160,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Soudal Quick-Step",
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         },
         {
           "navn": "Biniam Girmay",
           "lag": "NSN",
           "poeng": 148,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         }
       ],
       "beste_kjop": [
@@ -1582,7 +1582,7 @@
           "lag": "LIM",
           "poeng": 216,
           "pris": 4.0,
-          "eid": 43.0,
+          "eid": 45.0,
           "perMill": 54.0
         },
         {
@@ -1590,7 +1590,7 @@
           "lag": "NSN",
           "poeng": 112,
           "pris": 4.5,
-          "eid": 0.3,
+          "eid": 0.2,
           "perMill": 24.9
         },
         {
@@ -1598,7 +1598,7 @@
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5,
+          "eid": 3.2,
           "perMill": 18.6
         },
         {
@@ -1606,7 +1606,7 @@
           "lag": "SOQ",
           "poeng": 218,
           "pris": 11.8,
-          "eid": 5.3,
+          "eid": 3.7,
           "perMill": 18.5
         },
         {
@@ -1614,7 +1614,7 @@
           "lag": "LIM",
           "poeng": 96,
           "pris": 5.2,
-          "eid": 19.1,
+          "eid": 18.3,
           "perMill": 18.5
         }
       ],
@@ -1624,35 +1624,35 @@
           "lag": "EFE",
           "poeng": 2,
           "pris": 9.8,
-          "eid": 17.3
+          "eid": 8.9
         },
         {
           "navn": "Juan Ayuso",
           "lag": "LTK",
           "poeng": 4,
           "pris": 9.6,
-          "eid": 2.0
+          "eid": 1.7
         },
         {
           "navn": "Remco Evenepoel",
           "lag": "RBH",
           "poeng": 4,
           "pris": 10.3,
-          "eid": 34.9
+          "eid": 60.3
         },
         {
           "navn": "Jonas Vingegaard",
           "lag": "TVL",
           "poeng": 4,
           "pris": 11.1,
-          "eid": 18.4
+          "eid": 6.8
         },
         {
           "navn": "Tadej Pogačar",
           "lag": "UAE",
           "poeng": 4,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         }
       ],
       "benkesorg": [
@@ -1661,35 +1661,35 @@
           "lag": "SOQ",
           "poeng": 218,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 160,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Soudal Quick-Step",
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         },
         {
           "navn": "Biniam Girmay",
           "lag": "NSN",
           "poeng": 148,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         },
         {
           "navn": "Max Kanter",
           "lag": "AST",
           "poeng": 124,
           "pris": 9.0,
-          "eid": 8.4
+          "eid": 8.6
         }
       ],
       "kategorikonger": [
@@ -1699,7 +1699,7 @@
           "lag": "SOQ",
           "poeng": 36,
           "pris": 6.7,
-          "eid": 2.7
+          "eid": 3.0
         },
         {
           "kategori": "Spurter",
@@ -1707,7 +1707,7 @@
           "lag": "SOQ",
           "poeng": 218,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "kategori": "Ungdom",
@@ -1715,7 +1715,7 @@
           "lag": "SOQ",
           "poeng": 44,
           "pris": 7.1,
-          "eid": 29.6
+          "eid": 26.9
         },
         {
           "kategori": "Tempo",
@@ -1723,7 +1723,7 @@
           "lag": "LIM",
           "poeng": 96,
           "pris": 5.2,
-          "eid": 19.1
+          "eid": 18.3
         },
         {
           "kategori": "Hjelper",
@@ -1731,7 +1731,7 @@
           "lag": "LIM",
           "poeng": 216,
           "pris": 4.0,
-          "eid": 43.0
+          "eid": 45.0
         },
         {
           "kategori": "Kaptein",
@@ -1739,7 +1739,7 @@
           "lag": "TBV",
           "poeng": 6,
           "pris": 8.6,
-          "eid": 0.1
+          "eid": 0.0
         },
         {
           "kategori": "Direktør",
@@ -1747,7 +1747,7 @@
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         }
       ],
       "mest_eide": [
@@ -1756,35 +1756,35 @@
           "lag": "UAE",
           "poeng": 4,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 8,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 9,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 32,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 80,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 9,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 4,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -1800,35 +1800,35 @@
           "lag": "SOQ",
           "poeng": 218,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Liam Slock",
           "lag": "LIM",
           "poeng": 208,
           "pris": 5.2,
-          "eid": 1.7
+          "eid": 1.8
         },
         {
           "navn": "Biniam Girmay",
           "lag": "NSN",
           "poeng": 176,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         },
         {
           "navn": "Soudal Quick-Step",
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         },
         {
           "navn": "Jasper Philipsen",
           "lag": "APT",
           "poeng": 128,
           "pris": 11.3,
-          "eid": 16.5
+          "eid": 16.9
         }
       ],
       "beste_kjop": [
@@ -1837,7 +1837,7 @@
           "lag": "LIM",
           "poeng": 208,
           "pris": 5.2,
-          "eid": 1.7,
+          "eid": 1.8,
           "perMill": 40.0
         },
         {
@@ -1845,7 +1845,7 @@
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5,
+          "eid": 3.2,
           "perMill": 18.6
         },
         {
@@ -1853,7 +1853,7 @@
           "lag": "SOQ",
           "poeng": 218,
           "pris": 11.8,
-          "eid": 5.3,
+          "eid": 3.7,
           "perMill": 18.5
         },
         {
@@ -1861,7 +1861,7 @@
           "lag": "CJR",
           "poeng": 78,
           "pris": 4.5,
-          "eid": 21.1,
+          "eid": 18.2,
           "perMill": 17.3
         },
         {
@@ -1869,7 +1869,7 @@
           "lag": "NSN",
           "poeng": 176,
           "pris": 11.0,
-          "eid": 5.1,
+          "eid": 4.8,
           "perMill": 16.0
         }
       ],
@@ -1879,35 +1879,35 @@
           "lag": "EFE",
           "poeng": 2,
           "pris": 9.8,
-          "eid": 17.3
+          "eid": 8.9
         },
         {
           "navn": "Antonio Tiberi",
           "lag": "TBV",
           "poeng": 4,
           "pris": 8.6,
-          "eid": 0.1
+          "eid": 0.0
         },
         {
           "navn": "Jonas Vingegaard",
           "lag": "TVL",
           "poeng": 4,
           "pris": 11.1,
-          "eid": 18.4
+          "eid": 6.8
         },
         {
           "navn": "Egan Bernal",
           "lag": "INS",
           "poeng": 4,
           "pris": 8.5,
-          "eid": 0.5
+          "eid": 0.4
         },
         {
           "navn": "Juan Ayuso",
           "lag": "LTK",
           "poeng": 6,
           "pris": 9.6,
-          "eid": 2.0
+          "eid": 1.7
         }
       ],
       "benkesorg": [
@@ -1916,35 +1916,35 @@
           "lag": "SOQ",
           "poeng": 218,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Liam Slock",
           "lag": "LIM",
           "poeng": 208,
           "pris": 5.2,
-          "eid": 1.7
+          "eid": 1.8
         },
         {
           "navn": "Biniam Girmay",
           "lag": "NSN",
           "poeng": 176,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         },
         {
           "navn": "Soudal Quick-Step",
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         },
         {
           "navn": "Olav Kooij",
           "lag": "DEC",
           "poeng": 120,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         }
       ],
       "kategorikonger": [
@@ -1954,7 +1954,7 @@
           "lag": "SOQ",
           "poeng": 36,
           "pris": 6.7,
-          "eid": 2.7
+          "eid": 3.0
         },
         {
           "kategori": "Spurter",
@@ -1962,7 +1962,7 @@
           "lag": "SOQ",
           "poeng": 218,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "kategori": "Ungdom",
@@ -1970,7 +1970,7 @@
           "lag": "SOQ",
           "poeng": 44,
           "pris": 7.1,
-          "eid": 29.6
+          "eid": 26.9
         },
         {
           "kategori": "Tempo",
@@ -1978,7 +1978,7 @@
           "lag": "CJR",
           "poeng": 78,
           "pris": 4.5,
-          "eid": 21.1
+          "eid": 18.2
         },
         {
           "kategori": "Hjelper",
@@ -1986,7 +1986,7 @@
           "lag": "LIM",
           "poeng": 208,
           "pris": 5.2,
-          "eid": 1.7
+          "eid": 1.8
         },
         {
           "kategori": "Kaptein",
@@ -1994,7 +1994,7 @@
           "lag": "LTK",
           "poeng": 6,
           "pris": 9.6,
-          "eid": 2.0
+          "eid": 1.7
         },
         {
           "kategori": "Direktør",
@@ -2002,7 +2002,7 @@
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         }
       ],
       "mest_eide": [
@@ -2011,35 +2011,35 @@
           "lag": "UAE",
           "poeng": 6,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 12,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 6,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 30,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 50,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 6,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 6,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -2055,35 +2055,35 @@
           "lag": "APT",
           "poeng": 560,
           "pris": 8.0,
-          "eid": 36.8
+          "eid": 38.3
         },
         {
           "navn": "Alex Baudin",
           "lag": "EFE",
           "poeng": 200,
           "pris": 6.9,
-          "eid": 8.6
+          "eid": 7.2
         },
         {
           "navn": "Tom Pidcock",
           "lag": "Q36",
           "poeng": 182,
           "pris": 9.1,
-          "eid": 3.6
+          "eid": 3.0
         },
         {
           "navn": "Tobias Halland Johannessen",
           "lag": "UXM",
           "poeng": 172,
           "pris": 9.3,
-          "eid": 14.3
+          "eid": 11.0
         },
         {
           "navn": "Alpecin - Premier Tech",
           "lag": "APT",
           "poeng": 160,
           "pris": 9.2,
-          "eid": 2.3
+          "eid": 2.2
         }
       ],
       "beste_kjop": [
@@ -2092,7 +2092,7 @@
           "lag": "APT",
           "poeng": 560,
           "pris": 8.0,
-          "eid": 36.8,
+          "eid": 38.3,
           "perMill": 70.0
         },
         {
@@ -2100,7 +2100,7 @@
           "lag": "EFE",
           "poeng": 200,
           "pris": 6.9,
-          "eid": 8.6,
+          "eid": 7.2,
           "perMill": 29.0
         },
         {
@@ -2108,7 +2108,7 @@
           "lag": "Q36",
           "poeng": 182,
           "pris": 9.1,
-          "eid": 3.6,
+          "eid": 3.0,
           "perMill": 20.0
         },
         {
@@ -2116,7 +2116,7 @@
           "lag": "TEN",
           "poeng": 84,
           "pris": 4.5,
-          "eid": 1.8,
+          "eid": 2.0,
           "perMill": 18.7
         },
         {
@@ -2124,7 +2124,7 @@
           "lag": "JAY",
           "poeng": 128,
           "pris": 6.9,
-          "eid": 3.5,
+          "eid": 3.7,
           "perMill": 18.6
         }
       ],
@@ -2134,7 +2134,7 @@
           "lag": "TBV",
           "poeng": 2,
           "pris": 8.6,
-          "eid": 0.1
+          "eid": 0.0
         },
         {
           "navn": "Pascal Ackermann",
@@ -2148,7 +2148,7 @@
           "lag": "SOQ",
           "poeng": 2,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Pavel Bittner",
@@ -2162,7 +2162,7 @@
           "lag": "DEC",
           "poeng": 2,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         }
       ],
       "benkesorg": [
@@ -2171,35 +2171,35 @@
           "lag": "EFE",
           "poeng": 200,
           "pris": 6.9,
-          "eid": 8.6
+          "eid": 7.2
         },
         {
           "navn": "Tom Pidcock",
           "lag": "Q36",
           "poeng": 182,
           "pris": 9.1,
-          "eid": 3.6
+          "eid": 3.0
         },
         {
           "navn": "Tobias Halland Johannessen",
           "lag": "UXM",
           "poeng": 172,
           "pris": 9.3,
-          "eid": 14.3
+          "eid": 11.0
         },
         {
           "navn": "Alpecin - Premier Tech",
           "lag": "APT",
           "poeng": 160,
           "pris": 9.2,
-          "eid": 2.3
+          "eid": 2.2
         },
         {
           "navn": "Michael Matthews",
           "lag": "JAY",
           "poeng": 128,
           "pris": 6.9,
-          "eid": 3.5
+          "eid": 3.7
         }
       ],
       "kategorikonger": [
@@ -2209,7 +2209,7 @@
           "lag": "TEN",
           "poeng": 84,
           "pris": 4.5,
-          "eid": 1.8
+          "eid": 2.0
         },
         {
           "kategori": "Spurter",
@@ -2217,7 +2217,7 @@
           "lag": "LTK",
           "poeng": 122,
           "pris": 10.6,
-          "eid": 59.8
+          "eid": 60.1
         },
         {
           "kategori": "Ungdom",
@@ -2225,7 +2225,7 @@
           "lag": "EFE",
           "poeng": 200,
           "pris": 6.9,
-          "eid": 8.6
+          "eid": 7.2
         },
         {
           "kategori": "Tempo",
@@ -2233,7 +2233,7 @@
           "lag": "INS",
           "poeng": 120,
           "pris": 7.6,
-          "eid": 13.6
+          "eid": 20.5
         },
         {
           "kategori": "Hjelper",
@@ -2241,7 +2241,7 @@
           "lag": "APT",
           "poeng": 560,
           "pris": 8.0,
-          "eid": 36.8
+          "eid": 38.3
         },
         {
           "kategori": "Kaptein",
@@ -2249,7 +2249,7 @@
           "lag": "Q36",
           "poeng": 182,
           "pris": 9.1,
-          "eid": 3.6
+          "eid": 3.0
         },
         {
           "kategori": "Direktør",
@@ -2257,7 +2257,7 @@
           "lag": "APT",
           "poeng": 160,
           "pris": 9.2,
-          "eid": 2.3
+          "eid": 2.2
         }
       ],
       "mest_eide": [
@@ -2266,35 +2266,35 @@
           "lag": "UAE",
           "poeng": 48,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 104,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 9,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 2,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 122,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 9,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 30,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -2310,35 +2310,35 @@
           "lag": "UAE",
           "poeng": 284,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 200,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "navn": "Richard Carapaz",
           "lag": "EFE",
           "poeng": 194,
           "pris": 9.8,
-          "eid": 17.3
+          "eid": 8.9
         },
         {
           "navn": "Remco Evenepoel",
           "lag": "RBH",
           "poeng": 184,
           "pris": 10.3,
-          "eid": 34.9
+          "eid": 60.3
         },
         {
           "navn": "Florian Lipowitz",
           "lag": "RBH",
           "poeng": 168,
           "pris": 8.0,
-          "eid": 68.5
+          "eid": 60.5
         }
       ],
       "beste_kjop": [
@@ -2347,7 +2347,7 @@
           "lag": "UAE",
           "poeng": 200,
           "pris": 8.0,
-          "eid": 83.4,
+          "eid": 84.4,
           "perMill": 25.0
         },
         {
@@ -2355,7 +2355,7 @@
           "lag": "UAE",
           "poeng": 284,
           "pris": 11.8,
-          "eid": 96.5,
+          "eid": 96.8,
           "perMill": 24.1
         },
         {
@@ -2363,7 +2363,7 @@
           "lag": "RBH",
           "poeng": 168,
           "pris": 8.0,
-          "eid": 68.5,
+          "eid": 60.5,
           "perMill": 21.0
         },
         {
@@ -2371,7 +2371,7 @@
           "lag": "EFE",
           "poeng": 194,
           "pris": 9.8,
-          "eid": 17.3,
+          "eid": 8.9,
           "perMill": 19.8
         },
         {
@@ -2379,7 +2379,7 @@
           "lag": "RBH",
           "poeng": 184,
           "pris": 10.3,
-          "eid": 34.9,
+          "eid": 60.3,
           "perMill": 17.9
         }
       ],
@@ -2396,14 +2396,14 @@
           "lag": "SOQ",
           "poeng": 2,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 2,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Pavel Bittner",
@@ -2417,44 +2417,44 @@
           "lag": "DEC",
           "poeng": 2,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         }
       ],
       "benkesorg": [
+        {
+          "navn": "Richard Carapaz",
+          "lag": "EFE",
+          "poeng": 194,
+          "pris": 9.8,
+          "eid": 8.9
+        },
         {
           "navn": "Paul Seixas",
           "lag": "DEC",
           "poeng": 156,
           "pris": 10.8,
-          "eid": 8.9
+          "eid": 7.8
         },
         {
           "navn": "Juan Ayuso",
           "lag": "LTK",
           "poeng": 126,
           "pris": 9.6,
-          "eid": 2.0
+          "eid": 1.7
         },
         {
-          "navn": "Red Bull - BORA - hansgrohe",
-          "lag": "RBH",
-          "poeng": 100,
-          "pris": 9.4,
-          "eid": 2.8
+          "navn": "Javier Romo",
+          "lag": "MOV",
+          "poeng": 120,
+          "pris": 6.9,
+          "eid": 13.3
         },
         {
-          "navn": "Nicolas Prodhomme",
-          "lag": "DEC",
-          "poeng": 81,
-          "pris": 5.1,
-          "eid": 8.7
-        },
-        {
-          "navn": "Tim Wellens",
-          "lag": "UAE",
-          "poeng": 68,
-          "pris": 6.8,
-          "eid": 6.1
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 112,
+          "pris": 11.1,
+          "eid": 6.8
         }
       ],
       "kategorikonger": [
@@ -2464,7 +2464,7 @@
           "lag": "RBH",
           "poeng": 168,
           "pris": 8.0,
-          "eid": 68.5
+          "eid": 60.5
         },
         {
           "kategori": "Spurter",
@@ -2472,7 +2472,7 @@
           "lag": "LTK",
           "poeng": 52,
           "pris": 10.6,
-          "eid": 59.8
+          "eid": 60.1
         },
         {
           "kategori": "Ungdom",
@@ -2480,7 +2480,7 @@
           "lag": "UAE",
           "poeng": 200,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "kategori": "Tempo",
@@ -2488,7 +2488,7 @@
           "lag": "UAE",
           "poeng": 39,
           "pris": 7.1,
-          "eid": 4.0
+          "eid": 3.8
         },
         {
           "kategori": "Hjelper",
@@ -2496,7 +2496,7 @@
           "lag": "MOV",
           "poeng": 120,
           "pris": 6.9,
-          "eid": 15.2
+          "eid": 13.3
         },
         {
           "kategori": "Kaptein",
@@ -2504,7 +2504,7 @@
           "lag": "UAE",
           "poeng": 284,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "kategori": "Direktør",
@@ -2512,7 +2512,7 @@
           "lag": "UAE",
           "poeng": 160,
           "pris": 10.4,
-          "eid": 46.0
+          "eid": 46.3
         }
       ],
       "mest_eide": [
@@ -2521,35 +2521,35 @@
           "lag": "UAE",
           "poeng": 284,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 200,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 168,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 4,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 52,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 168,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 184,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -2565,35 +2565,35 @@
           "lag": "UXM",
           "poeng": 224,
           "pris": 4.7,
-          "eid": 1.2
+          "eid": 0.9
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 200,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Olav Kooij",
           "lag": "DEC",
           "poeng": 160,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         },
         {
           "navn": "Uno-X Mobility",
           "lag": "UXM",
           "poeng": 160,
           "pris": 8.3,
-          "eid": 4.4
+          "eid": 4.0
         },
         {
           "navn": "Jasper Philipsen",
           "lag": "APT",
           "poeng": 140,
           "pris": 11.3,
-          "eid": 16.5
+          "eid": 16.9
         }
       ],
       "beste_kjop": [
@@ -2602,7 +2602,7 @@
           "lag": "UXM",
           "poeng": 224,
           "pris": 4.7,
-          "eid": 1.2,
+          "eid": 0.9,
           "perMill": 47.7
         },
         {
@@ -2610,7 +2610,7 @@
           "lag": "TEN",
           "poeng": 104,
           "pris": 4.2,
-          "eid": 1.4,
+          "eid": 1.5,
           "perMill": 24.8
         },
         {
@@ -2618,7 +2618,7 @@
           "lag": "LIM",
           "poeng": 120,
           "pris": 5.2,
-          "eid": 19.1,
+          "eid": 18.3,
           "perMill": 23.1
         },
         {
@@ -2626,7 +2626,7 @@
           "lag": "UXM",
           "poeng": 200,
           "pris": 9.7,
-          "eid": 5.3,
+          "eid": 5.7,
           "perMill": 20.6
         },
         {
@@ -2634,7 +2634,7 @@
           "lag": "UXM",
           "poeng": 160,
           "pris": 8.3,
-          "eid": 4.4,
+          "eid": 4.0,
           "perMill": 19.3
         }
       ],
@@ -2644,35 +2644,35 @@
           "lag": "TBV",
           "poeng": 2,
           "pris": 8.6,
-          "eid": 0.1
+          "eid": 0.0
         },
         {
           "navn": "Juan Ayuso",
           "lag": "LTK",
           "poeng": 4,
           "pris": 9.6,
-          "eid": 2.0
+          "eid": 1.7
         },
         {
           "navn": "Richard Carapaz",
           "lag": "EFE",
           "poeng": 4,
           "pris": 9.8,
-          "eid": 17.3
+          "eid": 8.9
         },
         {
           "navn": "Jonas Vingegaard",
           "lag": "TVL",
           "poeng": 4,
           "pris": 11.1,
-          "eid": 18.4
+          "eid": 6.8
         },
         {
           "navn": "Egan Bernal",
           "lag": "INS",
           "poeng": 4,
           "pris": 8.5,
-          "eid": 0.5
+          "eid": 0.4
         }
       ],
       "benkesorg": [
@@ -2681,35 +2681,35 @@
           "lag": "UXM",
           "poeng": 224,
           "pris": 4.7,
-          "eid": 1.2
+          "eid": 0.9
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 200,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Olav Kooij",
           "lag": "DEC",
           "poeng": 160,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         },
         {
           "navn": "Uno-X Mobility",
           "lag": "UXM",
           "poeng": 160,
           "pris": 8.3,
-          "eid": 4.4
+          "eid": 4.0
         },
         {
           "navn": "Mathis Le Berre",
           "lag": "TEN",
           "poeng": 104,
           "pris": 4.2,
-          "eid": 1.4
+          "eid": 1.5
         }
       ],
       "kategorikonger": [
@@ -2727,7 +2727,7 @@
           "lag": "UXM",
           "poeng": 200,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "kategori": "Ungdom",
@@ -2735,7 +2735,7 @@
           "lag": "TEN",
           "poeng": 104,
           "pris": 4.2,
-          "eid": 1.4
+          "eid": 1.5
         },
         {
           "kategori": "Tempo",
@@ -2743,7 +2743,7 @@
           "lag": "LIM",
           "poeng": 120,
           "pris": 5.2,
-          "eid": 19.1
+          "eid": 18.3
         },
         {
           "kategori": "Hjelper",
@@ -2751,7 +2751,7 @@
           "lag": "UXM",
           "poeng": 224,
           "pris": 4.7,
-          "eid": 1.2
+          "eid": 0.9
         },
         {
           "kategori": "Kaptein",
@@ -2759,7 +2759,7 @@
           "lag": "UXM",
           "poeng": 26,
           "pris": 9.3,
-          "eid": 14.3
+          "eid": 11.0
         },
         {
           "kategori": "Direktør",
@@ -2767,7 +2767,7 @@
           "lag": "UXM",
           "poeng": 160,
           "pris": 8.3,
-          "eid": 4.4
+          "eid": 4.0
         }
       ],
       "mest_eide": [
@@ -2776,35 +2776,35 @@
           "lag": "UAE",
           "poeng": 6,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 12,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 6,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 64,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 52,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 6,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 6,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -2820,35 +2820,35 @@
           "lag": "SOQ",
           "poeng": 228,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Baptiste Veistroffer",
           "lag": "LIM",
           "poeng": 228,
           "pris": 4.0,
-          "eid": 43.0
+          "eid": 45.0
         },
         {
           "navn": "Olav Kooij",
           "lag": "DEC",
           "poeng": 160,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         },
         {
           "navn": "Soudal Quick-Step",
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         },
         {
           "navn": "Jasper Philipsen",
           "lag": "APT",
           "poeng": 152,
           "pris": 11.3,
-          "eid": 16.5
+          "eid": 16.9
         }
       ],
       "beste_kjop": [
@@ -2857,7 +2857,7 @@
           "lag": "LIM",
           "poeng": 228,
           "pris": 4.0,
-          "eid": 43.0,
+          "eid": 45.0,
           "perMill": 57.0
         },
         {
@@ -2865,7 +2865,7 @@
           "lag": "SOQ",
           "poeng": 228,
           "pris": 11.8,
-          "eid": 5.3,
+          "eid": 3.7,
           "perMill": 19.3
         },
         {
@@ -2873,7 +2873,7 @@
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5,
+          "eid": 3.2,
           "perMill": 18.6
         },
         {
@@ -2889,7 +2889,7 @@
           "lag": "DEC",
           "poeng": 160,
           "pris": 11.2,
-          "eid": 2.9,
+          "eid": 3.0,
           "perMill": 14.3
         }
       ],
@@ -2899,35 +2899,35 @@
           "lag": "INS",
           "poeng": 2,
           "pris": 8.9,
-          "eid": 3.2
+          "eid": 3.1
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 2,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Egan Bernal",
           "lag": "INS",
           "poeng": 2,
           "pris": 8.5,
-          "eid": 0.5
+          "eid": 0.4
         },
         {
           "navn": "Juan Ayuso",
           "lag": "LTK",
           "poeng": 4,
           "pris": 9.6,
-          "eid": 2.0
+          "eid": 1.7
         },
         {
           "navn": "Richard Carapaz",
           "lag": "EFE",
           "poeng": 4,
           "pris": 9.8,
-          "eid": 17.3
+          "eid": 8.9
         }
       ],
       "benkesorg": [
@@ -2936,28 +2936,28 @@
           "lag": "SOQ",
           "poeng": 228,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Olav Kooij",
           "lag": "DEC",
           "poeng": 160,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         },
         {
           "navn": "Soudal Quick-Step",
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         },
         {
           "navn": "Biniam Girmay",
           "lag": "NSN",
           "poeng": 120,
           "pris": 11.0,
-          "eid": 5.1
+          "eid": 4.8
         },
         {
           "navn": "Decathlon CMA CGM Team",
@@ -2974,7 +2974,7 @@
           "lag": "SOQ",
           "poeng": 36,
           "pris": 6.7,
-          "eid": 2.7
+          "eid": 3.0
         },
         {
           "kategori": "Spurter",
@@ -2982,7 +2982,7 @@
           "lag": "SOQ",
           "poeng": 228,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "kategori": "Ungdom",
@@ -2990,7 +2990,7 @@
           "lag": "SOQ",
           "poeng": 44,
           "pris": 7.1,
-          "eid": 29.6
+          "eid": 26.9
         },
         {
           "kategori": "Tempo",
@@ -2998,7 +2998,7 @@
           "lag": "LIM",
           "poeng": 63,
           "pris": 5.2,
-          "eid": 19.1
+          "eid": 18.3
         },
         {
           "kategori": "Hjelper",
@@ -3006,7 +3006,7 @@
           "lag": "LIM",
           "poeng": 228,
           "pris": 4.0,
-          "eid": 43.0
+          "eid": 45.0
         },
         {
           "kategori": "Kaptein",
@@ -3014,7 +3014,7 @@
           "lag": "RBH",
           "poeng": 8,
           "pris": 10.3,
-          "eid": 34.9
+          "eid": 60.3
         },
         {
           "kategori": "Direktør",
@@ -3022,7 +3022,7 @@
           "lag": "SOQ",
           "poeng": 160,
           "pris": 8.6,
-          "eid": 3.5
+          "eid": 3.2
         }
       ],
       "mest_eide": [
@@ -3031,35 +3031,35 @@
           "lag": "UAE",
           "poeng": 4,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 8,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 6,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 72,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 88,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 6,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 8,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -3075,35 +3075,35 @@
           "lag": "JAY",
           "poeng": 496,
           "pris": 7.4,
-          "eid": 4.2
+          "eid": 4.9
         },
         {
           "navn": "Maxim Van Gils",
           "lag": "RBH",
           "poeng": 272,
           "pris": 7.6,
-          "eid": 9.0
+          "eid": 8.3
         },
         {
           "navn": "Tom Pidcock",
           "lag": "Q36",
           "poeng": 252,
           "pris": 9.1,
-          "eid": 3.6
+          "eid": 3.0
         },
         {
           "navn": "Kévin Vauquelin",
           "lag": "INS",
           "poeng": 168,
           "pris": 7.5,
-          "eid": 7.4
+          "eid": 7.2
         },
         {
           "navn": "Harold Tejada",
           "lag": "AST",
           "poeng": 160,
           "pris": 7.3,
-          "eid": 0.9
+          "eid": 0.8
         }
       ],
       "beste_kjop": [
@@ -3112,7 +3112,7 @@
           "lag": "JAY",
           "poeng": 496,
           "pris": 7.4,
-          "eid": 4.2,
+          "eid": 4.9,
           "perMill": 67.0
         },
         {
@@ -3120,7 +3120,7 @@
           "lag": "RBH",
           "poeng": 272,
           "pris": 7.6,
-          "eid": 9.0,
+          "eid": 8.3,
           "perMill": 35.8
         },
         {
@@ -3128,7 +3128,7 @@
           "lag": "Q36",
           "poeng": 252,
           "pris": 9.1,
-          "eid": 3.6,
+          "eid": 3.0,
           "perMill": 27.7
         },
         {
@@ -3136,7 +3136,7 @@
           "lag": "INS",
           "poeng": 168,
           "pris": 7.5,
-          "eid": 7.4,
+          "eid": 7.2,
           "perMill": 22.4
         },
         {
@@ -3144,7 +3144,7 @@
           "lag": "AST",
           "poeng": 160,
           "pris": 7.3,
-          "eid": 0.9,
+          "eid": 0.8,
           "perMill": 21.9
         }
       ],
@@ -3154,21 +3154,21 @@
           "lag": "INS",
           "poeng": 2,
           "pris": 8.9,
-          "eid": 3.2
+          "eid": 3.1
         },
         {
           "navn": "Tim Merlier",
           "lag": "SOQ",
           "poeng": 2,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 2,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Pavel Bittner",
@@ -3182,7 +3182,7 @@
           "lag": "DEC",
           "poeng": 2,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         }
       ],
       "benkesorg": [
@@ -3191,35 +3191,35 @@
           "lag": "JAY",
           "poeng": 496,
           "pris": 7.4,
-          "eid": 4.2
+          "eid": 4.9
         },
         {
           "navn": "Maxim Van Gils",
           "lag": "RBH",
           "poeng": 272,
           "pris": 7.6,
-          "eid": 9.0
+          "eid": 8.3
         },
         {
           "navn": "Tom Pidcock",
           "lag": "Q36",
           "poeng": 252,
           "pris": 9.1,
-          "eid": 3.6
+          "eid": 3.0
         },
         {
           "navn": "Kévin Vauquelin",
           "lag": "INS",
           "poeng": 168,
           "pris": 7.5,
-          "eid": 7.4
+          "eid": 7.2
         },
         {
           "navn": "Harold Tejada",
           "lag": "AST",
           "poeng": 160,
           "pris": 7.3,
-          "eid": 0.9
+          "eid": 0.8
         }
       ],
       "kategorikonger": [
@@ -3229,7 +3229,7 @@
           "lag": "JAY",
           "poeng": 147,
           "pris": 6.8,
-          "eid": 2.5
+          "eid": 2.9
         },
         {
           "kategori": "Spurter",
@@ -3237,7 +3237,7 @@
           "lag": "APT",
           "poeng": 52,
           "pris": 11.3,
-          "eid": 16.5
+          "eid": 16.9
         },
         {
           "kategori": "Ungdom",
@@ -3245,7 +3245,7 @@
           "lag": "INS",
           "poeng": 168,
           "pris": 7.5,
-          "eid": 7.4
+          "eid": 7.2
         },
         {
           "kategori": "Tempo",
@@ -3253,7 +3253,7 @@
           "lag": "UAE",
           "poeng": 120,
           "pris": 7.1,
-          "eid": 4.0
+          "eid": 3.8
         },
         {
           "kategori": "Hjelper",
@@ -3261,7 +3261,7 @@
           "lag": "JAY",
           "poeng": 496,
           "pris": 7.4,
-          "eid": 4.2
+          "eid": 4.9
         },
         {
           "kategori": "Kaptein",
@@ -3269,7 +3269,7 @@
           "lag": "Q36",
           "poeng": 252,
           "pris": 9.1,
-          "eid": 3.6
+          "eid": 3.0
         },
         {
           "kategori": "Direktør",
@@ -3286,35 +3286,35 @@
           "lag": "UAE",
           "poeng": 6,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 12,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 9,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 2,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 42,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 9,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 6,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -3330,35 +3330,35 @@
           "lag": "UAE",
           "poeng": 408,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "navn": "Valentin Paret-Peintre",
           "lag": "SOQ",
           "poeng": 312,
           "pris": 7.1,
-          "eid": 29.6
+          "eid": 26.9
         },
         {
           "navn": "Tadej Pogačar",
           "lag": "UAE",
           "poeng": 260,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Richard Carapaz",
           "lag": "EFE",
           "poeng": 220,
           "pris": 9.8,
-          "eid": 17.3
+          "eid": 8.9
         },
         {
           "navn": "Paul Seixas",
           "lag": "DEC",
           "poeng": 196,
           "pris": 10.8,
-          "eid": 8.9
+          "eid": 7.8
         }
       ],
       "beste_kjop": [
@@ -3367,7 +3367,7 @@
           "lag": "UAE",
           "poeng": 408,
           "pris": 8.0,
-          "eid": 83.4,
+          "eid": 84.4,
           "perMill": 51.0
         },
         {
@@ -3375,7 +3375,7 @@
           "lag": "SOQ",
           "poeng": 312,
           "pris": 7.1,
-          "eid": 29.6,
+          "eid": 26.9,
           "perMill": 43.9
         },
         {
@@ -3383,7 +3383,7 @@
           "lag": "EFE",
           "poeng": 220,
           "pris": 9.8,
-          "eid": 17.3,
+          "eid": 8.9,
           "perMill": 22.4
         },
         {
@@ -3391,7 +3391,7 @@
           "lag": "UAE",
           "poeng": 260,
           "pris": 11.8,
-          "eid": 96.5,
+          "eid": 96.8,
           "perMill": 22.0
         },
         {
@@ -3399,7 +3399,7 @@
           "lag": "DEC",
           "poeng": 196,
           "pris": 10.8,
-          "eid": 8.9,
+          "eid": 7.8,
           "perMill": 18.1
         }
       ],
@@ -3409,7 +3409,7 @@
           "lag": "INS",
           "poeng": 2,
           "pris": 8.9,
-          "eid": 3.2
+          "eid": 3.1
         },
         {
           "navn": "Pascal Ackermann",
@@ -3423,14 +3423,14 @@
           "lag": "SOQ",
           "poeng": 2,
           "pris": 11.8,
-          "eid": 5.3
+          "eid": 3.7
         },
         {
           "navn": "Søren Wærenskjold",
           "lag": "UXM",
           "poeng": 2,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Pavel Bittner",
@@ -3442,18 +3442,32 @@
       ],
       "benkesorg": [
         {
+          "navn": "Richard Carapaz",
+          "lag": "EFE",
+          "poeng": 220,
+          "pris": 9.8,
+          "eid": 8.9
+        },
+        {
           "navn": "Paul Seixas",
           "lag": "DEC",
           "poeng": 196,
           "pris": 10.8,
-          "eid": 8.9
+          "eid": 7.8
+        },
+        {
+          "navn": "Jonas Vingegaard",
+          "lag": "TVL",
+          "poeng": 148,
+          "pris": 11.1,
+          "eid": 6.8
         },
         {
           "navn": "Tobias Halland Johannessen",
           "lag": "UXM",
           "poeng": 120,
           "pris": 9.3,
-          "eid": 14.3
+          "eid": 11.0
         },
         {
           "navn": "Decathlon CMA CGM Team",
@@ -3461,20 +3475,6 @@
           "poeng": 100,
           "pris": 10.1,
           "eid": 1.3
-        },
-        {
-          "navn": "Juan Ayuso",
-          "lag": "LTK",
-          "poeng": 78,
-          "pris": 9.6,
-          "eid": 2.0
-        },
-        {
-          "navn": "Team Visma | Lease a Bike",
-          "lag": "TVL",
-          "poeng": 60,
-          "pris": 9.8,
-          "eid": 2.6
         }
       ],
       "kategorikonger": [
@@ -3484,7 +3484,7 @@
           "lag": "RBH",
           "poeng": 96,
           "pris": 8.0,
-          "eid": 68.5
+          "eid": 60.5
         },
         {
           "kategori": "Spurter",
@@ -3492,7 +3492,7 @@
           "lag": "APT",
           "poeng": 52,
           "pris": 11.3,
-          "eid": 16.5
+          "eid": 16.9
         },
         {
           "kategori": "Ungdom",
@@ -3500,7 +3500,7 @@
           "lag": "UAE",
           "poeng": 408,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "kategori": "Tempo",
@@ -3508,7 +3508,7 @@
           "lag": "UAE",
           "poeng": 39,
           "pris": 7.1,
-          "eid": 4.0
+          "eid": 3.8
         },
         {
           "kategori": "Hjelper",
@@ -3516,7 +3516,7 @@
           "lag": "EFE",
           "poeng": 108,
           "pris": 7.3,
-          "eid": 29.4
+          "eid": 26.3
         },
         {
           "kategori": "Kaptein",
@@ -3524,7 +3524,7 @@
           "lag": "UAE",
           "poeng": 260,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "kategori": "Direktør",
@@ -3532,7 +3532,7 @@
           "lag": "UAE",
           "poeng": 160,
           "pris": 10.4,
-          "eid": 46.0
+          "eid": 46.3
         }
       ],
       "mest_eide": [
@@ -3541,35 +3541,35 @@
           "lag": "UAE",
           "poeng": 260,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 408,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 96,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 2,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
-          "lag": "LTK",
-          "poeng": 42,
-          "pris": 10.6,
-          "eid": 59.8
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 96,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 92,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     },
@@ -3585,35 +3585,35 @@
           "lag": "UAE",
           "poeng": 464,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "navn": "Quinn Simmons",
           "lag": "LTK",
           "poeng": 352,
           "pris": 6.5,
-          "eid": 25.9
+          "eid": 27.0
         },
         {
           "navn": "Remco Evenepoel",
           "lag": "RBH",
           "poeng": 320,
           "pris": 10.3,
-          "eid": 34.9
+          "eid": 60.3
         },
         {
           "navn": "Tadej Pogačar",
           "lag": "UAE",
           "poeng": 256,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Florian Lipowitz",
           "lag": "RBH",
           "poeng": 186,
           "pris": 8.0,
-          "eid": 68.5
+          "eid": 60.5
         }
       ],
       "beste_kjop": [
@@ -3622,7 +3622,7 @@
           "lag": "UAE",
           "poeng": 464,
           "pris": 8.0,
-          "eid": 83.4,
+          "eid": 84.4,
           "perMill": 58.0
         },
         {
@@ -3630,7 +3630,7 @@
           "lag": "LTK",
           "poeng": 352,
           "pris": 6.5,
-          "eid": 25.9,
+          "eid": 27.0,
           "perMill": 54.2
         },
         {
@@ -3638,7 +3638,7 @@
           "lag": "RBH",
           "poeng": 320,
           "pris": 10.3,
-          "eid": 34.9,
+          "eid": 60.3,
           "perMill": 31.1
         },
         {
@@ -3646,7 +3646,7 @@
           "lag": "RBH",
           "poeng": 186,
           "pris": 8.0,
-          "eid": 68.5,
+          "eid": 60.5,
           "perMill": 23.2
         },
         {
@@ -3654,7 +3654,7 @@
           "lag": "TBV",
           "poeng": 168,
           "pris": 7.5,
-          "eid": 16.6,
+          "eid": 15.1,
           "perMill": 22.4
         }
       ],
@@ -3664,7 +3664,7 @@
           "lag": "INS",
           "poeng": 2,
           "pris": 8.9,
-          "eid": 3.2
+          "eid": 3.1
         },
         {
           "navn": "Pascal Ackermann",
@@ -3678,7 +3678,7 @@
           "lag": "UXM",
           "poeng": 2,
           "pris": 9.7,
-          "eid": 5.3
+          "eid": 5.7
         },
         {
           "navn": "Pavel Bittner",
@@ -3692,7 +3692,7 @@
           "lag": "DEC",
           "poeng": 2,
           "pris": 11.2,
-          "eid": 2.9
+          "eid": 3.0
         }
       ],
       "benkesorg": [
@@ -3701,14 +3701,14 @@
           "lag": "RBH",
           "poeng": 160,
           "pris": 9.4,
-          "eid": 2.8
+          "eid": 4.2
         },
         {
           "navn": "Paul Seixas",
           "lag": "DEC",
           "poeng": 148,
           "pris": 10.8,
-          "eid": 8.9
+          "eid": 7.8
         },
         {
           "navn": "Adam Yates",
@@ -3722,14 +3722,14 @@
           "lag": "TUD",
           "poeng": 108,
           "pris": 5.8,
-          "eid": 0.5
+          "eid": 0.7
         },
         {
           "navn": "Tom Pidcock",
           "lag": "Q36",
           "poeng": 84,
           "pris": 9.1,
-          "eid": 3.6
+          "eid": 3.0
         }
       ],
       "kategorikonger": [
@@ -3739,7 +3739,7 @@
           "lag": "RBH",
           "poeng": 186,
           "pris": 8.0,
-          "eid": 68.5
+          "eid": 60.5
         },
         {
           "kategori": "Spurter",
@@ -3747,7 +3747,7 @@
           "lag": "APT",
           "poeng": 52,
           "pris": 11.3,
-          "eid": 16.5
+          "eid": 16.9
         },
         {
           "kategori": "Ungdom",
@@ -3755,7 +3755,7 @@
           "lag": "UAE",
           "poeng": 464,
           "pris": 8.0,
-          "eid": 83.4
+          "eid": 84.4
         },
         {
           "kategori": "Tempo",
@@ -3763,7 +3763,7 @@
           "lag": "RBH",
           "poeng": 39,
           "pris": 5.8,
-          "eid": 1.1
+          "eid": 1.0
         },
         {
           "kategori": "Hjelper",
@@ -3771,7 +3771,7 @@
           "lag": "RBH",
           "poeng": 52,
           "pris": 7.6,
-          "eid": 9.0
+          "eid": 8.3
         },
         {
           "kategori": "Kaptein",
@@ -3779,7 +3779,7 @@
           "lag": "RBH",
           "poeng": 320,
           "pris": 10.3,
-          "eid": 34.9
+          "eid": 60.3
         },
         {
           "kategori": "Direktør",
@@ -3787,7 +3787,7 @@
           "lag": "RBH",
           "poeng": 160,
           "pris": 9.4,
-          "eid": 2.8
+          "eid": 4.2
         }
       ],
       "mest_eide": [
@@ -3796,35 +3796,290 @@
           "lag": "UAE",
           "poeng": 256,
           "pris": 11.8,
-          "eid": 96.5
+          "eid": 96.8
         },
         {
           "navn": "Isaac del Toro",
           "lag": "UAE",
           "poeng": 464,
           "pris": 8.0,
-          "eid": 83.4
-        },
-        {
-          "navn": "Florian Lipowitz",
-          "lag": "RBH",
-          "poeng": 186,
-          "pris": 8.0,
-          "eid": 68.5
+          "eid": 84.4
         },
         {
           "navn": "Anthony Turgis",
           "lag": "TEN",
           "poeng": 4,
           "pris": 6.5,
-          "eid": 66.3
+          "eid": 66.6
         },
         {
-          "navn": "Mads Pedersen",
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 186,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 320,
+          "pris": 10.3,
+          "eid": 60.3
+        }
+      ]
+    },
+    {
+      "nummer": 16,
+      "terreng": "Tempo",
+      "fra": "Évian-les-Bains",
+      "til": "Thonon-les-Bains",
+      "distanse": 26,
+      "toppscorere": [
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 230,
+          "pris": 10.3,
+          "eid": 60.3
+        },
+        {
+          "navn": "Mattias Skjelmose",
           "lag": "LTK",
-          "poeng": 42,
-          "pris": 10.6,
-          "eid": 59.8
+          "poeng": 198,
+          "pris": 7.1,
+          "eid": 44.3
+        },
+        {
+          "navn": "Tadej Pogačar",
+          "lag": "UAE",
+          "poeng": 178,
+          "pris": 11.8,
+          "eid": 96.8
+        },
+        {
+          "navn": "Red Bull - BORA - hansgrohe",
+          "lag": "RBH",
+          "poeng": 160,
+          "pris": 9.4,
+          "eid": 4.2
+        },
+        {
+          "navn": "Isaac del Toro",
+          "lag": "UAE",
+          "poeng": 160,
+          "pris": 8.0,
+          "eid": 84.4
+        }
+      ],
+      "beste_kjop": [
+        {
+          "navn": "Mattias Skjelmose",
+          "lag": "LTK",
+          "poeng": 198,
+          "pris": 7.1,
+          "eid": 44.3,
+          "perMill": 27.9
+        },
+        {
+          "navn": "Mattia Cattaneo",
+          "lag": "RBH",
+          "poeng": 138,
+          "pris": 5.8,
+          "eid": 1.0,
+          "perMill": 23.8
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 230,
+          "pris": 10.3,
+          "eid": 60.3,
+          "perMill": 22.3
+        },
+        {
+          "navn": "Isaac del Toro",
+          "lag": "UAE",
+          "poeng": 160,
+          "pris": 8.0,
+          "eid": 84.4,
+          "perMill": 20.0
+        },
+        {
+          "navn": "Red Bull - BORA - hansgrohe",
+          "lag": "RBH",
+          "poeng": 160,
+          "pris": 9.4,
+          "eid": 4.2,
+          "perMill": 17.0
+        }
+      ],
+      "luksusfeller": [
+        {
+          "navn": "Biniam Girmay",
+          "lag": "NSN",
+          "poeng": 2,
+          "pris": 11.0,
+          "eid": 4.8
+        },
+        {
+          "navn": "Pascal Ackermann",
+          "lag": "JAY",
+          "poeng": 2,
+          "pris": 8.7,
+          "eid": 0.6
+        },
+        {
+          "navn": "Søren Wærenskjold",
+          "lag": "UXM",
+          "poeng": 2,
+          "pris": 9.7,
+          "eid": 5.7
+        },
+        {
+          "navn": "Pavel Bittner",
+          "lag": "PIC",
+          "poeng": 2,
+          "pris": 9.5,
+          "eid": 0.1
+        },
+        {
+          "navn": "Olav Kooij",
+          "lag": "DEC",
+          "poeng": 2,
+          "pris": 11.2,
+          "eid": 3.0
+        }
+      ],
+      "benkesorg": [
+        {
+          "navn": "Red Bull - BORA - hansgrohe",
+          "lag": "RBH",
+          "poeng": 160,
+          "pris": 9.4,
+          "eid": 4.2
+        },
+        {
+          "navn": "Mattia Cattaneo",
+          "lag": "RBH",
+          "poeng": 138,
+          "pris": 5.8,
+          "eid": 1.0
+        },
+        {
+          "navn": "Paul Seixas",
+          "lag": "DEC",
+          "poeng": 100,
+          "pris": 10.8,
+          "eid": 7.8
+        },
+        {
+          "navn": "Pablo Castrillo",
+          "lag": "MOV",
+          "poeng": 96,
+          "pris": 5.8,
+          "eid": 0.8
+        },
+        {
+          "navn": "Bruno Armirail",
+          "lag": "TVL",
+          "poeng": 84,
+          "pris": 6.3,
+          "eid": 3.1
+        }
+      ],
+      "kategorikonger": [
+        {
+          "kategori": "Klatrer",
+          "navn": "Mattias Skjelmose",
+          "lag": "LTK",
+          "poeng": 198,
+          "pris": 7.1,
+          "eid": 44.3
+        },
+        {
+          "kategori": "Spurter",
+          "navn": "Clément Russo",
+          "lag": "FDJ",
+          "poeng": 6,
+          "pris": 6.5,
+          "eid": 18.0
+        },
+        {
+          "kategori": "Ungdom",
+          "navn": "Isaac del Toro",
+          "lag": "UAE",
+          "poeng": 160,
+          "pris": 8.0,
+          "eid": 84.4
+        },
+        {
+          "kategori": "Tempo",
+          "navn": "Mattia Cattaneo",
+          "lag": "RBH",
+          "poeng": 138,
+          "pris": 5.8,
+          "eid": 1.0
+        },
+        {
+          "kategori": "Hjelper",
+          "navn": "Maxim Van Gils",
+          "lag": "RBH",
+          "poeng": 52,
+          "pris": 7.6,
+          "eid": 8.3
+        },
+        {
+          "kategori": "Kaptein",
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 230,
+          "pris": 10.3,
+          "eid": 60.3
+        },
+        {
+          "kategori": "Direktør",
+          "navn": "Red Bull - BORA - hansgrohe",
+          "lag": "RBH",
+          "poeng": 160,
+          "pris": 9.4,
+          "eid": 4.2
+        }
+      ],
+      "mest_eide": [
+        {
+          "navn": "Tadej Pogačar",
+          "lag": "UAE",
+          "poeng": 178,
+          "pris": 11.8,
+          "eid": 96.8
+        },
+        {
+          "navn": "Isaac del Toro",
+          "lag": "UAE",
+          "poeng": 160,
+          "pris": 8.0,
+          "eid": 84.4
+        },
+        {
+          "navn": "Anthony Turgis",
+          "lag": "TEN",
+          "poeng": 2,
+          "pris": 6.5,
+          "eid": 66.6
+        },
+        {
+          "navn": "Florian Lipowitz",
+          "lag": "RBH",
+          "poeng": 39,
+          "pris": 8.0,
+          "eid": 60.5
+        },
+        {
+          "navn": "Remco Evenepoel",
+          "lag": "RBH",
+          "poeng": 230,
+          "pris": 10.3,
+          "eid": 60.3
         }
       ]
     }
