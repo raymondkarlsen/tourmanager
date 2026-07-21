@@ -54,6 +54,7 @@
       margin-bottom: 8px;
     }
     .tm-kolonner h4 { margin: 16px 0 6px; font-size: 1rem; }
+    .tm-etappeanalyse-tittel { margin: 24px 0 6px; font-size: 1rem; }
     .tm-kolonner ol.rangering li { margin-bottom: 3px; font-size: 0.95rem; }
     .tm-hint, .tm-kilde {
       color: var(--tekst-daus);
@@ -438,15 +439,17 @@ hentTourdata().then(data => {
   document.getElementById("etappeanalyse").innerHTML = `
     <div class="tm-kolonner" style="margin-bottom:8px;">
       <div>
-        <h4>Jevneste etapper</h4>
+        <h4>Jevneste etapper
+          <span class="tm-hint">(minst avstand fra 1. til 4. plass)</span></h4>
         ${analyseListe(jevnest)}
       </div>
       <div>
-        <h4>Minst jevne etapper</h4>
+        <h4>Minst jevne etapper
+          <span class="tm-hint">(størst avstand fra 1. til 4. plass)</span></h4>
         ${analyseListe(minstJevn)}
       </div>
     </div>
-    <h4 style="margin-top:24px;">Mest avgjørende etapper
+    <h4 class="tm-etappeanalyse-tittel">Mest avgjørende etapper
       <span class="tm-hint">(størst luke mellom 1. og 2. plass)</span></h4>
     <ol class="rangering">${avgjorende.map(r =>
       `<li><strong>Etappe ${r.etappe}</strong>: <strong>${r.forst}</strong>
