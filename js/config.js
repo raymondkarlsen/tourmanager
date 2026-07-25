@@ -4,8 +4,10 @@
 
 const KONFIG = {
   // Publiseringslenke til sesonger-fanen (aar, person, lagnavn, poeng)
+  // Pinnet til fanens egen gid slik at rekkefølgen på fanene i regnearket
+  // ikke påvirker hvilken fane som hentes.
   sesongerCsv:
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTgDssd8EOFK4qai4Isl6FjeGk_Oebq1puvBfi_aUaaA99K0XOsAI30KAPgLzF55gjvcOy5bmcKzTRY/pub?output=csv",
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTgDssd8EOFK4qai4Isl6FjeGk_Oebq1puvBfi_aUaaA99K0XOsAI30KAPgLzF55gjvcOy5bmcKzTRY/pub?gid=0&single=true&output=csv",
 
   // Publiseringslenke til etapper-fanen (aar, etappe, person, poeng, type)
   etapperCsv:
