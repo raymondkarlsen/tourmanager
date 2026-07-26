@@ -66,6 +66,96 @@
       .tm-kolonner { grid-template-columns: 1fr; }
       .tm-teaser { margin-left: 0; width: 100%; }
     }
+
+    /* Poeng per rytter — lag for lag */
+    .tm-lagryttere { margin-top: 10px; }
+    .tm-lag {
+      border: 1px solid #ece7d2;
+      border-left: 4px solid #9a7d0a;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    .tm-lag > summary {
+      cursor: pointer;
+      padding: 14px 18px;
+      font-size: 1.05rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      align-items: baseline;
+      list-style: none;
+    }
+    .tm-lag > summary::-webkit-details-marker { display: none; }
+    .tm-lag > summary::before {
+      content: "";
+      width: 9px; height: 9px;
+      border-right: 2px solid var(--tekst-daus);
+      border-bottom: 2px solid var(--tekst-daus);
+      transform: rotate(45deg);
+      transition: transform 0.15s ease;
+      flex: none;
+      align-self: center;
+      margin-right: 4px;
+    }
+    .tm-lag[open] > summary::before { transform: rotate(225deg); }
+    .tm-lag[open] > summary { border-bottom: 1px solid #ece7d2; }
+    .tm-lag > summary:hover { background: #faf8ef; }
+    .tm-lagmanager { color: var(--tekst-daus); font-weight: 400; }
+    .tm-lagtot { margin-left: auto; font-weight: 600; color: #9a7d0a; white-space: nowrap; }
+
+    .tm-rytterhode, .tm-rytter > summary {
+      display: grid;
+      grid-template-columns: 1.7fr 0.7fr 1fr 3rem 4rem;
+      gap: 6px 10px;
+      align-items: center;
+      padding: 7px 18px;
+      font-size: 0.93rem;
+    }
+    .tm-rytterhode {
+      color: var(--tekst-daus);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid #ece7d2;
+    }
+    .tm-rytter { border-bottom: 1px solid #f4f0e0; }
+    .tm-rytter:last-child { border-bottom: none; }
+    .tm-rytter > summary { cursor: pointer; list-style: none; }
+    .tm-rytter > summary::-webkit-details-marker { display: none; }
+    .tm-rytter > summary:hover { background: #faf8ef; }
+    .tm-rytter .r-etp, .tm-rytterhode .h-etp { text-align: right; color: var(--tekst-daus); }
+    .tm-rytter .r-poeng, .tm-rytterhode .h-poeng { text-align: right; font-weight: 600; }
+    .tm-rytter .r-lag, .tm-rytter .r-pos { color: var(--tekst-daus); }
+    .tm-rytterchips { display: flex; flex-wrap: wrap; gap: 4px; padding: 2px 18px 12px; }
+    .tm-chip {
+      font-size: 0.8rem;
+      background: #f4f0e0;
+      border-radius: 4px;
+      padding: 2px 7px;
+      white-space: nowrap;
+    }
+    .tm-chip.tom { color: var(--tekst-daus); background: #f7f5ec; }
+    .tm-mer { border-top: 1px solid #f4f0e0; }
+    .tm-mer > summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 9px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #9a7d0a;
+    }
+    .tm-mer > summary::-webkit-details-marker { display: none; }
+    .tm-mer > summary::before { content: "+ "; }
+    .tm-mer[open] > summary::before { content: "– "; }
+    .tm-mer[open] > summary { color: var(--tekst-daus); }
+    .tm-mer > summary:hover { background: #faf8ef; }
+    @media (max-width: 640px) {
+      .tm-rytterhode, .tm-rytter > summary { grid-template-columns: 1.5fr 2.6rem 3.6rem; }
+      .tm-rytterhode .h-lag, .tm-rytterhode .h-pos,
+      .tm-rytter .r-lag, .tm-rytter .r-pos { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -233,7 +323,9 @@ hentTourdata().then(data => {
     <h2 style="margin-top:48px;">Etappeanalyse</h2>
     <p>Hvor jevnt sto det egentlig mellom oss fire på hver enkelt etappe —
     og hvilken etappe var det som virkelig skilte klinten fra hveten?</p>
-    <div id="etappeanalyse"></div>`;
+    <div id="etappeanalyse"></div>
+
+    <div id="lagryttere"></div>`;
   }
 
   /* ---- Rytterstatistikk fra spilleverandøren, hvis den finnes for året --- */
@@ -266,6 +358,9 @@ hentTourdata().then(data => {
      Hentes fra en ferdig-beregnet fil som oppdateres daglig av en
      GitHub Action. Vises under resten av innholdet. */
   visTourmanagerStatistikk(aar);
+
+  /* ---- Poeng per rytter, lag for lag (kun for år som har filen) -------- */
+  visLagryttere(aar);
 
   if (etapper.length === 0) return;
 
@@ -459,6 +554,95 @@ hentTourdata().then(data => {
   document.getElementById("innhold").innerHTML =
     "<p>Klarte ikke å hente dataene akkurat nå. Prøv å laste siden på nytt.</p>";
 });
+
+/* ==========================================================================
+   Poeng per rytter — lag for lag
+   Viser hvilke ryttere som ga hvor mange poeng til hvert av lagene våre,
+   totalt og utvidbart etappe for etappe. Dataene er ferdig beregnet og
+   lagret i data/lagryttere-<aar>.json (se scripts/bygg-lagryttere.py).
+   Filen er valgfri — finnes den ikke for året, vises ingenting.
+   ========================================================================== */
+async function visLagryttere(aar) {
+  const mal = document.getElementById("lagryttere");
+  if (!mal) return;
+
+  let data;
+  try {
+    const svar = await fetch("data/lagryttere-" + aar + ".json");
+    if (!svar.ok) return;              // ingen fil for dette året → hopp over
+    data = await svar.json();
+  } catch (e) {
+    return;
+  }
+  if (!data.lag || !data.personer || data.personer.length === 0) return;
+
+  const f = formatTall;
+  const farger = (typeof KONFIG !== "undefined" && KONFIG.farger) || {};
+
+  const rytterRad = r => `
+    <details class="tm-rytter">
+      <summary>
+        <span class="r-navn">${r.navn}</span>
+        <span class="r-lag">${r.lagkode || ""}</span>
+        <span class="r-pos">${r.posisjon || ""}</span>
+        <span class="r-etp">${r.etapper}</span>
+        <span class="r-poeng">${f(r.poeng)}</span>
+      </summary>
+      <div class="tm-rytterchips">${r.perEtappe.map(([nr, p]) =>
+        `<span class="tm-chip${p === 0 ? " tom" : ""}">E${nr}: ${f(p)}</span>`
+      ).join("")}</div>
+    </details>`;
+
+  const hode = `
+    <div class="tm-rytterhode">
+      <span>Rytter</span><span class="h-lag">Lag</span><span class="h-pos">Rolle</span>
+      <span class="h-etp">Etp.</span><span class="h-poeng">Poeng</span>
+    </div>`;
+
+  let html = `
+    <div class="skille skille--gul"></div>
+    <h2>Poeng per rytter — lag for lag</h2>
+    <p>Her ser du hvilke syklister som ga hvor mange poeng til hvert av lagene
+    våre i ${aar}. De fem beste vises med en gang; klikk «Vis alle syklistene»
+    for å se hele stallen, og på en syklist for å se poengene etappe for etappe.
+    Tallene kommer fra tourmanager.no og summerer seg opp til firekamp-poengene
+    øverst på siden.</p>
+    <div class="tm-lagryttere">`;
+
+  for (const person of data.personer) {
+    const lag = data.lag[person];
+    if (!lag) continue;
+    const farge = farger[person] || "#9a7d0a";
+    const alle = [...lag.ryttere, ...(lag.sportsdirektorer || [])]
+      .sort((a, b) => (b.poeng - a.poeng) || a.navn.localeCompare(b.navn, "nb"));
+    const topp = alle.slice(0, 5);
+    const resten = alle.slice(5);
+    html += `
+      <details class="tm-lag" open style="border-left-color:${farge}">
+        <summary>
+          <strong>${person}</strong>
+          <span class="tm-lagmanager">${lag.lagnavn}</span>
+          <span class="tm-lagtot">${alle.length}&nbsp;syklister</span>
+        </summary>
+        <div class="tm-lag-innhold">
+          ${hode}
+          ${topp.map(rytterRad).join("")}
+          ${resten.length ? `
+            <details class="tm-mer">
+              <summary>Vis alle syklistene</summary>
+              ${resten.map(rytterRad).join("")}
+            </details>` : ""}
+        </div>
+      </details>`;
+  }
+  html += "</div>";
+
+  if (data.oppdatert) {
+    html += `<p class="tm-kilde">Hentet fra tourmanager.no ${data.oppdatert}.</p>`;
+  }
+
+  mal.innerHTML = html;
+}
 
 /* ==========================================================================
    Tourmanager.no-statistikk
