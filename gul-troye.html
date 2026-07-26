@@ -13,12 +13,12 @@
     .troyerekke {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 16px;
       margin: 12px 0 40px;
     }
-    .troye { width: 140px; }
+    .troye { width: 100px; }
     .gruppetittel { margin-top: 48px; margin-bottom: 8px; }
-    @media (max-width: 760px) { .troye { width: 96px; } }
+    @media (max-width: 760px) { .troye { width: 78px; } }
   </style>
 </head>
 <body>
@@ -78,9 +78,9 @@ function troyeSvg(aar) {
     <!-- glidelås -->
     <line x1="50" y1="25" x2="50" y2="52" stroke="#c9a800" stroke-width="1.5"/>
     <!-- årstallslapp -->
-    <rect x="27" y="56" width="46" height="20" rx="4" fill="#fffdf2" stroke="#8a7000" stroke-width="1.5"/>
-    <text x="50" y="71" text-anchor="middle"
-          font-family="Albert Sans, sans-serif" font-size="14"
+    <rect x="27" y="54" width="46" height="24" rx="4" fill="#fffdf2" stroke="#8a7000" stroke-width="1.5"/>
+    <text x="50" y="73" text-anchor="middle"
+          font-family="Albert Sans, sans-serif" font-size="19"
           font-weight="700" fill="#1a1a1a">${aar}</text>
   </svg>`;
 }
