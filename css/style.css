@@ -156,8 +156,8 @@ img { max-width: 100%; height: auto; }
   margin: 32px 0;
 }
 .duoboks > div { padding: 28px 32px; }
-.duoboks .del-gul  { background: var(--tdf-gul); }
-.duoboks .del-krem { background: var(--pastell-gul); }
+.duoboks .del-gul  { background: #1c1c1c; color: #f8f2c4; }
+.duoboks .del-krem { background: #e8e8e6; }
 @media (max-width: 760px) {
   .duoboks { grid-template-columns: 1fr; }
 }
@@ -172,15 +172,32 @@ img { max-width: 100%; height: auto; }
 .kort { padding: 0 0 28px; position: relative; }
 .kort .kort-bilde { display: block; width: 100%; }
 .kort .kort-innhold { padding: 20px 28px 0; }
-.kort .kort-innhold h3 { padding-right: 44px; }
+.kort .kort-innhold h3 { padding-right: 64px; }
 
-/* Ikonet øverst til høyre i forsidekortene */
+/* Ikonet øverst til høyre i forsidekortene: sitter i en rund glorie i
+   kortets egen farge, og spretter litt til liv når man holder over kortet. */
 .kortikon {
   position: absolute;
-  top: 22px;
-  right: 24px;
-  opacity: 0.85;
+  top: 18px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
 }
+.kortikon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.14;
+}
+.kortikon svg { position: relative; z-index: 1; }
+.kort:hover .kortikon { transform: scale(1.08) rotate(-6deg); }
 
 /* ---- Lister uten kuler (rangeringslister som "1. Tony – 360") ------------ */
 ol.rangering {
@@ -193,6 +210,7 @@ ol.rangering li { margin-bottom: 2px; }
 /* ---- Knapper ------------------------------------------------------------- */
 .knapp {
   display: inline-block;
+  margin-top: 20px;
   padding: 10px 22px;
   border-radius: 999px;
   font-size: 0.95rem;
@@ -203,8 +221,16 @@ ol.rangering li { margin-bottom: 2px; }
   border: none;
   cursor: pointer;
 }
+.knapp::after {
+  content: "→";
+  margin-left: 8px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.knapp:hover::after { transform: translateX(3px); }
 .knapp--gull   { background: var(--knapp-gull); }
 .knapp--groenn { background: var(--knapp-groenn); }
+.knapp--moerk  { background: #1c1c1c; color: #f8f2c4; }
 .knapp--omriss {
   background: transparent;
   color: var(--tekst);
