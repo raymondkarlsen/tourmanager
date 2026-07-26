@@ -13,12 +13,11 @@
     .troyerekke {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      margin: 12px 0 40px;
+      gap: 14px;
+      margin: 8px 0 32px;
     }
-    .troye { width: 100px; }
-    .gruppetittel { margin-top: 48px; margin-bottom: 8px; }
-    @media (max-width: 760px) { .troye { width: 78px; } }
+    .troye { width: 88px; }
+    @media (max-width: 760px) { .troye { width: 68px; } }
   </style>
 </head>
 <body>
@@ -99,10 +98,9 @@ hentTourdata().then(data => {
   }
 
   for (const gruppe of grupper) {
-    const tittel = gruppe.antall === 1 ? "1 trøye" : gruppe.antall + " trøyer";
-    html += `<h2 class="gruppetittel">${tittel}</h2>`;
+    const antallTekst = gruppe.antall === 1 ? "1 trøye" : gruppe.antall + " trøyer";
     for (const person of gruppe.personer) {
-      html += `<h3>${person.person}</h3><div class="troyerekke">` +
+      html += `<h3>${person.person} – ${antallTekst}</h3><div class="troyerekke">` +
         person.aarene.map(aar => `<div class="troye">${troyeSvg(aar)}</div>`).join("") +
         "</div>";
     }
