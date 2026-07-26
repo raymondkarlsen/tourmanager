@@ -9,15 +9,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Trøyerekkene: en rad med trøyer per person */
+    /* Trøyerekkene: en rad med små draktikoner per person */
     .troyerekke {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin: 8px 0 32px;
+      gap: 14px 12px;
+      margin: 8px 0 28px;
     }
-    .troye { width: 88px; }
-    @media (max-width: 760px) { .troye { width: 68px; } }
+    /* Drakten er nå et lite ikon, og årstallet ligger som en egen
+       brikke delvis oppå den nedre kanten. Da kan drakten være liten
+       samtidig som årstallet holder fast, lesbar størrelse. */
+    .troye { position: relative; width: 58px; }
+    .troye svg { display: block; width: 100%; height: auto; }
+    .aar {
+      position: absolute;
+      left: 50%;
+      bottom: -2px;
+      transform: translateX(-50%);
+      background: #fffdf2;
+      border: 1.5px solid #8a7000;
+      border-radius: 999px;
+      padding: 1px 7px;
+      font-family: "Albert Sans", sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.35;
+      color: #1a1a1a;
+      white-space: nowrap;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+    }
+    @media (max-width: 760px) {
+      .troye { width: 50px; }
+      .aar { font-size: 12px; padding: 1px 6px; }
+    }
   </style>
 </head>
 <body>
@@ -59,9 +83,9 @@
 <script src="js/config.js"></script>
 <script src="js/motor.js"></script>
 <script>
-/* Tegner en gul trøye med årstall på brystet, som SVG.
-   Én mal — årstallet legges på som tekst, så nye trøyer
-   lager seg selv når noen vinner en sesong. */
+/* Tegner en gul trøye som et lite ikon (uten årstall).
+   Årstallet legges på som en egen HTML-brikke utenpå, så det
+   forblir lesbart uansett hvor liten drakten er. */
 function troyeSvg(aar) {
   return `
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -75,12 +99,7 @@ function troyeSvg(aar) {
     <path d="M40 19 Q50 26 60 19 Q50 23 40 19" fill="#8a7000"/>
     <path d="M40 19 Q50 26 60 19" fill="none" stroke="#8a7000" stroke-width="2"/>
     <!-- glidelås -->
-    <line x1="50" y1="25" x2="50" y2="52" stroke="#c9a800" stroke-width="1.5"/>
-    <!-- årstallslapp -->
-    <rect x="27" y="54" width="46" height="24" rx="4" fill="#fffdf2" stroke="#8a7000" stroke-width="1.5"/>
-    <text x="50" y="73" text-anchor="middle"
-          font-family="Albert Sans, sans-serif" font-size="19"
-          font-weight="700" fill="#1a1a1a">${aar}</text>
+    <line x1="50" y1="25" x2="50" y2="60" stroke="#c9a800" stroke-width="1.5"/>
   </svg>`;
 }
 
@@ -101,7 +120,7 @@ hentTourdata().then(data => {
     const antallTekst = gruppe.antall === 1 ? "1 trøye" : gruppe.antall + " trøyer";
     for (const person of gruppe.personer) {
       html += `<h3>${person.person} – ${antallTekst}</h3><div class="troyerekke">` +
-        person.aarene.map(aar => `<div class="troye">${troyeSvg(aar)}</div>`).join("") +
+        person.aarene.map(aar => `<div class="troye">${troyeSvg(aar)}<span class="aar">${aar}</span></div>`).join("") +
         "</div>";
     }
   }
