@@ -1,0 +1,1274 @@
+{
+  "aar": 2026,
+  "oppdatert": "2026-07-27 22:49 UTC",
+  "kilde": "tourmanager.no",
+  "ryttere": [
+    {
+      "navn": "Isaac del Toro",
+      "rolle": "youth",
+      "lag": "UAE Team Emirates - XRG",
+      "pris": 8.0,
+      "poeng": 2968
+    },
+    {
+      "navn": "Tadej Pogačar",
+      "rolle": "captain",
+      "lag": "UAE Team Emirates - XRG",
+      "pris": 11.8,
+      "poeng": 2604
+    },
+    {
+      "navn": "Richard Carapaz",
+      "rolle": "captain",
+      "lag": "EF Education - EasyPost",
+      "pris": 9.8,
+      "poeng": 2100
+    },
+    {
+      "navn": "Valentin Paret-Peintre",
+      "rolle": "youth",
+      "lag": "Soudal Quick-Step",
+      "pris": 7.1,
+      "poeng": 1736
+    },
+    {
+      "navn": "Mads Pedersen",
+      "rolle": "sprinter",
+      "lag": "Lidl - Trek",
+      "pris": 10.6,
+      "poeng": 1662
+    },
+    {
+      "navn": "Lenny Martínez",
+      "rolle": "youth",
+      "lag": "Bahrain - Victorious",
+      "pris": 7.5,
+      "poeng": 1624
+    },
+    {
+      "navn": "Mauro Schmid",
+      "rolle": "support",
+      "lag": "Team Jayco AlUla",
+      "pris": 7.4,
+      "poeng": 1594
+    },
+    {
+      "navn": "Remco Evenepoel",
+      "rolle": "captain",
+      "lag": "Red Bull - BORA - hansgrohe",
+      "pris": 10.3,
+      "poeng": 1584
+    },
+    {
+      "navn": "Jasper Philipsen",
+      "rolle": "sprinter",
+      "lag": "Alpecin - Premier Tech",
+      "pris": 11.3,
+      "poeng": 1430
+    },
+    {
+      "navn": "Mathieu van der Poel",
+      "rolle": "support",
+      "lag": "Alpecin - Premier Tech",
+      "pris": 8.0,
+      "poeng": 1400
+    },
+    {
+      "navn": "Quinn Simmons",
+      "rolle": "youth",
+      "lag": "Lidl - Trek",
+      "pris": 6.5,
+      "poeng": 1336
+    },
+    {
+      "navn": "UAE Team Emirates - XRG",
+      "rolle": "manager",
+      "lag": "UAE Team Emirates - XRG",
+      "pris": 10.4,
+      "poeng": 1280
+    },
+    {
+      "navn": "Sepp Kuss",
+      "rolle": "climber",
+      "lag": "Team Visma | Lease a Bike",
+      "pris": 6.9,
+      "poeng": 1271
+    },
+    {
+      "navn": "Mattias Skjelmose",
+      "rolle": "climber",
+      "lag": "Lidl - Trek",
+      "pris": 7.1,
+      "poeng": 1168
+    },
+    {
+      "navn": "Paul Seixas",
+      "rolle": "captain",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 10.8,
+      "poeng": 1158
+    },
+    {
+      "navn": "Biniam Girmay",
+      "rolle": "sprinter",
+      "lag": "NSN Cycling Team",
+      "pris": 11.0,
+      "poeng": 970
+    },
+    {
+      "navn": "Alex Baudin",
+      "rolle": "youth",
+      "lag": "EF Education - EasyPost",
+      "pris": 6.9,
+      "poeng": 960
+    },
+    {
+      "navn": "Olav Kooij",
+      "rolle": "sprinter",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 11.2,
+      "poeng": 944
+    },
+    {
+      "navn": "Tobias Halland Johannessen",
+      "rolle": "captain",
+      "lag": "Uno-X Mobility",
+      "pris": 9.3,
+      "poeng": 886
+    },
+    {
+      "navn": "Baptiste Veistroffer",
+      "rolle": "support",
+      "lag": "Lotto Intermarché",
+      "pris": 4.0,
+      "poeng": 870
+    },
+    {
+      "navn": "Decathlon CMA CGM Team",
+      "rolle": "manager",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 10.1,
+      "poeng": 860
+    },
+    {
+      "navn": "Tom Pidcock",
+      "rolle": "captain",
+      "lag": "Pinarello Q36.5 Pro Cycling Team",
+      "pris": 9.1,
+      "poeng": 810
+    },
+    {
+      "navn": "Michael Matthews",
+      "rolle": "support",
+      "lag": "Team Jayco AlUla",
+      "pris": 6.9,
+      "poeng": 806
+    },
+    {
+      "navn": "Juan Ayuso",
+      "rolle": "captain",
+      "lag": "Lidl - Trek",
+      "pris": 9.6,
+      "poeng": 796
+    },
+    {
+      "navn": "Max Kanter",
+      "rolle": "sprinter",
+      "lag": "XDS Astana Team",
+      "pris": 9.0,
+      "poeng": 796
+    },
+    {
+      "navn": "Red Bull - BORA - hansgrohe",
+      "rolle": "manager",
+      "lag": "Red Bull - BORA - hansgrohe",
+      "pris": 9.4,
+      "poeng": 780
+    },
+    {
+      "navn": "Raul Garcia Pierna",
+      "rolle": "youth",
+      "lag": "Movistar Team",
+      "pris": 5.7,
+      "poeng": 778
+    },
+    {
+      "navn": "Davide Piganzoli",
+      "rolle": "youth",
+      "lag": "Team Visma | Lease a Bike",
+      "pris": 7.3,
+      "poeng": 768
+    },
+    {
+      "navn": "Mathias Vacek",
+      "rolle": "youth",
+      "lag": "Lidl - Trek",
+      "pris": 7.2,
+      "poeng": 724
+    },
+    {
+      "navn": "Alpecin - Premier Tech",
+      "rolle": "manager",
+      "lag": "Alpecin - Premier Tech",
+      "pris": 9.2,
+      "poeng": 720
+    },
+    {
+      "navn": "Tim Wellens",
+      "rolle": "support",
+      "lag": "UAE Team Emirates - XRG",
+      "pris": 6.8,
+      "poeng": 716
+    },
+    {
+      "navn": "Pablo Castrillo",
+      "rolle": "youth",
+      "lag": "Movistar Team",
+      "pris": 5.8,
+      "poeng": 702
+    },
+    {
+      "navn": "Matteo Jorgenson",
+      "rolle": "climber",
+      "lag": "Team Visma | Lease a Bike",
+      "pris": 7.2,
+      "poeng": 701
+    },
+    {
+      "navn": "Team Visma | Lease a Bike",
+      "rolle": "manager",
+      "lag": "Team Visma | Lease a Bike",
+      "pris": 9.8,
+      "poeng": 660
+    },
+    {
+      "navn": "Jai Hindley",
+      "rolle": "climber",
+      "lag": "Red Bull - BORA - hansgrohe",
+      "pris": 7.2,
+      "poeng": 653
+    },
+    {
+      "navn": "Kévin Vauquelin",
+      "rolle": "youth",
+      "lag": "Netcompany INEOS",
+      "pris": 7.5,
+      "poeng": 652
+    },
+    {
+      "navn": "Maxim Van Gils",
+      "rolle": "support",
+      "lag": "Red Bull - BORA - hansgrohe",
+      "pris": 7.6,
+      "poeng": 652
+    },
+    {
+      "navn": "Felix Grosschartner",
+      "rolle": "support",
+      "lag": "UAE Team Emirates - XRG",
+      "pris": 5.2,
+      "poeng": 632
+    },
+    {
+      "navn": "Huub Artz",
+      "rolle": "tempo",
+      "lag": "Lotto Intermarché",
+      "pris": 5.2,
+      "poeng": 627
+    },
+    {
+      "navn": "Adam Yates",
+      "rolle": "climber",
+      "lag": "UAE Team Emirates - XRG",
+      "pris": 6.9,
+      "poeng": 594
+    },
+    {
+      "navn": "Matthew Riccitello",
+      "rolle": "youth",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 7.0,
+      "poeng": 592
+    },
+    {
+      "navn": "Soudal Quick-Step",
+      "rolle": "manager",
+      "lag": "Soudal Quick-Step",
+      "pris": 8.6,
+      "poeng": 580
+    },
+    {
+      "navn": "Edward Planckaert",
+      "rolle": "support",
+      "lag": "Alpecin - Premier Tech",
+      "pris": 4.5,
+      "poeng": 572
+    },
+    {
+      "navn": "Ben Healy",
+      "rolle": "support",
+      "lag": "EF Education - EasyPost",
+      "pris": 7.3,
+      "poeng": 560
+    },
+    {
+      "navn": "Thymen Arensman",
+      "rolle": "climber",
+      "lag": "Netcompany INEOS",
+      "pris": 7.1,
+      "poeng": 532
+    },
+    {
+      "navn": "Bruno Armirail",
+      "rolle": "tempo",
+      "lag": "Team Visma | Lease a Bike",
+      "pris": 6.3,
+      "poeng": 530
+    },
+    {
+      "navn": "Nils Politt",
+      "rolle": "support",
+      "lag": "UAE Team Emirates - XRG",
+      "pris": 4.7,
+      "poeng": 524
+    },
+    {
+      "navn": "Felix Engelhardt",
+      "rolle": "support",
+      "lag": "Team Jayco AlUla",
+      "pris": 4.4,
+      "poeng": 522
+    },
+    {
+      "navn": "Florian Vermeersch",
+      "rolle": "support",
+      "lag": "UAE Team Emirates - XRG",
+      "pris": 5.1,
+      "poeng": 508
+    },
+    {
+      "navn": "Søren Wærenskjold",
+      "rolle": "sprinter",
+      "lag": "Uno-X Mobility",
+      "pris": 9.7,
+      "poeng": 506
+    },
+    {
+      "navn": "Lidl - Trek",
+      "rolle": "manager",
+      "lag": "Lidl - Trek",
+      "pris": 9.9,
+      "poeng": 500
+    },
+    {
+      "navn": "Jordan Jegat",
+      "rolle": "climber",
+      "lag": "TotalEnergies",
+      "pris": 6.1,
+      "poeng": 487
+    },
+    {
+      "navn": "EF Education - EasyPost",
+      "rolle": "manager",
+      "lag": "EF Education - EasyPost",
+      "pris": 8.6,
+      "poeng": 480
+    },
+    {
+      "navn": "Jasper Stuyven",
+      "rolle": "support",
+      "lag": "Soudal Quick-Step",
+      "pris": 6.4,
+      "poeng": 460
+    },
+    {
+      "navn": "Nicolas Prodhomme",
+      "rolle": "climber",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 5.1,
+      "poeng": 456
+    },
+    {
+      "navn": "Victor Campenaerts",
+      "rolle": "support",
+      "lag": "Team Visma | Lease a Bike",
+      "pris": 6.0,
+      "poeng": 452
+    },
+    {
+      "navn": "Tobias Foss",
+      "rolle": "tempo",
+      "lag": "Netcompany INEOS",
+      "pris": 6.5,
+      "poeng": 451
+    },
+    {
+      "navn": "Uno-X Mobility",
+      "rolle": "manager",
+      "lag": "Uno-X Mobility",
+      "pris": 8.3,
+      "poeng": 440
+    },
+    {
+      "navn": "Clément Russo",
+      "rolle": "sprinter",
+      "lag": "Groupama - FDJ United",
+      "pris": 6.5,
+      "poeng": 436
+    },
+    {
+      "navn": "Liam Slock",
+      "rolle": "support",
+      "lag": "Lotto Intermarché",
+      "pris": 5.2,
+      "poeng": 434
+    },
+    {
+      "navn": "Filippo Ganna",
+      "rolle": "tempo",
+      "lag": "Netcompany INEOS",
+      "pris": 7.6,
+      "poeng": 430
+    },
+    {
+      "navn": "Tiesj Benoot",
+      "rolle": "support",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 6.7,
+      "poeng": 412
+    },
+    {
+      "navn": "Marco Frigo",
+      "rolle": "support",
+      "lag": "NSN Cycling Team",
+      "pris": 4.6,
+      "poeng": 410
+    },
+    {
+      "navn": "Anthony Turgis",
+      "rolle": "sprinter",
+      "lag": "TotalEnergies",
+      "pris": 6.5,
+      "poeng": 410
+    },
+    {
+      "navn": "Sean Quinn",
+      "rolle": "climber",
+      "lag": "EF Education - EasyPost",
+      "pris": 4.7,
+      "poeng": 408
+    },
+    {
+      "navn": "Milan Fretin",
+      "rolle": "sprinter",
+      "lag": "Cofidis",
+      "pris": 7.7,
+      "poeng": 390
+    },
+    {
+      "navn": "Lennert Van Eetvelt",
+      "rolle": "youth",
+      "lag": "Lotto Intermarché",
+      "pris": 6.8,
+      "poeng": 378
+    },
+    {
+      "navn": "Mattia Cattaneo",
+      "rolle": "tempo",
+      "lag": "Red Bull - BORA - hansgrohe",
+      "pris": 5.8,
+      "poeng": 377
+    },
+    {
+      "navn": "Rick Pluimers",
+      "rolle": "sprinter",
+      "lag": "Tudor Pro Cycling Team",
+      "pris": 7.2,
+      "poeng": 374
+    },
+    {
+      "navn": "Egan Bernal",
+      "rolle": "captain",
+      "lag": "Netcompany INEOS",
+      "pris": 8.5,
+      "poeng": 372
+    },
+    {
+      "navn": "Romain Gregoire",
+      "rolle": "youth",
+      "lag": "Groupama - FDJ United",
+      "pris": 7.3,
+      "poeng": 364
+    },
+    {
+      "navn": "Yannis Voisard",
+      "rolle": "climber",
+      "lag": "Tudor Pro Cycling Team",
+      "pris": 5.8,
+      "poeng": 363
+    },
+    {
+      "navn": "Joshua Tarling",
+      "rolle": "youth",
+      "lag": "Netcompany INEOS",
+      "pris": 6.5,
+      "poeng": 360
+    },
+    {
+      "navn": "Team Jayco AlUla",
+      "rolle": "manager",
+      "lag": "Team Jayco AlUla",
+      "pris": 8.5,
+      "poeng": 360
+    },
+    {
+      "navn": "Matej Mohorič",
+      "rolle": "support",
+      "lag": "Bahrain - Victorious",
+      "pris": 5.7,
+      "poeng": 356
+    },
+    {
+      "navn": "Harold Tejada",
+      "rolle": "captain",
+      "lag": "XDS Astana Team",
+      "pris": 7.3,
+      "poeng": 352
+    },
+    {
+      "navn": "Michał Kwiatkowski",
+      "rolle": "support",
+      "lag": "Netcompany INEOS",
+      "pris": 5.5,
+      "poeng": 348
+    },
+    {
+      "navn": "Per Strand Hagenes",
+      "rolle": "youth",
+      "lag": "Team Visma | Lease a Bike",
+      "pris": 5.3,
+      "poeng": 344
+    },
+    {
+      "navn": "Tim Marsman",
+      "rolle": "support",
+      "lag": "Alpecin - Premier Tech",
+      "pris": 3.5,
+      "poeng": 336
+    },
+    {
+      "navn": "Nico Denz",
+      "rolle": "support",
+      "lag": "Red Bull - BORA - hansgrohe",
+      "pris": 3.7,
+      "poeng": 328
+    },
+    {
+      "navn": "Lewis Askey",
+      "rolle": "youth",
+      "lag": "NSN Cycling Team",
+      "pris": 5.6,
+      "poeng": 322
+    },
+    {
+      "navn": "Luke Plapp",
+      "rolle": "climber",
+      "lag": "Team Jayco AlUla",
+      "pris": 6.8,
+      "poeng": 321
+    },
+    {
+      "navn": "Jonas Rickaert",
+      "rolle": "support",
+      "lag": "Alpecin - Premier Tech",
+      "pris": 4.1,
+      "poeng": 320
+    },
+    {
+      "navn": "Vlad Van Mechelen",
+      "rolle": "youth",
+      "lag": "Bahrain - Victorious",
+      "pris": 4.9,
+      "poeng": 316
+    },
+    {
+      "navn": "Javier Romo",
+      "rolle": "support",
+      "lag": "Movistar Team",
+      "pris": 6.9,
+      "poeng": 314
+    },
+    {
+      "navn": "Jake Stewart",
+      "rolle": "support",
+      "lag": "NSN Cycling Team",
+      "pris": 5.2,
+      "poeng": 314
+    },
+    {
+      "navn": "Derek Gee-West",
+      "rolle": "tempo",
+      "lag": "Lidl - Trek",
+      "pris": 7.3,
+      "poeng": 313
+    },
+    {
+      "navn": "Michael Valgren",
+      "rolle": "support",
+      "lag": "EF Education - EasyPost",
+      "pris": 6.4,
+      "poeng": 312
+    },
+    {
+      "navn": "Clément Braz Afonso",
+      "rolle": "climber",
+      "lag": "Groupama - FDJ United",
+      "pris": 5.3,
+      "poeng": 308
+    },
+    {
+      "navn": "Quinten Hermans",
+      "rolle": "support",
+      "lag": "Pinarello Q36.5 Pro Cycling Team",
+      "pris": 5.9,
+      "poeng": 306
+    },
+    {
+      "navn": "Emiel Verstrynge",
+      "rolle": "youth",
+      "lag": "Alpecin - Premier Tech",
+      "pris": 7.1,
+      "poeng": 300
+    },
+    {
+      "navn": "NSN Cycling Team",
+      "rolle": "manager",
+      "lag": "NSN Cycling Team",
+      "pris": 7.4,
+      "poeng": 300
+    },
+    {
+      "navn": "Louis Vervaeke",
+      "rolle": "support",
+      "lag": "Soudal Quick-Step",
+      "pris": 5.0,
+      "poeng": 300
+    },
+    {
+      "navn": "XDS Astana Team",
+      "rolle": "manager",
+      "lag": "XDS Astana Team",
+      "pris": 7.6,
+      "poeng": 300
+    },
+    {
+      "navn": "Dorian Godon",
+      "rolle": "sprinter",
+      "lag": "Netcompany INEOS",
+      "pris": 8.9,
+      "poeng": 298
+    },
+    {
+      "navn": "Aurélien Paret-Peintre",
+      "rolle": "support",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 4.9,
+      "poeng": 296
+    },
+    {
+      "navn": "Fred Wright",
+      "rolle": "support",
+      "lag": "Pinarello Q36.5 Pro Cycling Team",
+      "pris": 5.0,
+      "poeng": 294
+    },
+    {
+      "navn": "Tim van Dijke",
+      "rolle": "support",
+      "lag": "Red Bull - BORA - hansgrohe",
+      "pris": 4.7,
+      "poeng": 292
+    },
+    {
+      "navn": "Jan Tratnik",
+      "rolle": "tempo",
+      "lag": "Red Bull - BORA - hansgrohe",
+      "pris": 5.5,
+      "poeng": 290
+    },
+    {
+      "navn": "Dylan van Baarle",
+      "rolle": "support",
+      "lag": "Soudal Quick-Step",
+      "pris": 4.6,
+      "poeng": 288
+    },
+    {
+      "navn": "Toms Skujiņš",
+      "rolle": "support",
+      "lag": "Lidl - Trek",
+      "pris": 6.0,
+      "poeng": 284
+    },
+    {
+      "navn": "Mathis Le Berre",
+      "rolle": "youth",
+      "lag": "TotalEnergies",
+      "pris": 4.2,
+      "poeng": 280
+    },
+    {
+      "navn": "Silvan Dillier",
+      "rolle": "support",
+      "lag": "Alpecin - Premier Tech",
+      "pris": 3.4,
+      "poeng": 276
+    },
+    {
+      "navn": "Joris Delbove",
+      "rolle": "support",
+      "lag": "TotalEnergies",
+      "pris": 3.8,
+      "poeng": 272
+    },
+    {
+      "navn": "Aaron Gate",
+      "rolle": "support",
+      "lag": "XDS Astana Team",
+      "pris": 4.0,
+      "poeng": 266
+    },
+    {
+      "navn": "Carlos Verona",
+      "rolle": "climber",
+      "lag": "Lidl - Trek",
+      "pris": 5.5,
+      "poeng": 262
+    },
+    {
+      "navn": "Mike Teunissen",
+      "rolle": "support",
+      "lag": "XDS Astana Team",
+      "pris": 4.7,
+      "poeng": 254
+    },
+    {
+      "navn": "Pascal Eenkhoorn",
+      "rolle": "support",
+      "lag": "Soudal Quick-Step",
+      "pris": 3.8,
+      "poeng": 252
+    },
+    {
+      "navn": "Nelson Oliveira",
+      "rolle": "tempo",
+      "lag": "Movistar Team",
+      "pris": 5.0,
+      "poeng": 246
+    },
+    {
+      "navn": "Davide Ballerini",
+      "rolle": "support",
+      "lag": "XDS Astana Team",
+      "pris": 4.8,
+      "poeng": 246
+    },
+    {
+      "navn": "Xandro Meurisse",
+      "rolle": "support",
+      "lag": "Pinarello Q36.5 Pro Cycling Team",
+      "pris": 4.8,
+      "poeng": 242
+    },
+    {
+      "navn": "Alexandre Delettre",
+      "rolle": "support",
+      "lag": "TotalEnergies",
+      "pris": 4.0,
+      "poeng": 240
+    },
+    {
+      "navn": "Georg Steinhauser",
+      "rolle": "youth",
+      "lag": "EF Education - EasyPost",
+      "pris": 5.9,
+      "poeng": 236
+    },
+    {
+      "navn": "Ewen Costiou",
+      "rolle": "youth",
+      "lag": "Groupama - FDJ United",
+      "pris": 5.8,
+      "poeng": 236
+    },
+    {
+      "navn": "Nicolas Breuillard",
+      "rolle": "climber",
+      "lag": "TotalEnergies",
+      "pris": 4.5,
+      "poeng": 232
+    },
+    {
+      "navn": "Magnus Cort",
+      "rolle": "support",
+      "lag": "Uno-X Mobility",
+      "pris": 6.4,
+      "poeng": 232
+    },
+    {
+      "navn": "Jakub Otruba",
+      "rolle": "tempo",
+      "lag": "Caja Rural - Seguros RGA",
+      "pris": 4.5,
+      "poeng": 230
+    },
+    {
+      "navn": "Cees Bol",
+      "rolle": "support",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 4.5,
+      "poeng": 224
+    },
+    {
+      "navn": "Quentin Pacher",
+      "rolle": "support",
+      "lag": "Groupama - FDJ United",
+      "pris": 4.2,
+      "poeng": 224
+    },
+    {
+      "navn": "Kasper Asgreen",
+      "rolle": "tempo",
+      "lag": "EF Education - EasyPost",
+      "pris": 5.5,
+      "poeng": 222
+    },
+    {
+      "navn": "Matteo Vercher",
+      "rolle": "youth",
+      "lag": "TotalEnergies",
+      "pris": 4.4,
+      "poeng": 220
+    },
+    {
+      "navn": "Jonas Abrahamsen",
+      "rolle": "support",
+      "lag": "Uno-X Mobility",
+      "pris": 6.2,
+      "poeng": 220
+    },
+    {
+      "navn": "Frank van den Broek",
+      "rolle": "support",
+      "lag": "Team Picnic PostNL",
+      "pris": 4.9,
+      "poeng": 218
+    },
+    {
+      "navn": "Max Walker",
+      "rolle": "youth",
+      "lag": "EF Education - EasyPost",
+      "pris": 4.3,
+      "poeng": 212
+    },
+    {
+      "navn": "Anders Skaarseth",
+      "rolle": "support",
+      "lag": "Uno-X Mobility",
+      "pris": 4.0,
+      "poeng": 208
+    },
+    {
+      "navn": "Daan Hoole",
+      "rolle": "tempo",
+      "lag": "Decathlon CMA CGM Team",
+      "pris": 6.6,
+      "poeng": 204
+    },
+    {
+      "navn": "Julian Alaphilippe",
+      "rolle": "support",
+      "lag": "Tudor Pro Cycling Team",
+      "pris": 6.3,
+      "poeng": 204
+    },
+    {
+      "navn": "Anders Halland Johannessen",
+      "rolle": "climber",
+      "lag": "Uno-X Mobility",
+      "pris": 4.9,
+      "poeng": 203
+    },
+    {
+      "navn": "Brent Van Moer",
+      "rolle": "support",
+      "lag": "Pinarello Q36.5 Pro Cycling Team",
+      "pris": 4.2,
+      "poeng": 194
+    },
+    {
+      "navn": "Pavel Bittner",
+      "rolle": "sprinter",
+      "lag": "Team Picnic PostNL",
+      "pris": 9.5,
+      "poeng": 194
+    },
+    {
+      "navn": "Warren Barguil",
+      "rolle": "support",
+      "lag": "Team Picnic PostNL",
+      "pris": 4.9,
+      "poeng": 190
+    },
+    {
+      "navn": "Robert Stannard",
+      "rolle": "support",
+      "lag": "Bahrain - Victorious",
+      "pris": 3.5,
+      "poeng": 188
+    },
+    {
+      "navn": "Xabier Azparren",
+      "rolle": "tempo",
+      "lag": "Pinarello Q36.5 Pro Cycling Team",
+      "pris": 5.6,
+      "poeng": 186
+    },
+    {
+      "navn": "Lorenzo Germani",
+      "rolle": "youth",
+      "lag": "Groupama - FDJ United",
+      "pris": 4.9,
+      "poeng": 184
+    },
+    {
+      "navn": "Phil Bauhaus",
+      "rolle": "sprinter",
+      "lag": "Bahrain - Victorious",
+      "pris": 7.8,
+      "poeng": 182
+    },
+    {
+      "navn": "Bahrain - Victorious",
+      "rolle": "manager",
+      "lag": "Bahrain - Victorious",
+      "pris": 8.1,
+      "poeng": 180
+    },
+    {
+      "navn": "Marc Hirschi",
+      "rolle": "support",
+      "lag": "Tudor Pro Cycling Team",
+      "pris": 5.7,
+      "poeng": 180
+    },
+    {
+      "navn": "Damiano Caruso",
+      "rolle": "climber",
+      "lag": "Bahrain - Victorious",
+      "pris": 6.7,
+      "poeng": 174
+    },
+    {
+      "navn": "Luke Durbridge",
+      "rolle": "support",
+      "lag": "Team Jayco AlUla",
+      "pris": 3.5,
+      "poeng": 174
+    },
+    {
+      "navn": "Antonio Tiberi",
+      "rolle": "captain",
+      "lag": "Bahrain - Victorious",
+      "pris": 8.6,
+      "poeng": 168
+    },
+    {
+      "navn": "Georg Zimmermann",
+      "rolle": "support",
+      "lag": "Lotto Intermarché",
+      "pris": 5.5,
+      "poeng": 166
+    },
+    {
+      "navn": "Krists Neilands",
+      "rolle": "support",
+      "lag": "NSN Cycling Team",
+      "pris": 3.8,
+      "poeng": 166
+    },
+    {
+      "navn": "Thibault Guernalec",
+      "rolle": "tempo",
+      "lag": "TotalEnergies",
+      "pris": 4.8,
+      "poeng": 166
+    },
+    {
+      "navn": "Stefano Oldani",
+      "rolle": "support",
+      "lag": "Caja Rural - Seguros RGA",
+      "pris": 4.7,
+      "poeng": 162
+    },
+    {
+      "navn": "Damien Howson",
+      "rolle": "support",
+      "lag": "Pinarello Q36.5 Pro Cycling Team",
+      "pris": 4.5,
+      "poeng": 162
+    },
+    {
+      "navn": "Netcompany INEOS",
+      "rolle": "manager",
+      "lag": "Netcompany INEOS",
+      "pris": 8.8,
+      "poeng": 160
+    },
+    {
+      "navn": "Ben O'Connor",
+      "rolle": "captain",
+      "lag": "Team Jayco AlUla",
+      "pris": 7.8,
+      "poeng": 160
+    },
+    {
+      "navn": "Alex Aranburu",
+      "rolle": "support",
+      "lag": "Cofidis",
+      "pris": 7.0,
+      "poeng": 156
+    },
+    {
+      "navn": "Guillaume Martin",
+      "rolle": "captain",
+      "lag": "Groupama - FDJ United",
+      "pris": 7.6,
+      "poeng": 156
+    },
+    {
+      "navn": "Abel Balderstone",
+      "rolle": "climber",
+      "lag": "Caja Rural - Seguros RGA",
+      "pris": 4.9,
+      "poeng": 155
+    },
+    {
+      "navn": "Kamil Gradek",
+      "rolle": "support",
+      "lag": "Bahrain - Victorious",
+      "pris": 3.4,
+      "poeng": 148
+    },
+    {
+      "navn": "Ion Izagirre",
+      "rolle": "climber",
+      "lag": "Cofidis",
+      "pris": 6.7,
+      "poeng": 143
+    },
+    {
+      "navn": "Joel Nicolau",
+      "rolle": "support",
+      "lag": "Caja Rural - Seguros RGA",
+      "pris": 4.4,
+      "poeng": 142
+    },
+    {
+      "navn": "Sergio Higuita",
+      "rolle": "climber",
+      "lag": "XDS Astana Team",
+      "pris": 6.2,
+      "poeng": 141
+    },
+    {
+      "navn": "Nicolas Vinokurov",
+      "rolle": "youth",
+      "lag": "XDS Astana Team",
+      "pris": 4.9,
+      "poeng": 134
+    },
+    {
+      "navn": "Marco Haller",
+      "rolle": "support",
+      "lag": "Tudor Pro Cycling Team",
+      "pris": 3.8,
+      "poeng": 132
+    },
+    {
+      "navn": "Simone Velasco",
+      "rolle": "support",
+      "lag": "XDS Astana Team",
+      "pris": 6.0,
+      "poeng": 130
+    },
+    {
+      "navn": "George Bennett",
+      "rolle": "climber",
+      "lag": "NSN Cycling Team",
+      "pris": 5.3,
+      "poeng": 121
+    },
+    {
+      "navn": "Pinarello Q36.5 Pro Cycling Team",
+      "rolle": "manager",
+      "lag": "Pinarello Q36.5 Pro Cycling Team",
+      "pris": 7.6,
+      "poeng": 120
+    },
+    {
+      "navn": "Niklas Markl",
+      "rolle": "support",
+      "lag": "Team Picnic PostNL",
+      "pris": 3.5,
+      "poeng": 118
+    },
+    {
+      "navn": "Robbe Dhondt",
+      "rolle": "youth",
+      "lag": "Team Picnic PostNL",
+      "pris": 4.2,
+      "poeng": 114
+    },
+    {
+      "navn": "Alex Kirsch",
+      "rolle": "tempo",
+      "lag": "Cofidis",
+      "pris": 5.4,
+      "poeng": 113
+    },
+    {
+      "navn": "Michel Hessmann",
+      "rolle": "youth",
+      "lag": "Movistar Team",
+      "pris": 4.5,
+      "poeng": 110
+    },
+    {
+      "navn": "Julius van den Berg",
+      "rolle": "support",
+      "lag": "Team Picnic PostNL",
+      "pris": 3.9,
+      "poeng": 110
+    },
+    {
+      "navn": "Michael Storer",
+      "rolle": "captain",
+      "lag": "Tudor Pro Cycling Team",
+      "pris": 8.0,
+      "poeng": 106
+    },
+    {
+      "navn": "Jenthe Biermans",
+      "rolle": "sprinter",
+      "lag": "Cofidis",
+      "pris": 7.3,
+      "poeng": 104
+    },
+    {
+      "navn": "Matis Louvel",
+      "rolle": "support",
+      "lag": "NSN Cycling Team",
+      "pris": 4.1,
+      "poeng": 102
+    },
+    {
+      "navn": "Piet Allegaert",
+      "rolle": "support",
+      "lag": "Cofidis",
+      "pris": 4.4,
+      "poeng": 100
+    },
+    {
+      "navn": "Movistar Team",
+      "rolle": "manager",
+      "lag": "Movistar Team",
+      "pris": 8.0,
+      "poeng": 100
+    },
+    {
+      "navn": "Jefferson Cepeda",
+      "rolle": "climber",
+      "lag": "Movistar Team",
+      "pris": 5.9,
+      "poeng": 96
+    },
+    {
+      "navn": "John Degenkolb",
+      "rolle": "support",
+      "lag": "Team Picnic PostNL",
+      "pris": 4.3,
+      "poeng": 94
+    },
+    {
+      "navn": "Hugo Page",
+      "rolle": "sprinter",
+      "lag": "Cofidis",
+      "pris": 7.0,
+      "poeng": 90
+    },
+    {
+      "navn": "Benjamin Thomas",
+      "rolle": "tempo",
+      "lag": "Cofidis",
+      "pris": 5.3,
+      "poeng": 86
+    },
+    {
+      "navn": "Sebastian Berwick",
+      "rolle": "captain",
+      "lag": "Caja Rural - Seguros RGA",
+      "pris": 6.5,
+      "poeng": 72
+    },
+    {
+      "navn": "Cofidis",
+      "rolle": "manager",
+      "lag": "Cofidis",
+      "pris": 7.9,
+      "poeng": 60
+    },
+    {
+      "navn": "Lotto Intermarché",
+      "rolle": "manager",
+      "lag": "Lotto Intermarché",
+      "pris": 7.8,
+      "poeng": 60
+    },
+    {
+      "navn": "Team Picnic PostNL",
+      "rolle": "manager",
+      "lag": "Team Picnic PostNL",
+      "pris": 5.6,
+      "poeng": 20
+    },
+    {
+      "navn": "Tudor Pro Cycling Team",
+      "rolle": "manager",
+      "lag": "Tudor Pro Cycling Team",
+      "pris": 7.6,
+      "poeng": 20
+    },
+    {
+      "navn": "Caja Rural - Seguros RGA",
+      "rolle": "manager",
+      "lag": "Caja Rural - Seguros RGA",
+      "pris": 4.9,
+      "poeng": 0
+    },
+    {
+      "navn": "Groupama - FDJ United",
+      "rolle": "manager",
+      "lag": "Groupama - FDJ United",
+      "pris": 6.6,
+      "poeng": 0
+    },
+    {
+      "navn": "TotalEnergies",
+      "rolle": "manager",
+      "lag": "TotalEnergies",
+      "pris": 5.1,
+      "poeng": 0
+    }
+  ]
+}

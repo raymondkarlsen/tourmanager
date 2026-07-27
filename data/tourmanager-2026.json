@@ -1,5 +1,5 @@
 {
-  "oppdatert": "2026-07-27 19:38 UTC",
+  "oppdatert": "2026-07-27 23:35 UTC",
   "kilde": "tourmanager.no",
   "antallEtapper": 21,
   "etapper": [
@@ -9,6 +9,7 @@
       "fra": "Barcelone",
       "til": "Barcelone",
       "distanse": 19,
+      "poeng_delt_ut": 9628,
       "toppscorere": [
         {
           "navn": "Jonas Vingegaard",
@@ -264,6 +265,7 @@
       "fra": "Tarragone",
       "til": "Barcelone",
       "distanse": 182,
+      "poeng_delt_ut": 4003,
       "toppscorere": [
         {
           "navn": "Isaac del Toro",
@@ -519,6 +521,7 @@
       "fra": "Granollers",
       "til": "Les Angles",
       "distanse": 196,
+      "poeng_delt_ut": 4021,
       "toppscorere": [
         {
           "navn": "Alex Baudin",
@@ -774,6 +777,7 @@
       "fra": "Carcassonne",
       "til": "Foix",
       "distanse": 182,
+      "poeng_delt_ut": 4485,
       "toppscorere": [
         {
           "navn": "Quinn Simmons",
@@ -1029,6 +1033,7 @@
       "fra": "Lannemezan",
       "til": "Pau",
       "distanse": 158,
+      "poeng_delt_ut": 3269,
       "toppscorere": [
         {
           "navn": "Baptiste Veistroffer",
@@ -1284,6 +1289,7 @@
       "fra": "Pau",
       "til": "Gavarnie-Gèdre",
       "distanse": 186,
+      "poeng_delt_ut": 4458,
       "toppscorere": [
         {
           "navn": "Tadej Pogačar",
@@ -1539,6 +1545,7 @@
       "fra": "Hagetmau",
       "til": "Bordeaux",
       "distanse": 175,
+      "poeng_delt_ut": 3265,
       "toppscorere": [
         {
           "navn": "Tim Merlier",
@@ -1794,6 +1801,7 @@
       "fra": "Périgueux",
       "til": "Bergerac",
       "distanse": 182,
+      "poeng_delt_ut": 3196,
       "toppscorere": [
         {
           "navn": "Tim Merlier",
@@ -2049,6 +2057,7 @@
       "fra": "Malemort",
       "til": "Ussel",
       "distanse": 185,
+      "poeng_delt_ut": 3888,
       "toppscorere": [
         {
           "navn": "Mathieu van der Poel",
@@ -2304,6 +2313,7 @@
       "fra": "Aurillac",
       "til": "Le Lioran",
       "distanse": 167,
+      "poeng_delt_ut": 4085,
       "toppscorere": [
         {
           "navn": "Tadej Pogačar",
@@ -2559,6 +2569,7 @@
       "fra": "Vichy",
       "til": "Nevers",
       "distanse": 161,
+      "poeng_delt_ut": 3320,
       "toppscorere": [
         {
           "navn": "Anthon Charmig",
@@ -2814,6 +2825,7 @@
       "fra": "Circuit Nevers Magny-Cours",
       "til": "Chalon-sur-Saône",
       "distanse": 181,
+      "poeng_delt_ut": 3296,
       "toppscorere": [
         {
           "navn": "Tim Merlier",
@@ -3069,6 +3081,7 @@
       "fra": "Dole",
       "til": "Belfort",
       "distanse": 205,
+      "poeng_delt_ut": 4030,
       "toppscorere": [
         {
           "navn": "Mauro Schmid",
@@ -3324,6 +3337,7 @@
       "fra": "Mulhouse",
       "til": "Le Markstein Fellering",
       "distanse": 155,
+      "poeng_delt_ut": 4337,
       "toppscorere": [
         {
           "navn": "Isaac del Toro",
@@ -3579,6 +3593,7 @@
       "fra": "Champagnole",
       "til": "Plateau de Solaison",
       "distanse": 184,
+      "poeng_delt_ut": 4403,
       "toppscorere": [
         {
           "navn": "Isaac del Toro",
@@ -3834,6 +3849,7 @@
       "fra": "Évian-les-Bains",
       "til": "Thonon-les-Bains",
       "distanse": 26,
+      "poeng_delt_ut": 3080,
       "toppscorere": [
         {
           "navn": "Remco Evenepoel",
@@ -4089,6 +4105,7 @@
       "fra": "Chambery",
       "til": "Voiron",
       "distanse": 175,
+      "poeng_delt_ut": 3700,
       "toppscorere": [
         {
           "navn": "Mauro Schmid",
@@ -4344,6 +4361,7 @@
       "fra": "Voiron",
       "til": "Orcières-Merlette",
       "distanse": 185,
+      "poeng_delt_ut": 4424,
       "toppscorere": [
         {
           "navn": "Mauro Schmid",
@@ -4599,6 +4617,7 @@
       "fra": "Gap",
       "til": "Alpe d'Huez",
       "distanse": 128,
+      "poeng_delt_ut": 4536,
       "toppscorere": [
         {
           "navn": "Lenny Martínez",
@@ -4854,6 +4873,7 @@
       "fra": "Le Bourg d'Oisans",
       "til": "Alpe d'Huez",
       "distanse": 171,
+      "poeng_delt_ut": 5283,
       "toppscorere": [
         {
           "navn": "Sepp Kuss",
@@ -5109,6 +5129,7 @@
       "fra": "Thoiry",
       "til": "Paris Champs-Élysées",
       "distanse": 130,
+      "poeng_delt_ut": 3436,
       "toppscorere": [
         {
           "navn": "Mathieu van der Poel",
