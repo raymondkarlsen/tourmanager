@@ -11,6 +11,24 @@
   <style>
     h3.fakta { color: #4353c6; margin-top: 36px; }
     .liste { background: var(--flate-graa); padding: 20px 28px; }
+    .graf-note { margin-top: -12px; font-size: 14px; color: #666; }
+    .graf-bytte { display: inline-flex; gap: 4px; margin-bottom: 16px;
+      background: var(--flate-graa); padding: 4px; border-radius: 8px; }
+    .graf-bytte button { border: none; background: transparent; cursor: pointer;
+      font: inherit; font-size: 15px; padding: 6px 16px; border-radius: 6px;
+      color: #444; }
+    .graf-bytte button.aktiv { background: #fff; color: #4353c6; font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+    .heatmap-wrap { overflow-x: auto; margin-bottom: 8px; }
+    .heatmap { border-collapse: separate; border-spacing: 3px;
+      font-size: 13px; font-variant-numeric: tabular-nums; }
+    .heatmap th { font-weight: 600; padding: 2px 6px; text-align: center; color: #666; }
+    .heatmap td.navn { text-align: right; font-weight: 600; padding-right: 10px;
+      white-space: nowrap; color: #1a1a1a; }
+    .heatmap td.rute { text-align: center; min-width: 46px; height: 34px;
+      border-radius: 6px; }
+    .heatmap td.tom { background: #f0f0f0; color: #bbb; }
+    #heatmap-note { margin-top: 8px; }
   </style>
 </head>
 <body>
@@ -97,19 +115,15 @@ hentTourdata().then(data => {
   })));
 
   /* Setning om tittelforsvar — regnes ut fra hvem som vant år etter år */
-  const forsvarte = [];
+  let forsvar = 0;
+  const overganger = data.sesonger.length - 1;
   for (let i = 1; i < data.sesonger.length; i++) {
-    if (data.sesonger[i].vinner === data.sesonger[i - 1].vinner) {
-      if (!forsvarte.includes(data.sesonger[i - 1].aar))
-        forsvarte.push(data.sesonger[i - 1].aar);
-      forsvarte.push(data.sesonger[i].aar);
-    }
+    if (data.sesonger[i].vinner === data.sesonger[i - 1].vinner) forsvar++;
   }
-  if (forsvarte.length) {
-    const aarTekst = forsvarte.slice(0, -1).join(", ") + " og " + forsvarte.at(-1);
-    html += `<p>Utover sesongene ${aarTekst} er det ingen som har forsvart tittelen.</p>`;
-  } else {
-    html += "<p>Ingen har noen gang forsvart tittelen.</p>";
+  if (overganger > 0) {
+    const ikkeForsvartAndel = Math.round(((overganger - forsvar) / overganger) * 100);
+    html += `<p>Det er vanligst at vinneren ikke klarer å vinne på nytt året etter.
+      I ${ikkeForsvartAndel}&nbsp;% av sesongene forsvares ikke tittelen.</p>`;
   }
 
   html += "<div class='skille skille--blaa'></div>";
@@ -120,11 +134,23 @@ hentTourdata().then(data => {
     og ser seg aldri tilbake, mens andre ganger er det neglebiting og
     telling av småpoeng på Champs-Élysées.</p>`;
 
-  html += `<h3>Poengspredning</h3>
+  html += `<h3 class='fakta'>Poengspredning</h3>
     <p>Poeng for alle år. Viser spredningen i poeng.</p>
     <div style="position: relative; height: 440px; margin-bottom: 24px;">
       <canvas id="spredning"></canvas>
-    </div>`;
+    </div>
+    <p class="graf-note">Merk at x-aksen starter på 6000 poeng, ikke 0.</p>`;
+
+  const margins = ff.suverenesteSeire.map(x => x.diff);
+  const snittMargin = margins.reduce((a, b) => a + b, 0) / margins.length;
+  const sortMargins = [...margins].sort((a, b) => a - b);
+  const midt = Math.floor(sortMargins.length / 2);
+  const medianMargin = sortMargins.length % 2
+    ? sortMargins[midt]
+    : (sortMargins[midt - 1] + sortMargins[midt]) / 2;
+  html += "<h3 class='fakta'>Gjennomsnittlig seiersmargin</h3>";
+  html += `<p>Gjennomsnittlig avstand fra nummer 1 til 2 er <strong>${f(Math.round(snittMargin))}</strong> poeng.
+    Medianavstanden er <strong>${f(Math.round(medianMargin))}</strong> poeng.</p>`;
 
   const suveren = ff.suverenesteSeire[0];
   html += "<h3 class='fakta'>Mest suverene seier</h3>";
@@ -158,7 +184,7 @@ hentTourdata().then(data => {
   html += `<p>I ${minst.aar} skilte det bare ${minst.diff === 1 ? "ett fattig poeng" :
     f(minst.diff) + " poeng"} mellom ${minst.personA} og ${minst.personB}
     (${minst.plasser}). Det er bare en tilfeldig rytter som triller inn til
-    en håpløs 18. plass på en hvilken som helst etappe.</p>`;
+    en ubetydelig 18. plass på en hvilken som helst etappe.</p>`;
   html += liste(ff.minsteDifferanser.slice(0, 7).map(x => ({
     verdi: x.diff,
     tekst: `<strong>${x.aar}</strong>: ${x.personA} vs ${x.personB} —
@@ -200,6 +226,47 @@ hentTourdata().then(data => {
     tekst: `<strong>${x.person}</strong> (${x.aar}) — ${f(x.poeng)} poeng`,
   })));
 
+  /* Flest poeng på én etappe — kun for år vi har etappedata for */
+  const etappeAar = Object.keys(data.etapper).sort();
+  if (etappeAar.length) {
+    const etappePrestasjoner = [];
+    for (const aar of etappeAar) {
+      for (const e of data.etapper[aar]) {
+        for (const person of Object.keys(e.poeng)) {
+          etappePrestasjoner.push({
+            person, aar: Number(aar), etappe: e.etappe,
+            type: e.type, poeng: e.poeng[person],
+          });
+        }
+      }
+    }
+    etappePrestasjoner.sort((a, b) => b.poeng - a.poeng);
+    const aarTekst = etappeAar.length > 1
+      ? etappeAar.slice(0, -1).join(", ") + " og " + etappeAar.at(-1)
+      : etappeAar[0];
+    html += "<h3 class='fakta'>Flest poeng på én etappe</h3>";
+    html += `<p>Vi har bare etappedata fra ${aarTekst},
+      så denne lista gjelder kun de sesongene.</p>`;
+    html += liste(etappePrestasjoner.slice(0, 10).map(x => ({
+      verdi: x.poeng,
+      tekst: `<strong>${x.person}</strong> (${x.aar}, etappe ${x.etappe}` +
+        (x.type ? `, ${x.type}` : "") + `) — ${f(x.poeng)} poeng`,
+    })));
+  }
+
+  html += "<div class='skille skille--blaa'></div>";
+
+  /* ================= HOVEDVISUALISERING: GJENNOM ÅRENE ================= */
+  html += "<h2>Gjennom årene</h2>";
+  html += `<p>Alle sesonger for alle utøvere i ett rutenett. Mørkere rute
+    betyr bedre resultat. Bytt mellom plassering og poeng.</p>`;
+  html += `<div class="graf-bytte" role="group" aria-label="Velg hva rutenettet viser">
+      <button type="button" data-modus="plass" class="aktiv">Plassering</button>
+      <button type="button" data-modus="poeng">Poeng</button>
+    </div>
+    <div class="heatmap-wrap"><div id="heatmap"></div></div>
+    <p class="graf-note" id="heatmap-note"></p>`;
+
   document.getElementById("innhold").innerHTML = html;
 
   /* ---- Spredningsplottet (samme som på Poengtabellen) ---- */
@@ -214,6 +281,7 @@ hentTourdata().then(data => {
     barThickness: 6,
     borderRadius: 3,
     borderSkipped: false,
+    order: 1,
   };
   const prikker = data.personer.map(person => ({
     type: "line",
@@ -227,6 +295,7 @@ hentTourdata().then(data => {
     borderColor: data.farger[person],
     pointRadius: 6,
     pointHoverRadius: 8,
+    order: 0,
   }));
   new Chart(document.getElementById("spredning"), {
     data: {
@@ -253,12 +322,78 @@ hentTourdata().then(data => {
         },
       },
       scales: {
-        x: { ticks: { font: { family: "Albert Sans" },
+        x: { min: 6000,
+          ticks: { font: { family: "Albert Sans" },
           callback: v => formatTall(v) } },
         y: { grid: { display: false },
           ticks: { font: { family: "Albert Sans" } } },
       },
     },
+  });
+
+  /* ---- Hovedvisualisering: heatmap (alle år × alle utøvere) ---- */
+  const hmAar = data.sesonger;
+  const antallDeltakere = data.personer.length;
+
+  // Fast kolonnerekkefølge
+  const ønsketRekkefølge = ["Tony", "Jørgen", "Alex", "Raymond"];
+  const hmPersoner = [
+    ...ønsketRekkefølge.filter(p => data.personer.includes(p)),
+    ...data.personer.filter(p => !ønsketRekkefølge.includes(p)),
+  ];
+
+  // Globalt poengspenn (for poeng-modus)
+  let minPoeng = Infinity, maksPoeng = -Infinity;
+  hmAar.forEach(s => s.resultater.forEach(r => {
+    minPoeng = Math.min(minPoeng, r.poeng);
+    maksPoeng = Math.max(maksPoeng, r.poeng);
+  }));
+
+  const rutestil = t => {
+    const light = 92 - t * 22;              // 70 % (best) → 92 % (dårligst): alt lyst
+    return { bg: `hsl(231 58% ${light}%)`, tekst: "#1a1a1a" };
+  };
+
+  function tegnHeatmap(modus) {
+    let thead = "<tr><th></th>" +
+      hmPersoner.map(p => `<th>${p}</th>`).join("") + "</tr>";
+    let tbody = hmAar.map(s => {
+      const celler = hmPersoner.map(person => {
+        const r = s.resultater.find(x => x.person === person);
+        if (!r) return `<td class="rute tom">·</td>`;
+        let t, innhold;
+        if (modus === "plass") {
+          t = antallDeltakere > 1 ? (antallDeltakere - r.plass) / (antallDeltakere - 1) : 1;
+          innhold = r.plass + ".";
+        } else {
+          t = maksPoeng > minPoeng ? (r.poeng - minPoeng) / (maksPoeng - minPoeng) : 1;
+          innhold = formatTall(r.poeng);
+        }
+        const { bg, tekst } = rutestil(t);
+        const tittel = `${person} – ${s.aar}: ${r.plass}. plass, ${formatTall(r.poeng)} poeng`;
+        return `<td class="rute" style="background:${bg};color:${tekst}" title="${tittel}">${innhold}</td>`;
+      }).join("");
+      return `<tr><td class="navn">${s.aar}</td>${celler}</tr>`;
+    }).join("");
+    document.getElementById("heatmap").innerHTML =
+      `<table class="heatmap">${thead}${tbody}</table>`;
+    document.getElementById("heatmap-note").textContent = modus === "plass"
+      ? "Mørkere rute = bedre plassering (1. plass mørkest)."
+      : "Mørkere rute = flere poeng, sammenlignet på tvers av alle år.";
+  }
+
+  tegnHeatmap("plass");
+
+  let hovedModus = "plass";
+  document.querySelectorAll(".graf-bytte button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const modus = btn.dataset.modus;
+      if (modus === hovedModus) return;
+      hovedModus = modus;
+      document.querySelectorAll(".graf-bytte button")
+        .forEach(b => b.classList.toggle("aktiv", b === btn));
+      tegnHeatmap(modus);
+    });
   });
 
 }).catch(feil => {

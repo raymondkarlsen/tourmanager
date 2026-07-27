@@ -87,12 +87,18 @@ def beregn_etappe(runde, ryttere):
             best = max(i_kat, key=lambda r: r["roundPoints"])
             kategorikonger.append({"kategori": navn, **kort(best)})
 
+    poeng_delt_ut = sum(
+        r["roundPoints"] for r in ryttere
+        if r.get("roundPlayed") and r.get("roundPoints")
+    )
+
     return {
         "nummer": runde["number"],
         "terreng": TERRENG.get(runde["stageType"], runde["stageType"]),
         "fra": runde["startCity"],
         "til": runde["finishCity"],
         "distanse": runde["distanceKm"],
+        "poeng_delt_ut": poeng_delt_ut,
         "toppscorere": [kort(r) for r in topp(spilte, lambda r: r["roundPoints"])],
         "beste_kjop": [
             {**kort(r), "perMill": round(per_mill(r), 1)} for r in beste_kjop

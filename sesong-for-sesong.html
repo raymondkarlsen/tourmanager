@@ -17,6 +17,23 @@
       margin-top: 3px;
     }
     .aarseksjon { margin-bottom: 8px; }
+    .troyetagger { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 18px; }
+    .troyetag { display: inline-flex; align-items: center; gap: 7px;
+      background: var(--flate-graa); border-radius: 999px;
+      padding: 5px 13px 5px 9px; font-size: 14px; line-height: 1; }
+    .troyetag b { font-weight: 600; }
+    .troyerytter { color: #555; }
+    .troyesvg { flex: none; display: block; }
+    .sesong-accordion { margin: 0 0 14px; border-left: 3px solid var(--flate-graa);
+      padding-left: 12px; }
+    .sesong-accordion > summary { cursor: pointer; font-weight: 600; list-style: none;
+      display: inline-flex; align-items: center; gap: 7px; padding: 2px 0;
+      color: var(--tekst, #1a1a1a); user-select: none; }
+    .sesong-accordion > summary::-webkit-details-marker { display: none; }
+    .sesong-accordion > summary::before { content: "▸"; font-size: 12px;
+      transition: transform .15s ease; color: #777; }
+    .sesong-accordion[open] > summary::before { transform: rotate(90deg); }
+    .sesong-accordion-inn { margin-top: 8px; }
   </style>
 </head>
 <body>
@@ -62,6 +79,7 @@
 
 <script src="js/config.js"></script>
 <script src="js/motor.js"></script>
+<script src="js/sesonginfo.js"></script>
 <script>
 /* Redaksjonelle årstekster. Legg til nye år her — bare år som
    står i listen får en ingress, resten viser kun tabellen. */
@@ -118,7 +136,14 @@ hentTourdata().then(data => {
   const nyesteFoerst = [...data.sesonger].reverse();
   nyesteFoerst.forEach((s, i) => {
     html += `<div class="aarseksjon"><h2>${s.aar}</h2>`;
-    if (AARSTEKSTER[s.aar]) html += `<p>${AARSTEKSTER[s.aar]}</p>`;
+    if (AARSTROYER[s.aar]) html += troyeTagger(AARSTROYER[s.aar]);
+    if (AARSOPPSUMMERING[s.aar])
+      html += `<details class="sesong-accordion">
+        <summary>Kort om sesongen</summary>
+        <div class="sesong-accordion-inn">${AARSOPPSUMMERING[s.aar]}</div>
+      </details>`;
+    if (AARSTEKSTER[s.aar])
+      html += `<p><strong>Kort om Tourmanager-sesongen:</strong> ${AARSTEKSTER[s.aar]}</p>`;
     html += resultatTabell(s.resultater, true);
 
     /* Detaljside-knapp bare for år som har etappedata i regnearket */

@@ -41,11 +41,17 @@
     .tm-etappe[open] summary { border-bottom: 1px solid #ece7d2; }
     .tm-etappe summary:hover { background: #faf8ef; }
     .tm-teaser {
-      margin-left: auto;
+      flex-basis: 100%;
+      margin-left: 13px;
+      margin-top: 2px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 16px;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #9a7d0a;
-      white-space: nowrap;
     }
+    .tm-teaser-total { color: var(--tekst-daus); font-weight: 400; }
     .tm-innhold { padding: 4px 18px 18px; }
     .tm-kolonner {
       display: grid;
@@ -55,7 +61,8 @@
     }
     .tm-kolonner h4 { margin: 16px 0 6px; font-size: 1rem; }
     .tm-etappeanalyse-tittel { margin: 24px 0 6px; font-size: 1rem; }
-    .tm-kolonner ol.rangering li { margin-bottom: 3px; font-size: 0.95rem; }
+    .tm-kolonner ol.rangering li,
+    #etappeanalyse ol.rangering li { margin-bottom: 3px; font-size: 0.95rem; }
     .tm-hint, .tm-kilde {
       color: var(--tekst-daus);
       font-weight: 400;
@@ -64,8 +71,17 @@
     .tm-kilde { margin-top: 20px; }
     @media (max-width: 640px) {
       .tm-kolonner { grid-template-columns: 1fr; }
-      .tm-teaser { margin-left: 0; width: 100%; }
     }
+
+    /* Trøyetagger + ingress (delt stil med sesong-for-sesong) */
+    .troyetagger { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+    .troyetag { display: inline-flex; align-items: center; gap: 7px;
+      background: var(--flate-graa); border-radius: 999px;
+      padding: 5px 13px 5px 9px; font-size: 14px; line-height: 1; }
+    .troyetag b { font-weight: 600; }
+    .troyerytter { color: #555; }
+    .troyesvg { flex: none; display: block; }
+    .sesong-ingress { margin: 0 0 28px; font-size: 1.05rem; line-height: 1.55; }
 
     /* Poeng per rytter — lag for lag */
     .tm-lagryttere { margin-top: 10px; }
@@ -137,7 +153,7 @@
       white-space: nowrap;
     }
     .tm-chip.tom { color: var(--tekst-daus); background: #f7f5ec; }
-    .tm-mer { border-top: 1px solid #f4f0e0; }
+    .tm-mer { border-top: 1px solid #f4f0e0; display: flex; flex-direction: column; }
     .tm-mer > summary {
       cursor: pointer;
       list-style: none;
@@ -148,8 +164,11 @@
     }
     .tm-mer > summary::-webkit-details-marker { display: none; }
     .tm-mer > summary::before { content: "+ "; }
+    .tm-mer > summary::after { content: "Vis alle syklistene"; }
+    .tm-mer[open] > summary { order: 2; color: var(--tekst-daus);
+      border-top: 1px solid #f4f0e0; }
     .tm-mer[open] > summary::before { content: "– "; }
-    .tm-mer[open] > summary { color: var(--tekst-daus); }
+    .tm-mer[open] > summary::after { content: "Vis bare topp 5"; }
     .tm-mer > summary:hover { background: #faf8ef; }
     @media (max-width: 640px) {
       .tm-rytterhode, .tm-rytter > summary { grid-template-columns: 1.5fr 2.6rem 3.6rem; }
@@ -192,6 +211,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/motor.js"></script>
+<script src="js/sesonginfo.js"></script>
 <script>
 /* Redaksjonelle sesongoppsummeringer ("Kort om sesongen").
    Legg til nye år her etter hvert. */
@@ -255,7 +275,7 @@ function tegnEtappeikon(ctx, type, senterX, senterY, storrelse) {
    Uten parameter: pågående sesong, ellers nyeste ferdige. */
 const oensketAar = new URLSearchParams(location.search).get("aar");
 
-hentTourdata().then(data => {
+hentTourdata().then(async data => {
   const f = formatTall;
 
   const aar = Number(oensketAar) ||
@@ -280,7 +300,11 @@ hentTourdata().then(data => {
     return;
   }
 
-  let html = "<h2>Resultater</h2>";
+  let html = "";
+  if (AARSTROYER[aar]) html += troyeTagger(AARSTROYER[aar]);
+  if (AARSOPPSUMMERING[aar])
+    html += `<p class="sesong-ingress">${AARSOPPSUMMERING[aar]}</p>`;
+  html += "<h2>Resultater</h2>";
   if (paagaar) {
     html += `<p>Touren pågår! Stillingen etter ${etapper.length}
       etappe${etapper.length === 1 ? "" : "r"}:</p>`;
@@ -328,39 +352,17 @@ hentTourdata().then(data => {
     <div id="lagryttere"></div>`;
   }
 
-  /* ---- Rytterstatistikk fra spilleverandøren, hvis den finnes for året --- */
-  const ryttere = data.ryttere?.[aar] || [];
-  if (ryttere.length > 0) {
-    const kolonner = Object.keys(ryttere[0]).filter(k => k !== "aar");
-    html += `
-    <div class="skille skille--gul"></div>
-    <h2>Statistikk om rytterne</h2>
-    <p>Denne oversikten viser alle rytterne som deltok i ${aar}-utgaven
-    av Tourmanager. Her ser du prisen, hvor mange poeng de tok og hvilken
-    rolle de spilte for lagene våre. Tallene kommer fra spilleverandøren.</p>
-    <details>
-      <summary style="cursor:pointer;font-weight:600;margin-bottom:12px;">
-        Vis tabellen (${ryttere.length} ryttere)</summary>
-      <div style="overflow-x:auto;">
-      <table class="data">
-        <tr><th>#</th>${kolonner.map(k =>
-          `<th>${k.charAt(0).toUpperCase() + k.slice(1)}</th>`).join("")}</tr>
-        ${ryttere.map((rad, i) => `<tr><td>${i + 1}</td>${kolonner.map(k =>
-          `<td>${rad[k]}</td>`).join("")}</tr>`).join("")}
-      </table>
-      </div>
-    </details>`;
-  }
-
   document.getElementById("innhold").innerHTML = html;
 
-  /* ---- Tourmanager.no-statistikk (kun for inneværende/pågående år) -------
-     Hentes fra en ferdig-beregnet fil som oppdateres daglig av en
-     GitHub Action. Vises under resten av innholdet. */
-  visTourmanagerStatistikk(aar);
-
-  /* ---- Poeng per rytter, lag for lag (kun for år som har filen) -------- */
+  /* ---- Tilleggsseksjoner nederst på siden -------------------------------
+     Rekkefølge (ovenfra og ned): lag-for-lag, deretter etappe-for-etappe
+     (tourmanager.no) og til slutt totaltabellen. visLagryttere fyller en
+     placeholder inne i #innhold, mens de to andre legger seg etter alt
+     annet i <main>. Vi venter på touren-seksjonen før totaltabellen, så
+     rekkefølgen alltid blir riktig. */
   visLagryttere(aar);
+  await visTourmanagerStatistikk(aar);
+  await visRyttere(aar, data.ryttere?.[aar] || []);
 
   if (etapper.length === 0) return;
 
@@ -629,7 +631,7 @@ async function visLagryttere(aar) {
           ${topp.map(rytterRad).join("")}
           ${resten.length ? `
             <details class="tm-mer">
-              <summary>Vis alle syklistene</summary>
+              <summary></summary>
               ${resten.map(rytterRad).join("")}
             </details>` : ""}
         </div>
@@ -637,11 +639,50 @@ async function visLagryttere(aar) {
   }
   html += "</div>";
 
-  if (data.oppdatert) {
-    html += `<p class="tm-kilde">Hentet fra tourmanager.no ${data.oppdatert}.</p>`;
-  }
-
   mal.innerHTML = html;
+}
+
+/* ==========================================================================
+   Rytterstatistikk totalt
+   Enkel tabell over alle rytterne i sesongen: pris, poeng og rolle.
+   Bruker regneark-radene når året finnes der (2025), ellers en lokal fil
+   data/ryttere-<aar>.json som lages av scripts/hent-ryttere.py (2026+).
+   Legger seg nederst i <main>, etter touren-seksjonen. */
+async function visRyttere(aar, arkRader) {
+  let ryttere = (arkRader && arkRader.length) ? arkRader : null;
+  if (!ryttere) {
+    try {
+      const svar = await fetch("data/ryttere-" + aar + ".json");
+      if (!svar.ok) return;             // ingen fil for dette året → hopp over
+      const data = await svar.json();
+      ryttere = Array.isArray(data) ? data : data.ryttere;
+    } catch (e) {
+      return;
+    }
+  }
+  if (!ryttere || ryttere.length === 0) return;
+
+  const kolonner = Object.keys(ryttere[0]).filter(k => k !== "aar");
+  const seksjon = document.createElement("div");
+  seksjon.innerHTML = `
+    <div class="skille skille--gul"></div>
+    <h2>Rytterstatistikk totalt</h2>
+    <p>Denne oversikten viser alle rytterne som deltok i ${aar}-utgaven
+    av Tourmanager. Her ser du prisen, hvor mange poeng de tok og hvilken
+    rolle de spilte for lagene våre.</p>
+    <details>
+      <summary style="cursor:pointer;font-weight:600;margin-bottom:12px;">
+        Vis tabellen (${ryttere.length} ryttere)</summary>
+      <div style="overflow-x:auto;">
+      <table class="data">
+        <tr><th>#</th>${kolonner.map(k =>
+          `<th>${k.charAt(0).toUpperCase() + k.slice(1)}</th>`).join("")}</tr>
+        ${ryttere.map((rad, i) => `<tr><td>${i + 1}</td>${kolonner.map(k =>
+          `<td>${rad[k]}</td>`).join("")}</tr>`).join("")}
+      </table>
+      </div>
+    </details>`;
+  document.querySelector("main").appendChild(seksjon);
 }
 
 /* ==========================================================================
@@ -667,8 +708,8 @@ async function visTourmanagerStatistikk(aar) {
   const seksjon = document.createElement("div");
   seksjon.innerHTML = `
     <div class="skille skille--gul"></div>
-    <h2>Rytterstatistikk fra touren</h2>
-    <p>Tall og kuriosa om enkeltrytterne.</p>`;
+    <h2>Rytterstatistikk etappe for etappe</h2>
+    <p>Se hvilke ryttere som gjorde det best på hver etappe – pluss litt annen morsom kuriosa.</p>`;
   container.appendChild(seksjon);
 
   /* En liten liste-hjelper: navn, lag og en verdi */
@@ -687,7 +728,10 @@ async function visTourmanagerStatistikk(aar) {
         <span class="tm-pil" aria-hidden="true"></span>
         <strong>Etappe ${e.nummer}</strong> — ${e.terreng}
         <span style="color:var(--tekst-daus)">${e.fra} → ${e.til}</span>
-        <span class="tm-teaser">${topp.navn}: ${topp.poeng} p</span>
+        <span class="tm-teaser">
+          <span class="tm-teaser-mest">Mest poeng: ${topp.navn} (${topp.poeng} p)</span>
+          <span class="tm-teaser-total">Antall poeng delt ut: ${f(e.poeng_delt_ut)}</span>
+        </span>
       </summary>
       <div class="tm-innhold">
         <div class="tm-kolonner">
@@ -733,7 +777,7 @@ async function visTourmanagerStatistikk(aar) {
 
   const kilde = document.createElement("p");
   kilde.className = "tm-kilde";
-  kilde.innerHTML = `Statistikken oppdateres daglig fra tourmanager.no.
+  kilde.innerHTML = `Statistikken oppdateres daglig fra tourmanager.no underveis i Tour de France.
     Sist oppdatert: ${data.oppdatert}.`;
   container.appendChild(kilde);
 

@@ -38,7 +38,7 @@ function parseCsvLinje(linje) {
 /** Henter en CSV-fil og gjør den om til en liste med objekter,
     der kolonnenavnene i første rad blir nøkler. */
 async function hentCsv(url) {
-  const svar = await fetch(url);
+  const svar = await fetch(url, { cache: "no-store" });
   if (!svar.ok) throw new Error("Klarte ikke hente data: " + url);
   const tekst = await svar.text();
 
